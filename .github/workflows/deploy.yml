@@ -28,7 +28,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22.12.0
+          cache: npm
 
       - name: Show repo structure
         run: |
@@ -37,7 +38,7 @@ jobs:
           find . -maxdepth 2 \( -name "package.json" -o -name "vite.config.*" -o -name "index.html" \)
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
