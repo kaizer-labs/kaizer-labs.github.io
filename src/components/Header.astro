@@ -16,7 +16,20 @@ const pathname = Astro.url.pathname;
       <span class="brand__role">{site.role}</span>
     </a>
 
-    <nav class="main-nav" aria-label="Primary">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-nav"
+      aria-label="Open navigation menu"
+      data-menu-toggle
+    >
+      <span class="menu-toggle__line"></span>
+      <span class="menu-toggle__line"></span>
+      <span class="menu-toggle__line"></span>
+    </button>
+
+    <nav class="main-nav" id="primary-nav" aria-label="Primary" data-primary-nav>
       {links.map((link) => (
         <a class:list={["nav-link", pathname.startsWith(link.href) && "is-active"]} href={link.href}>
           {link.label}
@@ -55,6 +68,8 @@ const pathname = Astro.url.pathname;
   const toggle = document.querySelector("[data-theme-toggle]");
   const label = document.querySelector("[data-theme-toggle-label]");
   const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const menuToggle = document.querySelector("[data-menu-toggle]");
+  const primaryNav = document.querySelector("[data-primary-nav]");
 
   const syncThemeUi = (theme) => {
     if (!toggle || !label) return;
@@ -75,5 +90,35 @@ const pathname = Astro.url.pathname;
   toggle?.addEventListener("click", () => {
     const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     applyTheme(nextTheme);
+  });
+
+  const closeMenu = () => {
+    if (!menuToggle || !primaryNav) return;
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation menu");
+    primaryNav.removeAttribute("data-open");
+  };
+
+  menuToggle?.addEventListener("click", () => {
+    if (!primaryNav) return;
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+    const nextState = String(!isOpen);
+    menuToggle.setAttribute("aria-expanded", nextState);
+    menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+    if (isOpen) {
+      primaryNav.removeAttribute("data-open");
+    } else {
+      primaryNav.setAttribute("data-open", "true");
+    }
+  });
+
+  primaryNav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 719) {
+      closeMenu();
+    }
   });
 </script>
