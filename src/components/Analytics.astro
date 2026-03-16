@@ -6,7 +6,6 @@ const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
   measurementId && (
     <script is:inline define:vars={{ measurementId }}>
       (() => {
-        const consentKey = "kaizer-portfolio-consent";
         const gaScriptId = "kaizer-ga-script";
 
         const configureGa = () => {
@@ -44,21 +43,8 @@ const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
           window.__kaizerGaLoaded = true;
         };
 
-        const syncAnalyticsConsent = () => {
-          const consentValue = localStorage.getItem(consentKey);
-          if (consentValue === "all") {
-            loadGa();
-          }
-        };
-
-        window.addEventListener("kaizer:consent-updated", (event) => {
-          if (event.detail === "all") {
-            loadGa();
-          }
-        });
-
-        document.addEventListener("astro:page-load", syncAnalyticsConsent);
-        syncAnalyticsConsent();
+        document.addEventListener("astro:page-load", loadGa);
+        loadGa();
       })();
     </script>
   )
