@@ -20,7 +20,12 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<a class="project-card" href={`/projects/${project.id}/`}>
+<a
+  class="project-card"
+  href={`/projects/${project.id}/`}
+  data-analytics-event="project_open"
+  data-analytics-label={project.data.title}
+>
   <div class="project-card__eyebrow">
     <span class="project-card__status">{project.data.status}</span>
   </div>

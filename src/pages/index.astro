@@ -26,8 +26,8 @@ const featured = projects.filter((project) => project.data.featured).slice(0, 3)
             {proofPoints.slice(0, 3).map((item) => <span class="tech-tag">{item.value}</span>)}
           </div>
           <div class="hero__actions">
-            <a class="button" href="/projects/">See case studies</a>
-            <a class="button button--ghost" href={site.resume} target="_blank" rel="noreferrer">View resume</a>
+            <a class="button" href="/projects/" data-analytics-event="projects_cta_click" data-analytics-label="home_see_case_studies">See case studies</a>
+            <a class="button button--ghost" href={site.resume} target="_blank" rel="noreferrer" data-analytics-event="resume_click" data-analytics-label="home_view_resume">View resume</a>
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@ const featured = projects.filter((project) => project.data.featured).slice(0, 3)
     <h2>{site.contactHeadline}</h2>
     <p>{site.contactBody}</p>
     <div class="hero__actions">
-      <a class="button" href="/contact/">Connect</a>
+      <a class="button" href="/contact/" data-analytics-event="contact_click" data-analytics-label="home_final_cta_connect">Connect</a>
       <a class="button button--ghost" href="/about/">About me</a>
     </div>
   </section>
