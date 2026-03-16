@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ConsentBanner from "../components/ConsentBanner.astro";
+import Analytics from "../components/Analytics.astro";
 import "../styles/globals.scss";
 import "../styles/utilities.scss";
 import { site as siteData } from "../data/site";
@@ -32,6 +33,7 @@ const { title, description, frameClass } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
+    <Analytics />
     <script is:inline>
       (() => {
         const storedTheme = localStorage.getItem("theme-preference");

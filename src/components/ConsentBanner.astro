@@ -38,6 +38,7 @@
       button.addEventListener("click", () => {
         const value = button.getAttribute("data-consent-action") || "essential";
         localStorage.setItem(consentKey, value);
+        window.dispatchEvent(new CustomEvent("kaizer:consent-updated", { detail: value }));
         closeBanner();
       })
     );
