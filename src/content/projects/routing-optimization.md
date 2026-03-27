@@ -8,7 +8,7 @@ scope: "Constraint modeling, travel-time-aware planning, schedule interaction ha
 year: "Recent work"
 status: "Featured"
 featured: true
-order: 3
+order: 4
 tech:
   - "Backend services"
   - "Optimization logic"

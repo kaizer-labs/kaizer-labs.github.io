@@ -8,7 +8,7 @@ scope: "Service boundaries, GraphQL/Hasura platform adoption, design review rigo
 year: "Current chapter"
 status: "Featured"
 featured: true
-order: 2
+order: 3
 tech:
   - "Python"
   - "Flask"

@@ -8,7 +8,7 @@ scope: "Availability computation, request path design, database access, and conc
 year: "Recent work"
 status: "Featured"
 featured: true
-order: 1
+order: 2
 tech:
   - "Python"
   - "Scheduling services"

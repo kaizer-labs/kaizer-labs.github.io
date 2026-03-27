@@ -6,9 +6,9 @@ problem: "The original synchronous notifications flow stopped scaling after a ma
 role: "Technical lead and hands-on implementer for the architecture redesign and delivery plan"
 scope: "Architecture review, MSK tradeoff analysis, rollout planning, notification-state model, consumer implementation, and cross-functional execution across a five-engineer team"
 year: "Prior work"
-status: "Case study"
-featured: false
-order: 4
+status: "Featured"
+featured: true
+order: 1
 tech:
   - "AWS MSK"
   - "Kafka"
