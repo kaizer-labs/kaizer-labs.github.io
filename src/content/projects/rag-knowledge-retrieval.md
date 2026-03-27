@@ -8,7 +8,7 @@ scope: "Knowledge ingestion, retrieval quality, system integration, and operatio
 year: "Emerging focus"
 status: "Exploration"
 featured: false
-order: 4
+order: 5
 tech:
   - "Python"
   - "AWS Bedrock"
