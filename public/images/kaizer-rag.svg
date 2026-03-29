@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">RAG knowledge retrieval</title>
+  <desc id="desc">Decorative cover for the RAG knowledge retrieval case study.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070d18" />
+      <stop offset="100%" stop-color="#17283b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)" rx="36" />
+  <rect x="118" y="128" width="964" height="464" rx="30" fill="#0d1726" stroke="#5eead4" stroke-opacity="0.2" />
+  <rect x="168" y="188" width="280" height="344" rx="24" fill="#102133" />
+  <rect x="496" y="188" width="220" height="120" rx="22" fill="#15324b" />
+  <rect x="496" y="334" width="220" height="120" rx="22" fill="#12283d" />
+  <rect x="764" y="188" width="268" height="266" rx="22" fill="#13304a" />
+  <path d="M448 262 H496" stroke="#67e8f9" stroke-width="4" />
+  <path d="M448 406 H496" stroke="#67e8f9" stroke-width="4" />
+  <path d="M716 248 H764" stroke="#67e8f9" stroke-width="4" />
+  <path d="M716 394 H764" stroke="#67e8f9" stroke-width="4" />
+  <text x="168" y="168" fill="#d9fffb" font-size="34" font-family="Arial, sans-serif" letter-spacing="6">CASE STUDY 04</text>
+  <text x="168" y="274" fill="#ffffff" font-size="66" font-family="Arial, sans-serif" font-weight="700">RAG Knowledge</text>
+  <text x="168" y="334" fill="#9debe3" font-size="66" font-family="Arial, sans-serif" font-weight="700">Retrieval</text>
+  <text x="168" y="410" fill="#9bb3c8" font-size="26" font-family="Arial, sans-serif">Retrieval-first AI workflows for real internal knowledge access.</text>
+  <text x="168" y="490" fill="#5eead4" font-size="26" font-family="Arial, sans-serif" letter-spacing="4">RETRIEVE / RANK / RESPOND / TRACE</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Dynamic scheduling engine</title>
+  <desc id="desc">Decorative cover for the dynamic scheduling engine case study.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07111f" />
+      <stop offset="100%" stop-color="#10243d" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)" rx="36" />
+  <circle cx="1010" cy="130" r="150" fill="#14b8a6" opacity="0.18" />
+  <circle cx="260" cy="620" r="210" fill="#22d3ee" opacity="0.12" />
+  <rect x="96" y="96" width="1008" height="528" rx="28" fill="#0b1626" stroke="#3dd5c0" stroke-opacity="0.28" />
+  <text x="128" y="190" fill="#d9fffb" font-size="34" font-family="Arial, sans-serif" letter-spacing="6">CASE STUDY 01</text>
+  <text x="128" y="288" fill="#ffffff" font-size="72" font-family="Arial, sans-serif" font-weight="700">Dynamic Scheduling</text>
+  <text x="128" y="356" fill="#9debe3" font-size="72" font-family="Arial, sans-serif" font-weight="700">Engine</text>
+  <text x="128" y="430" fill="#9bb3c8" font-size="28" font-family="Arial, sans-serif">Operational scheduling rebuilt for sub-second decisions.</text>
+  <text x="128" y="520" fill="#14b8a6" font-size="88" font-family="Arial, sans-serif" font-weight="700">~30s → &lt;1s</text>
+  <text x="128" y="575" fill="#d9fffb" font-size="24" font-family="Arial, sans-serif" letter-spacing="4">HOT PATH OPTIMIZATION / CORRECTNESS / API PERFORMANCE</text>
+</svg>

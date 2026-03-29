@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Platform modernization</title>
+  <desc id="desc">Decorative cover for the platform modernization case study.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a101c" />
+      <stop offset="100%" stop-color="#18304b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)" rx="36" />
+  <rect x="78" y="78" width="1044" height="564" rx="30" fill="#0d1727" stroke="#67e8f9" stroke-opacity="0.25" />
+  <rect x="130" y="176" width="360" height="338" rx="24" fill="#13263d" />
+  <rect x="528" y="176" width="222" height="150" rx="22" fill="#123049" />
+  <rect x="780" y="176" width="288" height="150" rx="22" fill="#163955" />
+  <rect x="528" y="364" width="540" height="150" rx="22" fill="#0f2235" />
+  <text x="130" y="140" fill="#d9fffb" font-size="34" font-family="Arial, sans-serif" letter-spacing="6">CASE STUDY 02</text>
+  <text x="130" y="598" fill="#ffffff" font-size="68" font-family="Arial, sans-serif" font-weight="700">Platform Scaling &amp;</text>
+  <text x="130" y="658" fill="#9debe3" font-size="68" font-family="Arial, sans-serif" font-weight="700">Modernization</text>
+  <text x="164" y="244" fill="#d9fffb" font-size="26" font-family="Arial, sans-serif">Service boundaries</text>
+  <text x="164" y="286" fill="#86a5c1" font-size="20" font-family="Arial, sans-serif">Modernize incrementally without halting delivery.</text>
+  <text x="562" y="242" fill="#d9fffb" font-size="24" font-family="Arial, sans-serif">GraphQL / Hasura</text>
+  <text x="814" y="242" fill="#d9fffb" font-size="24" font-family="Arial, sans-serif">Team systems</text>
+  <text x="562" y="430" fill="#d9fffb" font-size="24" font-family="Arial, sans-serif">Architecture review, onboarding, and delivery cadence</text>
+  <text x="562" y="486" fill="#67e8f9" font-size="64" font-family="Arial, sans-serif" font-weight="700">$3M → $15M MRR</text>
+</svg>
