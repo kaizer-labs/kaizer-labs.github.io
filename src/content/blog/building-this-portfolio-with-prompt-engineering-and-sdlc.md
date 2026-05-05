@@ -1,20 +1,20 @@
 ---
-title: "How I built this portfolio website using prompt engineering and applied SDLC design principles"
-summary: "A concrete build log of how this Astro portfolio came together through prompt engineering, iterative collaboration, and a very normal amount of layout debugging."
+title: "Building and migrating this portfolio with prompt engineering and normal engineering discipline"
+summary: "A shorter build note on how this portfolio started in Astro, moved to React, and improved through prompt engineering, iteration, and cleanup."
 publishedAt: "2026-03-14"
 readingTime: "8 min read"
 featured: true
 tags:
   - "Prompt engineering"
   - "AI-assisted development"
-  - "Astro"
+  - "React"
   - "SDLC"
 ---
-## I did not know Astro. The codebase is still Astro.
+## I did not know Astro. The first version of this codebase was Astro.
 
 That is probably the funniest part of this whole thing.
 
-I did not start this project as an Astro person. I started it with a goal: build a portfolio that felt technical, deliberate, and readable on both desktop and mobile. The implementation stack still ended up being Astro, which I guess is how I learned that sometimes you do not "study a framework" first. Sometimes you just accidentally join the Astro belt and start shipping constellations.
+I did not start this project as an Astro person. I started it with a goal: build a portfolio that felt technical, deliberate, and readable on both desktop and mobile. The first implementation stack ended up being Astro, and later I migrated the site to React + Vite once I wanted a more familiar component model. That is how I learned that sometimes you do not "study a framework" first. Sometimes you just ship the first useful version, then migrate when the tradeoffs become clear.
 
 The useful part was not blind trust in AI output. The useful part was the working loop between me and Codex:
 
@@ -172,13 +172,13 @@ That is also where the "I do not know Astro" part became less important. Astro w
 
 ## Shipping to GitHub was the easy part
 
-The repository already had the shape of a static site, and Astro is very good at making deployment boring in the best possible way.
+The repository already had the shape of a static site, and both Astro and Vite are very good at making deployment boring in the best possible way.
 
-The `build` script is just:
+The build step stayed intentionally simple even after the migration:
 
 ```json
 "scripts": {
-  "build": "astro build"
+  "build": "vite build"
 }
 ```
 

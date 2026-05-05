@@ -1,9 +1,9 @@
 ---
 title: "AndGo platform scaling and modernization"
 subtitle: "From legacy delivery constraints to platform-grade execution"
-summary: "Led backend and platform modernization across fleet, scheduling, pricing, and engineering systems, pairing architecture direction with measurable improvements in delivery and business outcomes."
-problem: "Legacy architecture and weak engineering operating systems were slowing delivery, increasing rework, and limiting the platform’s ability to scale with the business."
-role: "Staff-plus technical leader operating across architecture, enablement, and engineering-manager scope"
+summary: "Led backend and platform modernization across fleet, scheduling, pricing, and engineering systems, with measurable gains in delivery speed and rework."
+problem: "Legacy architecture and weak engineering habits were slowing delivery and increasing rework."
+role: "Technical lead across architecture, enablement, and delivery systems"
 scope: "Service boundaries, GraphQL/Hasura platform adoption, design review rigor, onboarding, and team execution systems"
 year: "Current chapter"
 status: "Featured"
@@ -26,15 +26,15 @@ tools:
 special:
   - "Supported platform growth from $3M to $15M MRR."
   - "Improved delivery speed while reducing rework from 15% to 4.97%."
-  - "Combined architecture leadership with engineering-manager-scope execution."
+  - "Combined architecture leadership with team enablement and delivery execution."
 metrics:
   - "$3M -> $15M MRR"
   - "~20% faster delivery"
   - "15% -> 4.97% rework"
 audience:
-  - "Engineering Manager"
-  - "Staff Engineer"
-  - "Lead Engineer"
+  - "Platform modernization"
+  - "Architecture systems"
+  - "Team enablement"
 architectureTitle: "Modernization operating model"
 architectureSummary: "This was less a single system diagram and more a platform migration pattern: move toward modular boundaries, introduce shared platform capabilities, and pair technical changes with operating mechanisms that let the team absorb them."
 architectureLayers:
@@ -63,13 +63,11 @@ decisions:
 ---
 ## What I built
 
-I led backend and platform modernization across Goodyear systems that supported fleet workflows, scheduling, pricing, and engineering operations. The work covered both architecture and execution: modernization of the software itself, plus the review standards, delivery mechanisms, and team cadence needed to make that modernization stick.
-
-This is the broadest project in the portfolio because the scope was not limited to a single service. It included platform direction, GraphQL and Hasura enablement, architecture review rigor, and operating mechanisms that affected an 8-engineer team rather than a single code path.
+I led backend and platform modernization across systems that supported fleet workflows, scheduling, pricing, and engineering operations. The work covered both architecture and execution: better service boundaries, stronger platform patterns, and tighter review and delivery habits across the team.
 
 ## How I approached it
 
-The core problem was not just legacy code. It was the combination of legacy architecture, slower delivery cycles, and too much rework. The solution therefore had to combine system changes with staff-style leverage: better boundaries, stronger technical standards, and clearer engineering execution.
+The problem was not just legacy code. It was legacy architecture plus delivery drag. The solution had to improve both the software and the way the team shipped it.
 
 The work focused on a few leverage points:
 
@@ -80,18 +78,14 @@ The work focused on a few leverage points:
 
 ## Tradeoffs and key decisions
 
-The main tradeoff was between modernization purity and delivery reality. A clean architecture plan is not useful if it slows the team to a halt or creates a migration project with no business payoff.
+The main tradeoff was modernization purity versus delivery reality. A cleaner architecture is not useful if it stalls the roadmap.
 
 So the decisions here were deliberately pragmatic:
 
-- prioritize changes that improved delivery and platform leverage, not just diagram quality
-- build enablement assets, templates, and review systems so adoption did not depend on repeated manual coaching
+- prioritize changes that improved delivery and platform leverage
+- build enablement assets and review systems so adoption did not depend on repeated manual coaching
 - modernize in ways that improved business outcomes and engineering predictability at the same time
-
-This is also where the role operated beyond a normal feature-owner scope. The work required technical direction, cross-functional coordination, and team operating structure together, which is why it is one of the strongest staff-level examples in the portfolio.
 
 ## Results and impact
 
-This effort supported platform growth from $3M to $15M MRR, improved delivery speed by roughly 20%, and reduced rework from 15% to 4.97%. Just as importantly, it created a stronger architectural and operating foundation for future teams to build on without repeating the same delivery drag.
-
-This project matters because it shows the pattern that best represents the portfolio overall: architecture work tied directly to team leverage, execution quality, and measurable business outcomes.
+This effort supported platform growth from $3M to $15M MRR, improved delivery speed by roughly 20%, and reduced rework from 15% to 4.97%. It is one of the clearest examples in the portfolio of architecture work tied directly to team leverage and business outcomes.

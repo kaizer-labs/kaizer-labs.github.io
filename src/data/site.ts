@@ -1,65 +1,78 @@
 export const site = {
   name: "Kaizer Charania",
-  role: "Technical leader across staff and EM scope",
+  role: "Backend, platform, and systems work",
   location: "San Jose, CA",
   website: "https://kaizer-labs.github.io/",
   linkedin: "https://www.linkedin.com/in/kaizercharania11/",
   github: "https://github.com/kaizer-labs",
-  resume: "https://drive.google.com/file/d/116POTskFUYsBK7cFQ-zQ9k2VyEiKWLZv/view?usp=sharing",
+  newsletterUrl:
+    "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7452248620147433472",
+  newsletterTitle: "LinkedIn newsletter",
+  newsletterIntro:
+    "I publish short essays on platform tradeoffs, AI-assisted SDLC, event-driven systems, and the engineering habits that make delivery more predictable.",
+  newsletterSnippet:
+    "The writing stays close to implementation reality: fanout-heavy platform work, local-first AI retrieval, platform transitions, and guardrails that keep AI useful inside normal engineering workflows.",
   heroHeadline:
-    "I build backend and platform systems that scale, and I care about creating the team systems that help engineers scale too.",
+    "I design backend, platform, and AI-enabled systems that hold up under scale, and I build the team operating systems that keep delivery predictable.",
   heroIntro:
-    "My work sits across backend, platform, and distributed systems, especially where architecture, performance, modernization, and team execution all need to move together.",
+    "My work sits across distributed systems, event-driven platforms, performance-critical APIs, practical AI retrieval, and engineering leadership. I care about systems that scale technically and teams that scale operationally.",
   currentFocusTitle: "Current focus",
   currentFocusBody:
-    "Operating at the intersection of staff-level technical ownership and engineering-manager-level execution: architecture, modernization, performance, mentoring, delivery cadence, and operating standards that scale across a team.",
+    "The work I care about most blends staff-level technical ownership with engineering-manager-level execution: event-driven systems, applied AI retrieval, architecture modernization, mentoring, delivery cadence, and operating standards that keep teams effective.",
   radarTitle: "On the radar",
   radarBody:
-    "The pattern in my work is consistent: solve hard backend and platform problems, then improve the engineering systems around them so the team can keep moving with less friction.",
-  recruiterIntro:
-    "I am usually at my best when architecture, delivery, and team health are all under pressure at the same time. That is where technical judgment and leadership stop being separate skills and start reinforcing each other.",
+    "I do my best work when a system is slow, the roadmap is under pressure, and the team needs clearer technical direction.",
+  workIntro:
+    "Most of the work here sits where architecture, delivery pressure, and operational reliability all meet.",
   contactHeadline: "Interested in the work?",
   contactBody:
-    "I do my best work in environments where architecture, execution, and team effectiveness all need to improve together, not in isolation.",
+    "This site collects backend, platform, and applied AI systems work with an emphasis on reliability, speed, and usable architecture.",
   contactGuidance:
-    "The work here is strongest in backend, platform, engineering manager, and technical-lead contexts where system design, team growth, and execution quality all matter."
+    "Start with the case studies and timeline if you want the clearest view of how the work has evolved."
 };
+
+export const newsletterTopics = [
+  "AI-assisted SDLC",
+  "Event-driven systems",
+  "Local-first AI",
+  "Platform transitions"
+];
 
 export const values = [
   {
     title: "Systems over heroics",
-    body: "The goal is durable execution: architecture, process, and team cadence that keep working even when things get messy."
+    body: "I prefer designs and team habits that keep working under pressure instead of relying on heroic cleanup."
   },
   {
     title: "Business-aware engineering",
-    body: "The best projects here are not just technically elegant. They clearly changed reliability, delivery speed, or commercial outcomes."
+    body: "The strongest work here changed latency, delivery speed, reliability, or revenue, not just code quality."
   },
   {
     title: "Practical platform thinking",
-    body: "Enablement matters: templates, GraphQL rollout, onboarding plans, review rigor, and other leverage points that improve how teams build."
+    body: "Platform work only matters if it makes the next engineer faster, clearer, and less likely to repeat avoidable mistakes."
   },
   {
-    title: "Technical leadership with people follow-through",
-    body: "The best results come from combining technical direction with coaching, clearer expectations, and operating rhythms that let other engineers succeed."
+    title: "Clear technical leadership",
+    body: "I care about architecture, but I also care about review quality, onboarding, and expectations that help a team execute."
   }
 ];
 
 export const timeline = [
   {
     title: "Backend and data platform depth",
-    body: "Early work emphasized APIs, ETL and data workflows, identity-resolution systems, throughput scaling, and reusable microservice templates."
+    body: "Early work centered on APIs, data workflows, identity-resolution systems, and throughput-heavy backend paths."
   },
   {
     title: "Platform ownership and modernization",
-    body: "The scope expanded into architecture transitions, GraphQL and Hasura enablement, performance work, and stronger system-level technical judgment."
+    body: "The scope expanded into platform modernization, GraphQL and Hasura adoption, and broader architecture decisions."
   },
   {
     title: "Leadership and operating systems",
-    body: "Roadmap ownership, mentoring, onboarding, quality standards, and execution cadence became part of the role, not separate management overhead."
+    body: "Over time the job became part architecture, part delivery system: mentoring, review quality, onboarding, and execution cadence."
   },
   {
-    title: "AI retrieval and applied experimentation",
-    body: "More recent work extends the platform story into RAG and retrieval-backed internal tools grounded in real use cases."
+    title: "Applied AI and AI-assisted SDLC",
+    body: "Recent work extends the platform story into RAG systems, local-first document intelligence, and practical AI-assisted development guardrails."
   }
 ];
 
@@ -169,9 +182,9 @@ export const workTimeline = [
 ];
 
 export const story = [
-  "I build backend and platform systems, but the work that feels most representative of me usually sits a layer deeper than feature delivery. I am most useful when a system is under strain, a team is carrying too much friction, or the architecture needs to evolve without slowing the business down.",
-  "A lot of my experience has come from working on scheduling, routing, platform modernization, data pipelines, and internal engineering systems. I enjoy breaking those problems down, finding where the real drag lives, and rebuilding them in ways that improve performance, reliability, and delivery at the same time.",
-  "I tend to operate in the overlap between technical depth and execution leadership. I like staying close to architecture and system design, but I also care about review quality, onboarding, mentoring, planning rhythm, and the day-to-day mechanisms that help a team move well."
+  "I build backend and platform systems, and I am most useful when a system is under strain or the architecture needs to evolve without slowing delivery.",
+  "A lot of my work has been in scheduling, routing, event-driven platforms, modernization, data pipelines, and internal engineering systems. I like finding the real bottleneck and fixing it in a way the team can keep building on.",
+  "I stay close to architecture and system design, but I also care about review quality, onboarding, mentoring, delivery cadence, and the operating habits that keep a team effective."
 ];
 
 export const skills = {
@@ -197,47 +210,48 @@ export const skills = {
 };
 
 export const currentQueue = [
-  { title: "Platform modernization", meta: "Active focus", note: "Architecture, delivery rhythm, and modernization without losing execution speed." },
-  { title: "Routing and scheduling systems", meta: "Operational systems", note: "High-value backend work where performance and correctness shape the user outcome." },
-  { title: "AI retrieval workflows", meta: "Emerging direction", note: "Retrieval-backed systems for internal knowledge access and decision support." }
+  { title: "Event-driven platform systems", meta: "Platform direction", note: "High-volume communication and workflow systems that need cleaner boundaries, stronger reliability, and better operational behavior under fanout." },
+  { title: "AI retrieval and local-first knowledge workflows", meta: "Applied AI", note: "Retrieval-backed systems that stay grounded in evidence, preserve privacy where needed, and fit real engineering or document workflows." },
+  { title: "AI-assisted SDLC operating model", meta: "Engineering systems", note: "Practical guardrails for repo context, permissions, testing, review, and cost-aware AI usage inside normal delivery workflows." }
 ];
 
 export const proofPoints = [
   { label: "Scheduler latency", value: "~30s -> <1s" },
-  { label: "Sustained throughput", value: "~1,000 req/sec" },
+  { label: "Notification platform", value: "~1,200/sec, p99 ~300ms" },
   { label: "Platform growth", value: "$3M -> $15M MRR" },
-  { label: "Infra efficiency", value: "30% lower cost" }
+  { label: "Team scope", value: "8-engineer team" },
+  { label: "Delivery quality", value: "15% -> 4.97% rework" }
 ];
 
 export const leadershipSignals = [
-  "I led backend and platform work across an 8-engineer team scope, pairing architecture direction with day-to-day delivery accountability.",
-  "I introduced stronger design-review rigor, GraphQL and Hasura enablement, onboarding support, and engineering standards that made the team easier to scale.",
-  "I helped reduce rework from 15% to 4.97% by improving technical quality and execution discipline together instead of treating them as separate problems.",
-  "My review history consistently points to mentoring, High Potential recognition, and Exceptional Performer ratings."
+  "Led backend and platform work across an 8-engineer team while staying directly involved in architecture and delivery.",
+  "Introduced stronger design review, GraphQL and Hasura adoption, and onboarding practices that made the team easier to scale.",
+  "Helped reduce rework from 15% to 4.97% by tightening both technical quality and execution discipline.",
+  "Review history consistently points to mentoring, High Potential recognition, and Exceptional Performer ratings."
 ];
 
 export const writingThemes = [
   {
-    title: "System design tradeoffs in platform work",
-    body: "How to modernize backend systems without turning every quarter into a migration project."
+    title: "AI-assisted SDLC with real guardrails",
+    body: "How repo context, permissions, tests, and review boundaries keep AI tools useful without letting them become a governance problem."
   },
   {
-    title: "Internal platform work that actually gets adopted",
-    body: "What changes when templates, standards, and enablement are treated like products instead of side work."
+    title: "Event-driven systems under fanout pressure",
+    body: "What changes when asynchronous platforms have to absorb spikes, retries, duplicate protection, and multi-channel delivery without slowing the rest of the product down."
   },
   {
-    title: "Applied AI retrieval after the novelty phase",
-    body: "Where RAG helps, where it does not, and what operational trust actually requires."
+    title: "Local-first AI retrieval and privacy-first document intelligence",
+    body: "Why local storage, explicit evidence, and deterministic answer boundaries matter when trust-sensitive records are part of the workflow."
   },
   {
-    title: "Leadership without heroics",
-    body: "Roadmaps, review rigor, onboarding, and team systems that make delivery more durable."
+    title: "Platform transition when business priorities change",
+    body: "How to move a growing backend platform toward better boundaries and reusable capabilities without pausing delivery or overcommitting to a rewrite."
   }
 ];
 
 export const references = [
-  "Led backend and platform work across scheduling, fleet, pricing, and engineering systems while supporting product growth from $3M to $15M MRR.",
-  "Improved scheduler latency from roughly 30 seconds to under one second in a high-volume operational workflow handling around 1,000 requests per second.",
+  "Led backend and platform work across scheduling, fleet, pricing, and engineering systems while supporting growth from $3M to $15M MRR.",
+  "Improved scheduler latency from roughly 30 seconds to under one second in a workflow handling around 1,000 requests per second.",
   "Scaled identity-resolution throughput from 5K to 20K+ writes per second while reducing infrastructure cost by 30%.",
-  "Performance review material documents GraphQL and Hasura leadership, microservice migration work, mentoring, architecture review rigor, and Exceptional Performer / High Potential ratings."
+  "Performance review material documents GraphQL and Hasura leadership, microservice migration work, mentoring, and architecture review rigor."
 ];

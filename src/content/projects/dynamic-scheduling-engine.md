@@ -2,8 +2,8 @@
 title: "Dynamic scheduling engine"
 subtitle: "Operational scheduling rebuilt for sub-second decisions"
 summary: "Designed and optimized a slot-based scheduling engine for high-volume booking, rescheduling, and cancellation workflows."
-problem: "Booking and rescheduling requests were forcing a slow, correctness-sensitive scheduling path that degraded user experience and operational throughput."
-role: "Staff-level backend owner for the performance-critical scheduling path"
+problem: "Booking and rescheduling requests were hitting a slow scheduling path that hurt both user experience and operations."
+role: "Engineering owner for the performance-critical scheduling path"
 scope: "Availability computation, request path design, database access, and concurrency-aware correctness"
 year: "Recent work"
 status: "Featured"
@@ -30,9 +30,9 @@ metrics:
   - "~1,000 req/sec"
   - "97.5% latency improvement"
 audience:
-  - "Staff Engineer"
-  - "Lead Engineer"
-  - "Platform roles"
+  - "Backend systems"
+  - "Performance engineering"
+  - "Scheduling platforms"
 architectureTitle: "Scheduling path architecture"
 architectureSummary: "The design split the problem into a tight online decision path, fast-read availability state, and correctness-preserving update boundaries so the platform could move quickly without producing bad slot decisions."
 architectureLayers:
@@ -61,35 +61,29 @@ decisions:
 ---
 ## What I built
 
-I designed and optimized a slot-based scheduling engine that handled booking, rescheduling, updates, and cancellations in a high-volume operational workflow. The core system had to make fast decisions about availability and capacity while still preserving correctness under load.
-
-This was not just an endpoint optimization exercise. The real work was in shaping the scheduling path end to end so the system could respond quickly without introducing bad slot calculations, race conditions, or brittle service behavior.
+I redesigned the scheduling path behind booking, rescheduling, updates, and cancellations. The hard part was not just speed. The system had to return trustworthy slot decisions under load.
 
 ## How I approached it
 
-I treated the scheduling flow as a system problem rather than a single-layer problem. That meant looking at API shape, database access patterns, caching opportunities, and the logic that actually determined whether a slot should be considered available.
+I treated it as an end-to-end system problem, not a single-query problem. That meant tightening the API contract, reducing repeated reads, and being careful about where caching was safe.
 
 The design work focused on the performance-critical path:
 
-- reducing expensive work on requests that happened repeatedly
-- tightening the data-access path for availability decisions
-- separating scheduling logic that needed to stay synchronous from work that could be simplified or deferred
+- reducing repeated work on the hottest requests
+- tightening the read path behind availability checks
+- keeping only correctness-critical logic on the synchronous path
 - making the highest-concurrency parts of the workflow cheaper and more predictable
 
 ## Tradeoffs and key decisions
 
-The main tradeoff was speed versus correctness. It would have been easy to optimize for average-case latency and still leave edge cases around concurrency, stale availability, or incorrect rescheduling outcomes.
+The tradeoff was speed versus correctness. It is easy to make availability look fast in a benchmark and still break reschedules, concurrency, or stale-slot handling in production.
 
-Instead, I optimized around operational trust:
+I biased toward operational trust:
 
-- availability calculations had to stay correct under load, not just look fast in isolated testing
-- performance work had to improve the path users actually waited on, rather than moving cost into a different hidden bottleneck
-- caching and query tuning had to support correctness, not undermine it
-
-That meant being deliberate about where the system could take shortcuts and where it could not.
+- availability had to stay correct under load
+- improvements had to help the path users actually waited on
+- caching had to support correctness instead of undermining it
 
 ## Results and impact
 
-The final workflow moved from roughly 30 seconds to under one second and supported around 1,000 requests per second. That change materially improved service responsiveness in a part of the product where latency directly affected user experience and operational throughput.
-
-This is one of the strongest case studies in the portfolio because it combines system design, performance engineering, and practical business impact in a single backend workflow.
+The workflow moved from roughly 30 seconds to under one second and supported around 1,000 requests per second. It is one of the clearest examples in the portfolio of backend design, performance work, and business impact lining up in the same system.

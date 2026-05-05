@@ -1,6 +1,6 @@
 # Kaizer Charania Portfolio
 
-Multi-page Astro portfolio rebuilt from the design direction in [criticaldeveloper_codex_rebuild_brief.md](/Users/kaizer/Desktop/kaizer-portfolio/criticaldeveloper_codex_rebuild_brief.md).
+Multi-page React + Vite portfolio rebuilt from the design direction in [criticaldeveloper_codex_rebuild_brief.md](/Users/kaizer/Desktop/kaizer-portfolio/criticaldeveloper_codex_rebuild_brief.md).
 
 ## Install
 
@@ -35,10 +35,10 @@ Project entries:
 
 ## Architecture
 
-- Layout: [src/layouts/MainLayout.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/layouts/MainLayout.astro)
-- Components: [src/components/Header.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/components/Header.astro), [src/components/Footer.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/components/Footer.astro), [src/components/ProjectCard.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/components/ProjectCard.astro), [src/components/SectionBlock.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/components/SectionBlock.astro), [src/components/MusicPanel.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/components/MusicPanel.astro), [src/components/ConsentBanner.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/components/ConsentBanner.astro)
-- Pages: [src/pages/index.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/index.astro), [src/pages/about.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/about.astro), [src/pages/projects/index.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/projects/index.astro), [src/pages/projects/[slug].astro](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/projects/[slug].astro), [src/pages/references.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/references.astro), [src/pages/blog.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/blog.astro), [src/pages/contact.astro](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/contact.astro)
-- Content schema: [src/content.config.ts](/Users/kaizer/Desktop/kaizer-portfolio/src/content.config.ts)
+- App shell: [src/App.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/App.tsx), [src/components/Layout.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/Layout.tsx)
+- Components: [src/components/Header.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/Header.tsx), [src/components/Footer.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/Footer.tsx), [src/components/ProjectCard.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/ProjectCard.tsx), [src/components/SectionBlock.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/SectionBlock.tsx), [src/components/ConsentBanner.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/ConsentBanner.tsx)
+- Pages: [src/pages/HomePage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/HomePage.tsx), [src/pages/AboutPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/AboutPage.tsx), [src/pages/ProjectsPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/ProjectsPage.tsx), [src/pages/ProjectDetailPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/ProjectDetailPage.tsx), [src/pages/BlogPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/BlogPage.tsx), [src/pages/ContactPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/ContactPage.tsx)
+- Content loader: [src/content/index.ts](/Users/kaizer/Desktop/kaizer-portfolio/src/content/index.ts)
 
 ## Styling and motion
 
@@ -49,9 +49,9 @@ Project entries:
 
 ## Deploy
 
-This is a static Astro build. Deploy the generated `dist/` directory to Vercel, Netlify, Cloudflare Pages, GitHub Pages, or any static host.
+This is a static Vite build. Deploy the generated `dist/` directory to Vercel, Netlify, Cloudflare Pages, GitHub Pages, or any static host.
 
 ## Assumptions
 
 - The brief asked for a playlist-style section, but the factual source material did not include actual listening data. The implemented module keeps the playlist visual language while grounding it in real focus areas.
-- Public profile links now point to the provided GitHub Pages site, LinkedIn, GitHub profile, and hosted resume.
+- Public profile links now point to the provided GitHub Pages site, LinkedIn, and GitHub profile.

@@ -1,14 +1,14 @@
 ---
 title: "Routing optimization engine"
 subtitle: "Modeling real field constraints across 800+ locations"
-summary: "Designed routing optimization for mobile technicians across multi-location field operations, using travel time, service duration, and time windows instead of simplistic distance logic."
-problem: "Naive routing logic could not reflect the real field constraints that determined on-time service, technician utilization, and downstream schedule stability."
-role: "Staff-level systems designer for routing and operational optimization workflows"
+summary: "Designed routing optimization for mobile technicians using travel time, service duration, and time windows instead of simplistic distance logic."
+problem: "Naive routing logic could not model the constraints that actually determined on-time service and schedule stability."
+role: "Systems designer for routing and operational optimization workflows"
 scope: "Constraint modeling, travel-time-aware planning, schedule interaction handling, and operational outcome measurement"
 year: "Recent work"
-status: "Featured"
-featured: true
-order: 4
+status: "Additional work"
+featured: false
+order: 6
 tech:
   - "Backend services"
   - "Optimization logic"
@@ -29,9 +29,9 @@ metrics:
   - "+40% on-time"
   - "-50% reschedules"
 audience:
-  - "Staff Engineer"
-  - "Forward Deployed roles"
-  - "Lead Engineer"
+  - "Operational optimization"
+  - "Field service systems"
+  - "Constraint modeling"
 architectureTitle: "Routing and schedule-feedback architecture"
 architectureSummary: "The routing system was shaped as an operational feedback loop: gather realistic field constraints, generate route candidates, and evaluate them against service outcomes rather than pure geometric efficiency."
 architectureLayers:
@@ -60,35 +60,29 @@ decisions:
 ---
 ## What I built
 
-I designed routing optimization logic for mobile technicians operating across hundreds of locations. The problem was not simply generating routes. The system had to account for how routing decisions affected schedule quality, on-time service, and downstream reschedules.
-
-That made it an operations system, not just an algorithm exercise.
+I designed routing optimization logic for mobile technicians operating across hundreds of locations. The hard part was not generating routes. It was generating routes that held up in real field operations.
 
 ## How I approached it
 
-The routing model was built around real service constraints:
+The routing model was built around field constraints:
 
 - travel time between locations
 - traffic and time-window effects
 - service duration on site
-- interaction between routing quality and appointment outcomes
+- the downstream effect on appointment outcomes
 
-The design focused on making the model operationally truthful. Instead of treating the problem like shortest-distance planning, the system had to reflect the conditions that actually determined whether a technician could complete work on time.
+The design goal was operational truth. Distance-only planning would have looked simpler and performed worse.
 
 ## Tradeoffs and key decisions
 
-The major tradeoff was simplicity versus real-world usefulness. A simpler model would have been easier to build, but it would also have produced routes that looked good on paper and failed in practice.
+The tradeoff was simplicity versus real-world usefulness. A simpler model would have been easier to build and less useful in production.
 
 The key decision was to bias toward operational accuracy:
 
-- encode real service constraints rather than abstract optimization shortcuts
+- encode real service constraints instead of abstract optimization shortcuts
 - optimize for service outcomes, not just route elegance
 - treat routing as part of a larger scheduling and field-operations system
 
-That choice made the logic more valuable because it aligned the technical system with what the business actually needed.
-
 ## Results and impact
 
-The routing work supported operations across 800+ locations, improved on-time appointments by 40%, and reduced missed or rescheduled appointments by 50%.
-
-This is one of the clearest examples in the portfolio of backend and systems work driving directly visible operational outcomes.
+The routing work supported operations across 800+ locations, improved on-time appointments by 40%, and reduced missed or rescheduled appointments by 50%. It is a strong example of backend and systems work driving visible operational outcomes.

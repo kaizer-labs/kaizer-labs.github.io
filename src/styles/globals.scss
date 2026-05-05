@@ -98,8 +98,6 @@ button, input, textarea { font: inherit; }
   max-width: none;
   font-size: clamp(1.4rem, 2.1vw, 1.75rem);
   line-height: 1.08;
-  white-space: nowrap;
-  text-wrap: nowrap;
 }
 .site-frame--about .final-cta h2 {
   max-width: none;
@@ -107,8 +105,6 @@ button, input, textarea { font: inherit; }
   font-size: clamp(1.3rem, 2vw, 1.6rem);
   font-weight: 700;
   line-height: 1.08;
-  white-space: nowrap;
-  text-wrap: nowrap;
 }
 .site-frame--about .section-block {
   width: min(100% - 2rem, 78rem);
@@ -130,8 +126,6 @@ button, input, textarea { font: inherit; }
   color: #111827;
   font-weight: 500;
   line-height: 1.45;
-  text-align: justify;
-  text-justify: inter-word;
 }
 .site-frame--about .section-kicker {
   color: #0f766e;
@@ -175,15 +169,11 @@ button, input, textarea { font: inherit; }
   max-width: none;
   font-size: clamp(1.4rem, 2.05vw, 1.72rem);
   line-height: 1.08;
-  white-space: nowrap;
-  text-wrap: nowrap;
 }
 .site-frame--home .final-cta h2 {
   max-width: none;
   font-size: clamp(1.3rem, 1.95vw, 1.56rem);
   line-height: 1.08;
-  white-space: nowrap;
-  text-wrap: nowrap;
 }
 .site-frame--home .section-copy,
 .site-frame--home .reference-card p,

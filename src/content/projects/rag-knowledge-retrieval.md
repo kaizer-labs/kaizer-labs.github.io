@@ -8,7 +8,7 @@ scope: "Knowledge ingestion, retrieval quality, system integration, and operatio
 year: "Emerging focus"
 status: "Exploration"
 featured: false
-order: 5
+order: 8
 tech:
   - "Python"
   - "AWS Bedrock"
@@ -29,8 +29,8 @@ metrics:
   - "AWS Bedrock"
   - "Internal knowledge access"
 audience:
-  - "AI / Platform roles"
-  - "Staff Engineer"
+  - "AI workflows"
+  - "Platform systems"
 architectureTitle: "Retrieval-backed knowledge pipeline"
 architectureSummary: "The system separated source ingestion, retrieval, and answer composition so the AI layer stayed grounded in trustworthy internal context rather than unsupported generation."
 architectureLayers:
@@ -83,8 +83,8 @@ So the design direction prioritized:
 - operational usefulness over demo quality
 - system integration and maintainability over novelty
 
-That made the work a better fit for internal enablement and practical adoption.
+That made the work more useful for internal enablement and practical adoption.
 
 ## Results and impact
 
-While there are no public-safe numeric metrics attached to this project, it still demonstrates something relevant for staff hiring: practical AI judgment. The value here is not flashy output quality. It is choosing trustworthy retrieval patterns, integrating them into real workflows, and keeping the system understandable enough that a team can operate it over time.
+While there are no public-safe numeric metrics attached to this project, it still shows the kind of AI judgment I care about in practice. The value here is not flashy output quality. It is choosing trustworthy retrieval patterns, integrating them into real workflows, and keeping the system understandable enough that a team can operate it over time.
