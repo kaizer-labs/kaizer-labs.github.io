@@ -4,7 +4,7 @@ subtitle: "Redesigning synchronous email delivery into a multi-channel MSK pipel
 summary: "Led the redesign of a synchronous, email-only notifications system into an event-driven multi-channel platform using AWS MSK, autoscaling consumers, retries, Redis caching, and GraphQL subscriptions."
 problem: "The original synchronous notifications flow stopped scaling after a major customer onboarding expanded traffic, fanout, and channel requirements. Latency climbed into multi-second territory, some fanout-heavy requests timed out, and users stopped receiving critical updates quickly enough."
 role: "Technical lead and hands-on implementer for the architecture redesign and delivery plan"
-scope: "Architecture review, MSK tradeoff analysis, rollout planning, notification-state model, consumer implementation, and cross-functional execution across a five-engineer team"
+scope: "Architecture review, MSK tradeoff analysis, rollout planning, notification-state model, consumer implementation, and cross-functional engineering execution"
 year: "Prior work"
 status: "Featured"
 featured: true
@@ -24,9 +24,9 @@ tools:
   - "Tracked notification records with status transitions for duplicate protection"
   - "Redis caching, GraphQL subscriptions, and query/index optimization for in-app reads"
 special:
-  - "Scaled from roughly 100 notifications/sec to around 1,200/sec, with spikes near 2,500/sec."
+  - "Handled around 1,200 notifications/sec, with spikes near 2,500/sec."
   - "Reduced multi-second delays and timeout-prone fanout cases down to roughly p99 300 ms on the new flow."
-  - "Improved reliability, lowered on-call burden, and helped lift CSAT in some workflows from 2 to 4."
+  - "Improved reliability, lowered on-call burden, and made failure handling more auditable."
 metrics:
   - "~1,200 notif/sec"
   - "p99 ~300 ms"
@@ -66,9 +66,9 @@ decisions:
 ---
 ## What I built
 
-I led the redesign of our notifications platform when the original synchronous, email-only system stopped scaling with business growth. Initially the system supported technicians, fleet managers, and store managers through SendGrid templates, and it worked well enough when the business operated at roughly 200 stores, 500 fleets, and 20,000 vehicles.
+I led the redesign of our notifications platform when the original synchronous, email-only system stopped scaling with business growth. Initially the system supported technicians, fleet managers, and store managers through SendGrid templates, and it worked well enough at a smaller operational footprint.
 
-That changed after a major customer onboarding expanded the footprint to more than 800 stores, 4,000 fleets, and 400,000 vehicles. Product also wanted SMS and in-app notifications in addition to email. Traffic moved from about 100 notifications per second to roughly 1,200 per second, with peaks around 2,500. The old synchronous model started causing serious lag and timeout issues, especially when one event had to fan out to many fleet managers.
+That changed after a major customer onboarding sharply expanded the footprint. Product also wanted SMS and in-app notifications in addition to email. Traffic moved to roughly 1,200 notifications per second, with peaks around 2,500. The old synchronous model started causing serious lag and timeout issues, especially when one event had to fan out to many fleet managers.
 
 The platform handled operationally important flows like scheduling changes, reschedules, cancellations, vehicle drop-off and ready-for-pickup events, issues reported and resolved, invoice generation, OTP generation, account deletion, and additional service requests. In other words, this was not a cosmetic communication layer. It sat directly in the path of user trust and day-to-day operations.
 
@@ -86,7 +86,7 @@ At that point the system was no longer solving a simple "send an email" problem.
 
 ## How I approached it
 
-I treated the redesign as both an architecture problem and a delivery problem. I wrote the technical review, gathered roadmap requirements, worked with UX and product on future channel support, built the ERD and system design, evaluated AWS MSK against self-managed Kafka, and helped break the execution plan into parallelizable work across a five-engineer team.
+I treated the redesign as both an architecture problem and a delivery problem. I wrote the technical review, gathered roadmap requirements, worked with UX and product on future channel support, built the ERD and system design, evaluated AWS MSK against self-managed Kafka, and helped break the execution plan into parallelizable work across a cross-functional engineering team.
 
 The technical design centered on:
 
@@ -171,7 +171,7 @@ We also archived older historical email notification data that no longer needed 
 
 ## Team and execution model
 
-This was not a solo architecture exercise. The work was delivered across a five-engineer team: me, a senior backend engineer, a backend engineer, a senior frontend engineer, and a frontend engineer. We delivered full functionality in five sprints.
+This was not a solo architecture exercise. The work was delivered across a cross-functional engineering team spanning backend and frontend ownership. My role was to keep the architecture, delivery plan, and implementation details aligned as the migration moved forward.
 
 My role was not just to define the target architecture. I wrote the review doc, aligned stakeholders, converted the work into stories and a Gantt-style delivery plan, parallelized work across backend, frontend, and infrastructure, and still contributed code directly, including a new consumer daemon.
 
@@ -179,9 +179,9 @@ That mix of architecture ownership plus direct implementation is a big part of w
 
 ## Results and impact
 
-Before the redesign, fanout-heavy scenarios could reach roughly 10 seconds and some endpoints timed out. After the redesign, the new flow handled around 1,200 notifications per second, tolerated spikes near 2,500 per second, and brought the new path down to roughly p99 300 milliseconds.
+Before the redesign, fanout-heavy scenarios could hit multi-second delays and some endpoints timed out. After the redesign, the new flow handled around 1,200 notifications per second, tolerated spikes near 2,500 per second, and brought the new path down to roughly p99 300 milliseconds.
 
-Just as importantly, reliability and observability improved. Users no longer waited on synchronous notification calls, on-call burden went down, failure handling became more auditable, and some user-facing workflows saw CSAT improve from 2 to 4.
+Just as importantly, reliability and observability improved. Users no longer waited on synchronous notification calls, on-call burden went down, and failure handling became more auditable.
 
 This is one of my strongest interview stories because it shows staff-level judgment across architecture, tradeoffs, delivery planning, and hands-on implementation. What looked like "just a notifications service" was actually a scale, reliability, and systems-design problem once the business and product surface changed.
 

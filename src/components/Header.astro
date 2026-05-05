@@ -2,12 +2,14 @@
 import { site } from "../data/site";
 
 const links = [
-  { label: "About", href: "/about/" },
-  { label: "Projects", href: "/projects/" },
-  { label: "Blog", href: "/blog/" }
+  { label: "Intro", href: "/#intro", id: "intro" },
+  { label: "Proof", href: "/#proof", id: "proof" },
+  { label: "Work", href: "/#work", id: "work" },
+  { label: "Contact", href: "/#contact", id: "contact" }
 ];
 
 const pathname = Astro.url.pathname;
+const isHomePage = pathname === "/";
 ---
 
 <header class="site-header">
@@ -32,7 +34,12 @@ const pathname = Astro.url.pathname;
 
     <nav class="main-nav" id="primary-nav" aria-label="Primary" data-primary-nav>
       {links.map((link) => (
-        <a class:list={["nav-link", pathname.startsWith(link.href) && "is-active"]} href={link.href}>
+        <a
+          class:list={["nav-link", isHomePage && link.id === "intro" && "is-active"]}
+          href={link.href}
+          data-scroll-link={link.id}
+          aria-current={isHomePage && link.id === "intro" ? "location" : undefined}
+        >
           {link.label}
         </a>
       ))}
@@ -60,10 +67,11 @@ const pathname = Astro.url.pathname;
         </span>
         <span class="sr-only" data-theme-toggle-label>Dark mode</span>
       </button>
-      <a class="nav-cta" href="/contact/" data-analytics-event="contact_click" data-analytics-label="header_connect">Connect</a>
+      <a class="nav-cta" href="/#contact" data-analytics-event="contact_click" data-analytics-label="header_connect">Connect</a>
     </div>
   </div>
 </header>
+<div class="scroll-progress" aria-hidden="true" data-scroll-progress></div>
 
 <script>
   const toggle = document.querySelector("[data-theme-toggle]");
@@ -71,6 +79,37 @@ const pathname = Astro.url.pathname;
   const themeMeta = document.querySelector('meta[name="theme-color"]');
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const primaryNav = document.querySelector("[data-primary-nav]");
+  const header = document.querySelector(".site-header");
+  const scrollProgress = document.querySelector("[data-scroll-progress]");
+  const scrollLinks = Array.from(document.querySelectorAll("[data-scroll-link]"));
+  const scrollSections = Array.from(document.querySelectorAll("[data-scroll-section]"));
+  const isHomePage = window.location.pathname === "/" || window.location.pathname === "/index.html";
+  let scrollRaf = 0;
+  const knownSectionIds = new Set(scrollSections.map((section) => section.id).filter(Boolean));
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const safeStorage = {
+    get(key) {
+      try {
+        return window.localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    },
+    set(key, value) {
+      try {
+        window.localStorage.setItem(key, value);
+      } catch {
+        return false;
+      }
+      return true;
+    }
+  };
+
+  const syncHeaderHeight = () => {
+    if (!(header instanceof HTMLElement)) return;
+    document.documentElement.style.setProperty("--header-height", `${Math.ceil(header.offsetHeight)}px`);
+  };
 
   const syncThemeUi = (theme) => {
     if (!toggle || !label) return;
@@ -81,7 +120,7 @@ const pathname = Astro.url.pathname;
 
   const applyTheme = (theme) => {
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem("theme-preference", theme);
+    safeStorage.set("theme-preference", theme);
     syncThemeUi(theme);
   };
 
@@ -93,11 +132,12 @@ const pathname = Astro.url.pathname;
     applyTheme(nextTheme);
   });
 
-  const closeMenu = () => {
+  const closeMenu = ({ restoreFocus = false } = {}) => {
     if (!menuToggle || !primaryNav) return;
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation menu");
     primaryNav.removeAttribute("data-open");
+    if (restoreFocus) menuToggle.focus();
   };
 
   menuToggle?.addEventListener("click", () => {
@@ -114,11 +154,134 @@ const pathname = Astro.url.pathname;
   });
 
   primaryNav?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
+    link.addEventListener("click", () => closeMenu());
   });
 
+  const setActiveLink = (sectionId) => {
+    scrollLinks.forEach((link) => {
+      const isActive = link.getAttribute("data-scroll-link") === sectionId;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const navSectionFor = (section) => {
+    if (!(section instanceof HTMLElement)) return section?.id || "intro";
+    return section.dataset.navSection || section.id || "intro";
+  };
+
+  const updateScrollProgress = () => {
+    if (!(scrollProgress instanceof HTMLElement)) return;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? Math.min(Math.max(window.scrollY / maxScroll, 0), 1) : 0;
+    scrollProgress.style.transform = `scaleX(${progress})`;
+  };
+
+  const updateActiveFromScroll = () => {
+    if (!scrollSections.length) return;
+    syncHeaderHeight();
+    const headerHeight = header instanceof HTMLElement && getComputedStyle(header).position === "sticky" ? header.offsetHeight : 0;
+    const sampleLine = headerHeight + Math.min(window.innerHeight * 0.36, 240);
+    let activeSection = navSectionFor(scrollSections[0]);
+
+    scrollSections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= sampleLine) {
+        activeSection = navSectionFor(section);
+      }
+    });
+
+    setActiveLink(activeSection);
+  };
+
+  const requestActiveUpdate = () => {
+    if (scrollRaf) return;
+    scrollRaf = window.requestAnimationFrame(() => {
+      scrollRaf = 0;
+      updateScrollProgress();
+      updateActiveFromScroll();
+    });
+  };
+
+  syncHeaderHeight();
+  updateScrollProgress();
+
+  if (header instanceof HTMLElement && "ResizeObserver" in window) {
+    const headerObserver = new ResizeObserver(syncHeaderHeight);
+    headerObserver.observe(header);
+  }
+
+  if (isHomePage && scrollSections.length > 0) {
+    const initialSection = window.location.hash.replace("#", "") || "intro";
+    const initialTarget = document.getElementById(initialSection);
+    setActiveLink(initialTarget instanceof HTMLElement ? navSectionFor(initialTarget) : "intro");
+
+    scrollLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        const sectionId = link.getAttribute("data-scroll-link");
+        if (sectionId) setActiveLink(sectionId);
+      });
+    });
+
+    window.addEventListener("scroll", requestActiveUpdate, { passive: true });
+    window.addEventListener("load", requestActiveUpdate);
+
+    window.addEventListener("hashchange", () => {
+      const sectionId = window.location.hash.replace("#", "");
+      if (sectionId && knownSectionIds.has(sectionId)) {
+        const section = document.getElementById(sectionId);
+        setActiveLink(navSectionFor(section));
+      } else {
+        updateActiveFromScroll();
+      }
+      window.setTimeout(requestActiveUpdate, 80);
+    });
+
+    requestActiveUpdate();
+
+    if (!prefersReducedMotion && "IntersectionObserver" in window) {
+      scrollSections.forEach((section) => {
+        section.setAttribute("data-reveal", section.id === "intro" ? "visible" : "pending");
+      });
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.setAttribute("data-reveal", "visible");
+            revealObserver.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
+      );
+      scrollSections.forEach((section) => revealObserver.observe(section));
+    }
+  } else {
+    scrollLinks.forEach((link) => link.removeAttribute("aria-current"));
+  }
+
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 719) {
+    syncHeaderHeight();
+    updateScrollProgress();
+    if (window.innerWidth > 959) {
+      closeMenu();
+    }
+    requestActiveUpdate();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && primaryNav?.hasAttribute("data-open")) {
+      closeMenu({ restoreFocus: true });
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element) || !primaryNav?.hasAttribute("data-open")) return;
+    if (!target.closest(".site-header")) {
       closeMenu();
     }
   });

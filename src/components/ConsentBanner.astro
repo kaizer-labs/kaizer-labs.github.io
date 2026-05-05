@@ -1,4 +1,4 @@
-<div class="consent-banner" data-consent-banner hidden>
+<div class="consent-banner" data-consent-banner hidden role="region" aria-live="polite" aria-label="Cookie preferences" aria-hidden="true">
   <div class="consent-banner__inner">
     <div>
       <p class="section-kicker">Preferences</p>
@@ -28,20 +28,69 @@
 
     if (!banner || banner.dataset.bound === "true") return;
 
-    const openBanner = () => banner.removeAttribute("hidden");
-    const closeBanner = () => banner.setAttribute("hidden", "");
+    const safeStorage = {
+      get(key) {
+        try {
+          return window.localStorage.getItem(key);
+        } catch {
+          return null;
+        }
+      },
+      set(key, value) {
+        try {
+          window.localStorage.setItem(key, value);
+        } catch {
+          return false;
+        }
+        return true;
+      }
+    };
 
-    if (!localStorage.getItem(consentKey)) openBanner();
+    const syncBannerSpace = () => {
+      if (banner.hasAttribute("hidden")) {
+        document.body.classList.remove("has-open-consent");
+        document.documentElement.style.removeProperty("--consent-safe-space");
+        return;
+      }
 
-    footerButtons.forEach((button) => button.addEventListener("click", openBanner));
+      const safeSpace = Math.ceil(banner.getBoundingClientRect().height + 24);
+      document.documentElement.style.setProperty("--consent-safe-space", `${safeSpace}px`);
+      document.body.classList.add("has-open-consent");
+    };
+
+    const openBanner = ({ focusFirstAction = false } = {}) => {
+      banner.removeAttribute("hidden");
+      banner.setAttribute("aria-hidden", "false");
+      window.requestAnimationFrame(() => {
+        syncBannerSpace();
+        if (focusFirstAction) banner.querySelector("[data-consent-action]")?.focus();
+      });
+    };
+
+    const closeBanner = () => {
+      banner.setAttribute("hidden", "");
+      banner.setAttribute("aria-hidden", "true");
+      syncBannerSpace();
+    };
+
+    if (!safeStorage.get(consentKey)) openBanner();
+
+    footerButtons.forEach((button) => button.addEventListener("click", () => openBanner({ focusFirstAction: true })));
     actionButtons.forEach((button) =>
       button.addEventListener("click", () => {
         const value = button.getAttribute("data-consent-action") || "essential";
-        localStorage.setItem(consentKey, value);
+        safeStorage.set(consentKey, value);
         window.dispatchEvent(new CustomEvent("kaizer:consent-updated", { detail: value }));
         closeBanner();
       })
     );
+
+    window.addEventListener("resize", syncBannerSpace);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !banner.hasAttribute("hidden")) {
+        closeBanner();
+      }
+    });
 
     banner.dataset.bound = "true";
   };

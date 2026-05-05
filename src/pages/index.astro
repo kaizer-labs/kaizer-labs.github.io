@@ -1,13 +1,69 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
-import SectionBlock from "../components/SectionBlock.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import ProfessionalTimeline from "../components/ProfessionalTimeline.astro";
-import { leadershipSignals, proofPoints, site, workTimeline } from "../data/site";
+import { currentQueue, leadershipSignals, proofPoints, site, skills, values, workTimeline, writingThemes } from "../data/site";
 
 const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
 const featured = projects.filter((project) => project.data.featured).slice(0, 3);
+const proofMetrics = proofPoints;
+const professionalTimeline = workTimeline.filter((item) => item.id !== "independent");
+const appliedAiChapter = workTimeline.find((item) => item.id === "independent");
+const workChapters = new Map([
+  [
+    "adara",
+    "Built backend and data-platform foundations across APIs, event-driven data workflows, identity resolution, and reusable service patterns."
+  ],
+  [
+    "goodyear",
+    "As Software Engineer Lead, improved scheduler latency from roughly 30 seconds to under one second, supported around 1,000 requests per second, helped grow the platform from $3M to $15M MRR, and reduced rework from 15% to 4.97%."
+  ],
+  [
+    "independent",
+    "Extended the platform story into RAG systems, local-first document intelligence, and practical AI-assisted development guardrails."
+  ]
+]);
+const homepageMetrics = new Map([
+  ["event-driven-notification-platform", ["~1,200/sec", "p99 ~300ms", "Spikes ~2,500/sec"]],
+  ["dynamic-scheduling-engine", ["~30s -> <1s", "~1,000 req/sec"]],
+  ["platform-modernization", ["$3M -> $15M MRR", "~20% faster delivery", "15% -> 4.97% rework"]]
+]);
+
+const inlineCaseStudies = [
+  {
+    title: "AI-assisted SDLC operating model",
+    subtitle: "Turning AI coding tools into governed engineering workflows",
+    problem:
+      "AI coding tools can accelerate delivery, but without clear repo context, service boundaries, access control, and review discipline, they create hallucinated logic, security risk, and hidden operational cost.",
+    status: "Applied AI",
+    year: "Recent work",
+    metrics: ["AI SDLC", "Agent guardrails", "Repo context"],
+    tradeoff: "Treat AI as an accelerator, not an authority."
+  }
+];
+
+const onePageWork = [
+  {
+    title: "Local-first document intelligence",
+    meta: "Applied AI",
+    body:
+      "Privacy-first retrieval patterns for personal and operational documents: local ingestion, scoped indexes, source grounding, and reviewable summaries instead of default cloud-first processing.",
+    proof: ["Local-first AI", "Document retrieval", "Privacy-first workflow"]
+  },
+  {
+    title: "RAG knowledge retrieval",
+    meta: "Applied AI",
+    body:
+      "Retrieval-backed internal knowledge workflows shaped around trust, usefulness, and maintainability rather than chatbot novelty.",
+    proof: ["RAG systems", "AWS Bedrock", "Internal knowledge access"]
+  },
+  {
+    title: "Fleet platform transition",
+    meta: "Platform transition",
+    body:
+      "Modernization framed as sequencing work: clarify service boundaries, strengthen review cadence, and keep platform direction tied to delivery while business priorities keep moving.",
+    proof: ["$3M -> $15M MRR", "~20% faster delivery", "15% -> 4.97% rework"]
+  }
+];
 ---
 
 <MainLayout
@@ -15,102 +71,203 @@ const featured = projects.filter((project) => project.data.featured).slice(0, 3)
   description="Portfolio for Kaizer Charania, a technical leader spanning staff engineer and engineering manager scope across backend, platform, and distributed systems."
   frameClass="site-frame--home"
 >
-  <section class="hero">
-    <div class="hero__surface">
-      <div class="hero__content">
-        <div class="hero__content-inner">
-          <p class="section-kicker">Staff Engineer • Engineering Manager • Backend • Platform</p>
-          <h1 class="hero__headline-plain">{site.heroHeadline}</h1>
-          <p class="hero__lede">{site.heroIntro}</p>
-          <div class="tag-row">
-            {proofPoints.slice(0, 3).map((item) => <span class="tech-tag">{item.value}</span>)}
-          </div>
-          <div class="hero__actions">
-            <a class="button" href="/projects/" data-analytics-event="projects_cta_click" data-analytics-label="home_see_case_studies">See case studies</a>
-            <a class="button button--ghost" href={site.resume} target="_blank" rel="noreferrer" data-analytics-event="resume_click" data-analytics-label="home_view_resume">View resume</a>
-          </div>
+  <div class="one-page">
+    <section class="one-page__intro" id="intro" data-scroll-section>
+      <div class="one-page__intro-copy">
+        <p class="section-kicker">Staff Engineer • Engineering Manager • Backend • Platform</p>
+        <h1>Kaizer Charania</h1>
+        <p class="one-page__headline">{site.heroHeadline}</p>
+        <p class="one-page__lede">{site.heroIntro}</p>
+        <div class="one-page__hero-proof" aria-label="Selected proof metrics">
+          {proofMetrics.slice(0, 2).map((item) => (
+            <span><strong>{item.value}</strong>{item.label}</span>
+          ))}
+        </div>
+        <div class="one-page__actions">
+          <a class="button" href="#proof" data-analytics-event="proof_jump" data-analytics-label="home_intro_proof">See proof</a>
+          <a class="button button--ghost" href={site.resume} target="_blank" rel="noreferrer" data-analytics-event="resume_click" data-analytics-label="home_intro_resume">View resume</a>
         </div>
       </div>
 
-      <div class="hero__visual" aria-hidden="true">
-        <div class="hero__visual-glow hero__visual-glow--one"></div>
-        <div class="hero__visual-glow hero__visual-glow--two"></div>
-        <div class="hero__visual-grid"></div>
-        <div class="hero__stars">
-          <span class="hero__star hero__star--1"></span>
-          <span class="hero__star hero__star--2"></span>
-          <span class="hero__star hero__star--3"></span>
-          <span class="hero__star hero__star--4"></span>
-          <span class="hero__star hero__star--5"></span>
-          <span class="hero__star hero__star--6"></span>
+      <aside class="one-page__snapshot" aria-label="Best-fit profile snapshot">
+        <p class="section-kicker">Best fit</p>
+        <p>{site.contactGuidance}</p>
+        <div class="one-page__snapshot-list">
+          <span>{site.location}</span>
+          <span>8-engineer team scope</span>
+          <span>Architecture + execution</span>
         </div>
-        <div class="hero__signal-card">
-          <p class="section-kicker">At a glance</p>
-          <p class="hero__signal-copy">{site.contactBody}</p>
-          <div class="hero__stack">
-            <span class="tech-tag">7+ years</span>
-            <span class="tech-tag">8-engineer team scope</span>
-            <span class="tech-tag">Architecture + execution</span>
-          </div>
-        </div>
-        <div class="hero__signal-path">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+      </aside>
+    </section>
+
+    <section class="one-page__segment" id="proof" data-scroll-section>
+      <div class="one-page__section-heading">
+        <p class="section-kicker">Proof</p>
+        <h2>Production outcomes that make the technical story easier to trust.</h2>
+        <p>These are the numbers I would expect a hiring team to scan first before deciding whether to go deeper.</p>
       </div>
-    </div>
-  </section>
-
-  <SectionBlock
-    eyebrow="Professional work"
-    title="The main chapters of my professional work so far."
-    description="Most of my career has been shaped by backend, platform, and systems work that sits close to operations, data, and the engineering process itself."
-    className="section-block--wide-title"
-  >
-    <ProfessionalTimeline items={workTimeline} />
-  </SectionBlock>
-
-  <SectionBlock
-    eyebrow="Featured work"
-    title="Case studies where technical depth and leadership show up together."
-    description="These projects are the clearest examples of architecture, performance, delivery discipline, and business impact reinforcing each other."
-    className="section-block--wide-title"
-  >
-    <div class="project-grid">
-      {featured.map((project) => <ProjectCard project={project} />)}
-    </div>
-  </SectionBlock>
-
-  <SectionBlock
-    eyebrow="Leadership"
-    title="How I tend to lead when the work gets complex."
-    description={site.radarBody}
-    className="section-block--wide-title"
-  >
-    <div class="leadership-spotlight">
-      <article class="leadership-spotlight__intro">
-        <p class="section-kicker">Leadership snapshot</p>
-        <p>{site.recruiterIntro}</p>
-      </article>
-      <div class="leadership-spotlight__grid">
-        {leadershipSignals.map((item, index) => (
-          <article class:list={["leadership-spotlight__card", index === 0 && "is-featured"]}>
-            <p class="leadership-spotlight__index">0{index + 1}</p>
-          <p>{item}</p>
+      <div class="proof-strip">
+        {proofMetrics.map((item) => (
+          <article class="proof-strip__item">
+            <p>{item.label}</p>
+            <strong>{item.value}</strong>
+            {"detail" in item ? <span>{item.detail}</span> : null}
           </article>
         ))}
       </div>
-    </div>
-  </SectionBlock>
+      <div class="focus-rail" aria-label="Current focus areas">
+        <div class="focus-rail__intro">
+          <p class="section-kicker">{site.currentFocusTitle}</p>
+          <p>{site.currentFocusBody}</p>
+        </div>
+        <div class="focus-rail__items">
+          {currentQueue.map((item) => (
+            <article>
+              <span>{item.meta}</span>
+              <strong>{item.title}</strong>
+              <p>{item.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
 
-  <section class="final-cta">
-    <p class="section-kicker">Connect</p>
-    <h2>{site.contactHeadline}</h2>
-    <p>{site.contactBody}</p>
-    <div class="hero__actions">
-      <a class="button" href="/contact/" data-analytics-event="contact_click" data-analytics-label="home_final_cta_connect">Connect</a>
-      <a class="button button--ghost" href="/about/">About me</a>
-    </div>
-  </section>
+    <section class="one-page__segment one-page__segment--timeline" id="work" data-scroll-section>
+      <div class="one-page__section-heading">
+        <p class="section-kicker">Work arc</p>
+        <h2>The scope moved from backend depth into platform ownership and team-scale execution.</h2>
+      </div>
+      <div class="work-arc">
+        {professionalTimeline.map((item, index) => (
+          <article class="work-arc__item">
+            <div class="work-arc__marker" aria-hidden="true">{index + 1}</div>
+            <div class="work-arc__content">
+              <p class="work-arc__period">{item.period}</p>
+              <h3>{item.company}</h3>
+              <p class="work-arc__role">{item.role}</p>
+              <p>{workChapters.get(item.id)}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      {appliedAiChapter ? (
+        <aside class="applied-track" aria-label="Recent applied AI exploration">
+          <p class="section-kicker">Recent applied AI track</p>
+          <div>
+            <h3>{appliedAiChapter.company}</h3>
+            <p>{workChapters.get(appliedAiChapter.id)}</p>
+          </div>
+          <span>{appliedAiChapter.period}</span>
+        </aside>
+      ) : null}
+    </section>
+
+    <section class="one-page__segment" id="case-studies" data-scroll-section data-nav-section="work">
+      <div class="one-page__section-heading">
+        <p class="section-kicker">Case studies</p>
+        <h2>Four proof summaries, one throughline.</h2>
+        <p>Each summary is designed for fast scanning: problem, proof, and the tradeoff behind the work.</p>
+      </div>
+      <div class="case-flow">
+        {featured.map((project) => (
+          <article class="case-summary">
+            <div class="case-summary__main">
+              <p class="case-summary__meta">{project.data.status} · {project.data.year}</p>
+              <h3>{project.data.title}</h3>
+              <p class="case-summary__subtitle">{project.data.subtitle}</p>
+              <p>{project.data.problem}</p>
+            </div>
+            <div class="case-summary__proof">
+              <div class="case-summary__metrics">
+                {(homepageMetrics.get(project.id) ?? project.data.metrics.slice(0, 3)).map((metric) => <span>{metric}</span>)}
+              </div>
+              <p><strong>Tradeoff:</strong> {project.data.decisions[0]?.title}</p>
+              <a href={`/projects/${project.id}/`} data-analytics-event="project_open" data-analytics-label={project.data.title}>Read case study</a>
+            </div>
+          </article>
+        ))}
+        {inlineCaseStudies.map((project) => (
+          <article class="case-summary case-summary--inline">
+            <div class="case-summary__main">
+              <p class="case-summary__meta">{project.status} · {project.year}</p>
+              <h3>{project.title}</h3>
+              <p class="case-summary__subtitle">{project.subtitle}</p>
+              <p>{project.problem}</p>
+            </div>
+            <div class="case-summary__proof">
+              <div class="case-summary__metrics">
+                {project.metrics.map((metric) => <span>{metric}</span>)}
+              </div>
+              <p><strong>Tradeoff:</strong> {project.tradeoff}</p>
+              <span class="case-summary__inline-note">On-page proof</span>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="one-page-work" aria-label="Additional one-page applied AI and platform work">
+        <div class="one-page-work__intro">
+          <p class="section-kicker">Additional signals</p>
+          <h3>Applied AI and platform transition work</h3>
+        </div>
+        {onePageWork.map((item) => (
+          <article class="one-page-work__item">
+            <p>{item.meta}</p>
+            <h3>{item.title}</h3>
+            <span>{item.body}</span>
+            <div>
+              {item.proof.map((proof) => <strong>{proof}</strong>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="one-page__segment" id="leadership" data-scroll-section data-nav-section="work">
+      <div class="one-page__section-heading">
+        <p class="section-kicker">Leadership</p>
+        <h2>How I operate when architecture, delivery, and team health are connected.</h2>
+        <p>{site.radarBody}</p>
+      </div>
+      <div class="leadership-flow">
+        <article class="leadership-flow__principles">
+          {values.slice(0, 3).map((item) => (
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          ))}
+        </article>
+        <article class="leadership-flow__signals">
+          <p class="section-kicker">Signals</p>
+          <ul>
+            {leadershipSignals.slice(0, 4).map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+      <div class="skill-ribbon" aria-label="Core technical strengths">
+        {[...skills.backend.slice(0, 5), ...skills.methodology.slice(0, 5)].map((item) => <span>{item}</span>)}
+      </div>
+      <div class="writing-themes" aria-label="Current writing and thinking themes">
+        {writingThemes.map((item) => (
+          <article>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="one-page__contact" id="contact" data-scroll-section>
+      <div>
+        <p class="section-kicker">Contact</p>
+        <h2>{site.contactHeadline}</h2>
+        <p>{site.contactBody}</p>
+      </div>
+      <div class="contact-actions">
+        <a class="button" href={site.linkedin} target="_blank" rel="noreferrer" data-analytics-event="contact_link_click" data-analytics-label="home_linkedin">Contact on LinkedIn</a>
+        <a class="button button--ghost" href={site.github} target="_blank" rel="noreferrer" data-analytics-event="contact_link_click" data-analytics-label="home_github">GitHub</a>
+        <a class="button button--ghost" href={site.resume} target="_blank" rel="noreferrer" data-analytics-event="resume_click" data-analytics-label="home_contact_resume">Resume</a>
+      </div>
+    </section>
+  </div>
 </MainLayout>

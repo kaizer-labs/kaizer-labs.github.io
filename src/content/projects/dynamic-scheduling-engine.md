@@ -28,7 +28,6 @@ special:
 metrics:
   - "~30s -> <1s"
   - "~1,000 req/sec"
-  - "97.5% latency improvement"
 audience:
   - "Staff Engineer"
   - "Lead Engineer"

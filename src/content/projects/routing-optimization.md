@@ -6,9 +6,9 @@ problem: "Naive routing logic could not reflect the real field constraints that 
 role: "Staff-level systems designer for routing and operational optimization workflows"
 scope: "Constraint modeling, travel-time-aware planning, schedule interaction handling, and operational outcome measurement"
 year: "Recent work"
-status: "Featured"
-featured: true
-order: 4
+status: "Additional work"
+featured: false
+order: 8
 tech:
   - "Backend services"
   - "Optimization logic"

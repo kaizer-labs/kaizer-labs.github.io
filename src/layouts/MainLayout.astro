@@ -38,7 +38,12 @@ const { title, description, frameClass } = Astro.props;
     <AnalyticsEvents />
     <script is:inline>
       (() => {
-        const storedTheme = localStorage.getItem("theme-preference");
+        let storedTheme = null;
+        try {
+          storedTheme = localStorage.getItem("theme-preference");
+        } catch {
+          storedTheme = null;
+        }
         const theme = storedTheme || "light";
         document.documentElement.dataset.theme = theme;
         const themeColor = theme === "dark" ? "#08111f" : "#f6f3ec";
@@ -47,12 +52,13 @@ const { title, description, frameClass } = Astro.props;
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class:list={["site-frame", frameClass]}>
       <div class="site-glow site-glow--left"></div>
       <div class="site-glow site-glow--right"></div>
       <div class="site-grid"></div>
       <Header />
-      <main class="page-shell">
+      <main class="page-shell" id="main-content" tabindex="-1">
         <slot />
       </main>
       <Footer />

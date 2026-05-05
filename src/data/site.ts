@@ -7,18 +7,18 @@ export const site = {
   github: "https://github.com/kaizer-labs",
   resume: "https://drive.google.com/file/d/116POTskFUYsBK7cFQ-zQ9k2VyEiKWLZv/view?usp=sharing",
   heroHeadline:
-    "I build backend and platform systems that scale, and I care about creating the team systems that help engineers scale too.",
+    "I design backend, platform, and AI-enabled systems that hold up under scale, and I build the team operating systems that keep delivery predictable.",
   heroIntro:
-    "My work sits across backend, platform, and distributed systems, especially where architecture, performance, modernization, and team execution all need to move together.",
+    "My work sits across distributed systems, event-driven platforms, performance-critical APIs, practical AI retrieval, and engineering leadership. I care about systems that scale technically and teams that scale operationally.",
   currentFocusTitle: "Current focus",
   currentFocusBody:
-    "Operating at the intersection of staff-level technical ownership and engineering-manager-level execution: architecture, modernization, performance, mentoring, delivery cadence, and operating standards that scale across a team.",
+    "Operating at the intersection of staff-level technical ownership and engineering-manager-level execution: event-driven systems, applied AI retrieval, architecture modernization, mentoring, delivery cadence, and operating standards that scale across a team.",
   radarTitle: "On the radar",
   radarBody:
     "The pattern in my work is consistent: solve hard backend and platform problems, then improve the engineering systems around them so the team can keep moving with less friction.",
   recruiterIntro:
     "I am usually at my best when architecture, delivery, and team health are all under pressure at the same time. That is where technical judgment and leadership stop being separate skills and start reinforcing each other.",
-  contactHeadline: "Interested in the work?",
+  contactHeadline: "Discuss backend, platform, or AI-enabled systems.",
   contactBody:
     "I do my best work in environments where architecture, execution, and team effectiveness all need to improve together, not in isolation.",
   contactGuidance:
@@ -58,8 +58,8 @@ export const timeline = [
     body: "Roadmap ownership, mentoring, onboarding, quality standards, and execution cadence became part of the role, not separate management overhead."
   },
   {
-    title: "AI retrieval and applied experimentation",
-    body: "More recent work extends the platform story into RAG and retrieval-backed internal tools grounded in real use cases."
+    title: "Applied AI and AI-assisted SDLC",
+    body: "Recent work extends the platform story into RAG systems, local-first document intelligence, and practical AI-assisted development guardrails."
   }
 ];
 
@@ -94,7 +94,7 @@ export const workTimeline = [
         date: "2021-09",
         roleTitle: "Lead Engineer",
         label: "Scaled high-throughput platform work",
-        detail: "Scaled identity-resolution throughput from 5K to 20K+ writes/sec, reduced infrastructure cost by 30%, and worked on data workflows supporting 5TB+ daily volume across 200+ integrations."
+        detail: "Scaled identity-resolution and data-platform workflows while reducing operational friction in high-throughput backend systems."
       }
     ]
   },
@@ -197,16 +197,17 @@ export const skills = {
 };
 
 export const currentQueue = [
-  { title: "Platform modernization", meta: "Active focus", note: "Architecture, delivery rhythm, and modernization without losing execution speed." },
-  { title: "Routing and scheduling systems", meta: "Operational systems", note: "High-value backend work where performance and correctness shape the user outcome." },
-  { title: "AI retrieval workflows", meta: "Emerging direction", note: "Retrieval-backed systems for internal knowledge access and decision support." }
+  { title: "Event-driven platform systems", meta: "Platform systems", note: "Fanout-heavy backend workflows where throughput, replayability, and delivery isolation matter." },
+  { title: "AI retrieval and local-first knowledge workflows", meta: "Applied AI", note: "Retrieval-backed systems and local-first document intelligence shaped around trust, privacy, and usefulness." },
+  { title: "AI-assisted SDLC operating model", meta: "Engineering systems", note: "Practical guardrails for using AI agents inside software delivery without losing architecture, security, or review control." }
 ];
 
 export const proofPoints = [
   { label: "Scheduler latency", value: "~30s -> <1s" },
-  { label: "Sustained throughput", value: "~1,000 req/sec" },
+  { label: "Notification platform", value: "~1,200/sec, p99 ~300ms" },
   { label: "Platform growth", value: "$3M -> $15M MRR" },
-  { label: "Infra efficiency", value: "30% lower cost" }
+  { label: "Team scope", value: "8-engineer team" },
+  { label: "Delivery quality", value: "15% -> 4.97% rework" }
 ];
 
 export const leadershipSignals = [
@@ -218,26 +219,26 @@ export const leadershipSignals = [
 
 export const writingThemes = [
   {
-    title: "System design tradeoffs in platform work",
-    body: "How to modernize backend systems without turning every quarter into a migration project."
+    title: "AI-assisted SDLC with real guardrails",
+    body: "How to use AI agents for implementation speed while preserving architecture context, review control, security boundaries, and testing discipline."
   },
   {
-    title: "Internal platform work that actually gets adopted",
-    body: "What changes when templates, standards, and enablement are treated like products instead of side work."
+    title: "Event-driven systems under fanout pressure",
+    body: "What changes when synchronous workflows become replayable, channel-isolated platform systems."
   },
   {
-    title: "Applied AI retrieval after the novelty phase",
-    body: "Where RAG helps, where it does not, and what operational trust actually requires."
+    title: "Local-first AI retrieval and privacy-first document intelligence",
+    body: "Where document intelligence can stay useful without turning private context into unnecessary cloud dependency."
   },
   {
-    title: "Leadership without heroics",
-    body: "Roadmaps, review rigor, onboarding, and team systems that make delivery more durable."
+    title: "Platform transition when business priorities change",
+    body: "How to modernize service boundaries and team practices while the business still needs delivery."
   }
 ];
 
 export const references = [
   "Led backend and platform work across scheduling, fleet, pricing, and engineering systems while supporting product growth from $3M to $15M MRR.",
   "Improved scheduler latency from roughly 30 seconds to under one second in a high-volume operational workflow handling around 1,000 requests per second.",
-  "Scaled identity-resolution throughput from 5K to 20K+ writes per second while reducing infrastructure cost by 30%.",
+  "Scaled identity-resolution and data-platform workflows in high-throughput backend systems.",
   "Performance review material documents GraphQL and Hasura leadership, microservice migration work, mentoring, architecture review rigor, and Exceptional Performer / High Potential ratings."
 ];

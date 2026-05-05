@@ -7,9 +7,9 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "dev": "PATH=/opt/homebrew/bin:/usr/local/bin:$PATH astro dev",
+    "build": "PATH=/opt/homebrew/bin:/usr/local/bin:$PATH astro build",
+    "preview": "PATH=/opt/homebrew/bin:/usr/local/bin:$PATH astro preview"
   },
   "dependencies": {
     "astro": "^6.0.4",
