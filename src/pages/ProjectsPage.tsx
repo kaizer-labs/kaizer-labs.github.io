@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { featuredProjects, secondaryProjects } from "../content";
 import { Layout } from "../components/Layout";
 import { ProjectCard } from "../components/ProjectCard";
+import { featuredProjects, secondaryProjects } from "../content";
 
 export function ProjectsPage() {
   return (
@@ -13,7 +13,6 @@ export function ProjectsPage() {
       <section className="project-hub">
         <div className="project-hub__intro">
           <p className="section-kicker">Engineering case studies</p>
-          <h1>Backend and platform case studies with measurable outcomes.</h1>
         </div>
       </section>
 

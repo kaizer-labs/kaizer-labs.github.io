@@ -46,7 +46,7 @@ export function ContactPage() {
               data-analytics-label="github"
             >
               <span className="contact-row__label">GitHub</span>
-              <span>Code and systems notes</span>
+              <span>code</span>
             </a>
           </div>
 

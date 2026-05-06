@@ -18,7 +18,7 @@ export const site = {
   heroIntro:
     "My work spans event-driven platforms, scheduling and routing systems, performance-critical APIs, practical AI retrieval, and technical leadership. The common thread is turning unstable growth into systems the team can operate.",
   workIntro:
-    "Most of the work here sits where architecture, delivery pressure, and operational reliability meet.",
+    "",
   contactHeadline: "Interested in the work?",
   contactBody:
     "This site collects backend, platform, and applied AI systems work with an emphasis on reliability, speed, and architecture a team can keep using."

@@ -125,6 +125,13 @@ function trackEvent(
   window.gtag("event", eventName, params);
 }
 
+function getMeasurementId() {
+  return (
+    import.meta.env.VITE_GA_MEASUREMENT_ID ||
+    import.meta.env.PUBLIC_GA_MEASUREMENT_ID
+  );
+}
+
 export function Analytics() {
   const location = useLocation();
   const currentPath = useMemo(
@@ -150,7 +157,7 @@ export function Analytics() {
   }, []);
 
   useEffect(() => {
-    const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+    const measurementId = getMeasurementId();
     if (!measurementId) return;
 
     const analyticsEnabled = consentMode === "all";
@@ -163,7 +170,7 @@ export function Analytics() {
   }, [consentMode]);
 
   useEffect(() => {
-    const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+    const measurementId = getMeasurementId();
     if (!measurementId || consentMode !== "all") return;
 
     pageStartRef.current = performance.now();
