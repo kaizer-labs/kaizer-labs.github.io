@@ -312,7 +312,18 @@ export function ProfessionalTimeline({ items }: ProfessionalTimelineProps) {
         .attr("transform", (milestone) => `translate(${x(milestone.parsedDate)}, ${lineY})`)
         .style("cursor", "pointer")
         .on("mouseenter", (_event, milestone) => setActive(milestone))
-        .on("click", (_event, milestone) => setActive(milestone));
+        .on("click", (_event, milestone) => {
+          setActive(milestone);
+          window.dispatchEvent(
+            new CustomEvent("kaizer:timeline-milestone-click", {
+              detail: {
+                company: milestone.item.company,
+                milestone_date: milestone.date,
+                milestone_label: milestone.label,
+              },
+            }),
+          );
+        });
 
       events
         .append("circle")

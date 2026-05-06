@@ -15,6 +15,8 @@ export function Footer() {
             className="footer-button"
             type="button"
             data-open-consent
+            data-analytics-event="consent_preferences_open"
+            data-analytics-label="footer_cookie_preferences"
             aria-haspopup="dialog"
           >
             Cookie preferences

@@ -55,11 +55,19 @@ export function ConsentBanner() {
           <button
             className="button button--ghost"
             type="button"
+            data-analytics-event="consent_mode_essential"
+            data-analytics-label="cookie_banner"
             onClick={() => setConsent("essential")}
           >
             Essential only
           </button>
-          <button className="button" type="button" onClick={() => setConsent("all")}>
+          <button
+            className="button"
+            type="button"
+            data-analytics-event="consent_mode_all"
+            data-analytics-label="cookie_banner"
+            onClick={() => setConsent("all")}
+          >
             Allow preferences
           </button>
         </div>

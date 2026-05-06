@@ -52,7 +52,13 @@ export function ContactPage() {
 
           <div className="contact-sheet__meta">
             <span>{site.location}</span>
-            <Link to="/projects">Start with case studies</Link>
+            <Link
+              to="/projects"
+              data-analytics-event="internal_cta_click"
+              data-analytics-label="contact_case_studies"
+            >
+              Start with case studies
+            </Link>
           </div>
         </div>
       </section>
