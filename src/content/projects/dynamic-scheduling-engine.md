@@ -1,10 +1,10 @@
 ---
 title: "Dynamic scheduling engine"
-subtitle: "Operational scheduling rebuilt for sub-second decisions"
-summary: "Designed and optimized a slot-based scheduling engine for high-volume booking, rescheduling, and cancellation workflows."
-problem: "Booking and rescheduling requests were hitting a slow scheduling path that hurt both user experience and operations."
+subtitle: "Slot decisions rebuilt for sub-second booking and rescheduling"
+summary: "Redesigned the scheduling path behind booking, rescheduling, updates, and cancellations from roughly 30 seconds to under one second."
+problem: "Availability reads, slot validation, and update flows were doing too much work synchronously for a high-concurrency operational path."
 role: "Engineering owner for the performance-critical scheduling path"
-scope: "Availability computation, request path design, database access, and concurrency-aware correctness"
+scope: "Availability computation, API boundaries, query optimization, cache-safe read paths, and concurrency-aware correctness"
 year: "Recent work"
 status: "Featured"
 featured: true
@@ -17,10 +17,10 @@ tech:
   - "API performance"
 toolsTitle: "Built with modern backend tools"
 tools:
-  - "Performance-focused API design"
-  - "Database and query path optimization"
-  - "Caching and request-path tuning"
-  - "Operational scheduling logic"
+  - "Performance-focused API boundaries"
+  - "Database and query-path optimization"
+  - "Cache-safe availability reads"
+  - "Correctness-preserving booking and rescheduling logic"
 special:
   - "Cut latency from roughly 30 seconds to under one second."
   - "Handled around 1,000 requests per second in a critical operational workflow."
@@ -61,7 +61,7 @@ decisions:
 ---
 ## What I built
 
-I redesigned the scheduling path behind booking, rescheduling, updates, and cancellations. The hard part was not just speed. The system had to return trustworthy slot decisions under load.
+I redesigned the scheduling path behind booking, rescheduling, updates, and cancellations. The hard part was not only speed. The system had to return trustworthy slot decisions while many users and operational workflows were competing for the same availability state.
 
 ## How I approached it
 
@@ -86,4 +86,4 @@ I biased toward operational trust:
 
 ## Results and impact
 
-The workflow moved from roughly 30 seconds to under one second and supported around 1,000 requests per second. It is one of the clearest examples in the portfolio of backend design, performance work, and business impact lining up in the same system.
+The workflow moved from roughly 30 seconds to under one second and supported around 1,000 requests per second. The important part was that the latency reduction did not come from bypassing correctness. It came from narrowing the hot path, reducing repeated reads, and keeping non-critical work out of the decision boundary.

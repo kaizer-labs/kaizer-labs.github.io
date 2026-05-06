@@ -73,8 +73,38 @@ export function HomePage() {
       </section>
 
       <SectionBlock
+        eyebrow="Newsletter"
+        className="section-block--wide-title"
+      >
+        <div className="newsletter-strip">
+          <div className="newsletter-strip__copy">
+            <p className="newsletter-strip__summary">{site.newsletterIntro}</p>
+            <p className="newsletter-strip__detail">{site.newsletterSnippet}</p>
+          </div>
+          <div className="newsletter-strip__actions">
+            <div className="tag-row">
+              {newsletterTopics.map((topic) => (
+                <span className="tech-tag" key={topic}>
+                  {topic}
+                </span>
+              ))}
+            </div>
+            <a
+              className="button"
+              href={site.newsletterUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-analytics-event="newsletter_subscribe_click"
+              data-analytics-label="home_newsletter_subscribe"
+            >
+              Subscribe on LinkedIn
+            </a>
+          </div>
+        </div>
+      </SectionBlock>
+
+      <SectionBlock
         eyebrow="Professional work"
-        title="Professional work"
         className="section-block--wide-title"
       >
         <ProfessionalTimeline items={workTimeline} />
@@ -82,11 +112,10 @@ export function HomePage() {
 
       <SectionBlock
         eyebrow="Featured work"
-        title="Case studies with clear technical and business outcomes."
         className="section-block--wide-title"
       >
-        <div className="project-grid">
-          {featuredProjects.slice(0, 4).map((project) => (
+        <div className="project-list">
+          {featuredProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
@@ -94,73 +123,16 @@ export function HomePage() {
 
       <SectionBlock
         eyebrow="Leadership"
-        title="How I lead under delivery pressure."
-        description={site.radarBody}
         className="section-block--wide-title"
       >
-        <div className="leadership-spotlight">
-          <article className="leadership-spotlight__intro">
-            <p className="section-kicker">Leadership snapshot</p>
-            <p>{site.workIntro}</p>
-          </article>
-          <div className="leadership-spotlight__grid">
-            {leadershipSignals.map((item, index) => (
-              <article
-                className={[
-                  "leadership-spotlight__card",
-                  index === 0 ? "is-featured" : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-                key={item}
-              >
-                <p className="leadership-spotlight__index">0{index + 1}</p>
-                <p>{item}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </SectionBlock>
-
-      <SectionBlock
-        eyebrow="Newsletter"
-        title="Writing on engineering systems, AI guardrails, and platform transitions."
-        className="section-block--wide-title"
-      >
-        <div className="contact-showcase">
-          <article className="contact-showcase__intro">
-            <p className="section-kicker">LinkedIn newsletter</p>
-            <h3>Subscribe for short essays grounded in real engineering work.</h3>
-            <p>{site.newsletterIntro}</p>
-            <div className="hero__actions">
-              <a
-                className="button"
-                href={site.newsletterUrl}
-                target="_blank"
-                rel="noreferrer"
-                data-analytics-event="newsletter_subscribe_click"
-                data-analytics-label="home_newsletter_subscribe"
-              >
-                Subscribe on LinkedIn
-              </a>
-            </div>
-          </article>
-
-          <div className="contact-showcase__side">
-            <article className="contact-showcase__card">
-              <p className="section-kicker">What to expect</p>
-              <h3>{site.newsletterTitle}</h3>
-              <div className="tag-row">
-                {newsletterTopics.map((topic) => (
-                  <span className="tech-tag" key={topic}>
-                    {topic}
-                  </span>
-                ))}
-              </div>
-              <p>{site.newsletterSnippet}</p>
-            </article>
-          </div>
-        </div>
+        <ol className="principle-list">
+          {leadershipSignals.map((item, index) => (
+            <li className="principle-list__item" key={item}>
+              <span className="principle-list__index">0{index + 1}</span>
+              <p>{item}</p>
+            </li>
+          ))}
+        </ol>
       </SectionBlock>
 
       <section className="final-cta">

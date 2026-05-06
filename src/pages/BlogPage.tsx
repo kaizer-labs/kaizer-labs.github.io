@@ -19,24 +19,19 @@ export function BlogPage() {
       {featuredBlogPost ? (
         <section className="blog-collection">
           <div className="blog-collection__header">
-            <p className="section-kicker">Featured post</p>
-            <h2>Start here</h2>
+            <h2 className="section-kicker section-kicker--standalone">Start here</h2>
           </div>
 
-          <Link className="blog-card blog-card--featured" to={`/blog/${featuredBlogPost.slug}`}>
-            <div className="blog-card__meta">
+          <Link className="writing-row writing-row--lead" to={`/blog/${featuredBlogPost.slug}`}>
+            <div className="writing-row__meta">
               <span>{featuredBlogPost.publishedAt}</span>
               <span>{featuredBlogPost.readingTime}</span>
             </div>
-            <h3>{featuredBlogPost.title}</h3>
-            <p>{featuredBlogPost.summary}</p>
-            <div className="blog-card__tags">
-              {featuredBlogPost.tags.map((tag) => (
-                <span className="tech-tag" key={tag}>
-                  {tag}
-                </span>
-              ))}
+            <div className="writing-row__body">
+              <h3>{featuredBlogPost.title}</h3>
+              <p>{featuredBlogPost.summary}</p>
             </div>
+            <span className="writing-row__cta">Read essay</span>
           </Link>
         </section>
       ) : null}
@@ -44,26 +39,21 @@ export function BlogPage() {
       {archiveBlogPosts.length > 0 ? (
         <section className="blog-collection">
           <div className="blog-collection__header">
-            <p className="section-kicker">More writing</p>
-            <h2>Archive</h2>
+            <h2 className="section-kicker section-kicker--standalone">Archive</h2>
           </div>
 
-          <div className="blog-grid">
+          <div className="writing-list">
             {archiveBlogPosts.map((post) => (
-              <Link className="blog-card" to={`/blog/${post.slug}`} key={post.slug}>
-                <div className="blog-card__meta">
+              <Link className="writing-row" to={`/blog/${post.slug}`} key={post.slug}>
+                <div className="writing-row__meta">
                   <span>{post.publishedAt}</span>
                   <span>{post.readingTime}</span>
                 </div>
-                <h3>{post.title}</h3>
-                <p>{post.summary}</p>
-                <div className="blog-card__tags">
-                  {post.tags.map((tag) => (
-                    <span className="tech-tag" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
+                <div className="writing-row__body">
+                  <h3>{post.title}</h3>
+                  <p>{post.summary}</p>
                 </div>
+                <span className="writing-row__cta">Read essay</span>
               </Link>
             ))}
           </div>

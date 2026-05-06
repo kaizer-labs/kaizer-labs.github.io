@@ -54,7 +54,7 @@ export function BlogPostPage() {
           </div>
         </header>
 
-        <section className="detail-panel prose-block blog-post__body">
+        <section className="detail-section prose-block blog-post__body">
           <MarkdownProse content={post.body} />
         </section>
 
@@ -70,4 +70,3 @@ export function BlogPostPage() {
     </Layout>
   );
 }
-

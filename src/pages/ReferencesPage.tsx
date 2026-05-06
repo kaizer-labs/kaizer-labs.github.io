@@ -10,28 +10,28 @@ export function ReferencesPage() {
     >
       <SectionBlock
         eyebrow="Highlights"
-        title="Selected outcome and scope highlights."
       >
-        <div className="references-list">
-          {references.map((item) => (
-            <article className="reference-card" key={item}>
+        <ol className="principle-list">
+          {references.map((item, index) => (
+            <li className="principle-list__item" key={item}>
+              <span className="principle-list__index">0{index + 1}</span>
               <p>{item}</p>
-            </article>
+            </li>
           ))}
-        </div>
+        </ol>
       </SectionBlock>
 
       <SectionBlock
         eyebrow="Leadership"
-        title="Leadership signals behind the technical results."
       >
-        <div className="references-list">
-          {leadershipSignals.map((item) => (
-            <article className="reference-card" key={item}>
+        <ol className="principle-list">
+          {leadershipSignals.map((item, index) => (
+            <li className="principle-list__item" key={item}>
+              <span className="principle-list__index">0{index + 1}</span>
               <p>{item}</p>
-            </article>
+            </li>
           ))}
-        </div>
+        </ol>
       </SectionBlock>
     </Layout>
   );

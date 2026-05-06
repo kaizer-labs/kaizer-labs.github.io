@@ -1,8 +1,8 @@
 ---
-title: "AndGo platform scaling and modernization"
-subtitle: "From legacy delivery constraints to platform-grade execution"
-summary: "Led backend and platform modernization across fleet, scheduling, pricing, and engineering systems, with measurable gains in delivery speed and rework."
-problem: "Legacy architecture and weak engineering habits were slowing delivery and increasing rework."
+title: "Fleet platform modernization"
+subtitle: "Service boundaries, shared APIs, and delivery discipline under growth"
+summary: "Led backend modernization across fleet, scheduling, pricing, notifications, and shared platform systems while supporting 5x business growth."
+problem: "A growing platform needed clearer service ownership, reusable backend patterns, and stronger engineering execution without pausing delivery."
 role: "Technical lead across architecture, enablement, and delivery systems"
 scope: "Service boundaries, GraphQL/Hasura platform adoption, design review rigor, onboarding, and team execution systems"
 year: "Current chapter"
@@ -24,13 +24,13 @@ tools:
   - "Architecture review and design rigor"
   - "Roadmap, onboarding, and delivery systems"
 special:
-  - "Supported platform growth from $3M to $15M MRR."
-  - "Improved delivery speed while reducing rework from 15% to 4.97%."
-  - "Combined architecture leadership with team enablement and delivery execution."
+  - "Supported 5x platform growth while the architecture continued to evolve."
+  - "Improved delivery speed while reducing rework from 15% to under 5%."
+  - "Connected service-boundary work with design reviews, onboarding, and rollout discipline."
 metrics:
-  - "$3M -> $15M MRR"
+  - "5x platform growth"
   - "~20% faster delivery"
-  - "15% -> 4.97% rework"
+  - "15% -> <5% rework"
 audience:
   - "Platform modernization"
   - "Architecture systems"
@@ -63,7 +63,7 @@ decisions:
 ---
 ## What I built
 
-I led backend and platform modernization across systems that supported fleet workflows, scheduling, pricing, and engineering operations. The work covered both architecture and execution: better service boundaries, stronger platform patterns, and tighter review and delivery habits across the team.
+I led backend and platform modernization across systems that supported fleet workflows, scheduling, pricing, notifications, and shared engineering capabilities. The work covered both architecture and execution: better service boundaries, stronger platform patterns, and tighter review and delivery habits across the team.
 
 ## How I approached it
 
@@ -88,4 +88,4 @@ So the decisions here were deliberately pragmatic:
 
 ## Results and impact
 
-This effort supported platform growth from $3M to $15M MRR, improved delivery speed by roughly 20%, and reduced rework from 15% to 4.97%. It is one of the clearest examples in the portfolio of architecture work tied directly to team leverage and business outcomes.
+This effort supported 5x platform growth, improved delivery speed by roughly 20%, and reduced rework from 15% to under 5%. The durable outcome was a platform the team could keep changing without every new requirement becoming another one-off path through the backend.

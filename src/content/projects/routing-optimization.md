@@ -1,8 +1,8 @@
 ---
 title: "Routing optimization engine"
-subtitle: "Modeling real field constraints across 800+ locations"
-summary: "Designed routing optimization for mobile technicians using travel time, service duration, and time windows instead of simplistic distance logic."
-problem: "Naive routing logic could not model the constraints that actually determined on-time service and schedule stability."
+subtitle: "Field-service routing modeled around real operational constraints"
+summary: "Designed routing optimization for mobile technicians using travel time, service duration, appointment windows, and schedule impact."
+problem: "Distance-only routing could not model the constraints that determined on-time service and schedule stability."
 role: "Systems designer for routing and operational optimization workflows"
 scope: "Constraint modeling, travel-time-aware planning, schedule interaction handling, and operational outcome measurement"
 year: "Recent work"
@@ -85,4 +85,4 @@ The key decision was to bias toward operational accuracy:
 
 ## Results and impact
 
-The routing work supported operations across 800+ locations, improved on-time appointments by 40%, and reduced missed or rescheduled appointments by 50%. It is a strong example of backend and systems work driving visible operational outcomes.
+The routing work supported operations across 800+ locations, improved on-time appointments by 40%, and reduced missed or rescheduled appointments by 50%. The system worked because route quality was measured against operational outcomes, not just path elegance.

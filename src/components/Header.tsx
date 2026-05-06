@@ -11,7 +11,7 @@ const links = [
 export function Header() {
   const location = useLocation();
   const [isDark, setIsDark] = useState(
-    document.documentElement.dataset.theme === "dark",
+    document.documentElement.dataset.theme !== "light",
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

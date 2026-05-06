@@ -10,11 +10,16 @@ export function PrivacyPage() {
         <p className="section-kicker">Privacy</p>
         <h1>Privacy</h1>
         <p>
-          This portfolio may use Google Analytics to understand overall traffic
-          and page usage. The built-in preference control still stores a small
-          local setting in the browser so the site experience feels integrated
-          rather than outsourced. External destinations such as LinkedIn,
-          GitHub, and other linked sites follow their own privacy policies.
+          This portfolio uses Google Analytics 4 to measure overall traffic and
+          site behavior, including page views, approximate geography,
+          referral/source data, device and browser context, scroll depth,
+          section visibility, outbound link clicks, downloads, copy events, and
+          time spent on pages. Analytics is enabled by default, and the footer
+          cookie preferences control lets you switch to an essential-only mode
+          that disables this tracking. A small local browser preference is
+          stored so that choice persists on future visits. External destinations
+          such as LinkedIn, GitHub, and other linked sites follow their own
+          privacy policies.
         </p>
       </section>
     </Layout>

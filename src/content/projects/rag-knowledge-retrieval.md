@@ -1,10 +1,10 @@
 ---
 title: "RAG knowledge retrieval"
-subtitle: "Practical AI retrieval for internal engineering and operational knowledge"
-summary: "Architected retrieval-backed internal tooling for engineering and operational knowledge access, grounding AI work in trust, usefulness, and maintainability rather than novelty."
-problem: "Internal knowledge was fragmented across tools and documents, which made it hard for engineers and operators to retrieve reliable context quickly enough to support day-to-day decisions."
+subtitle: "Source-aware retrieval for engineering and operational knowledge"
+summary: "Architected retrieval-backed knowledge workflows with source awareness, traceability, and maintainable ownership boundaries."
+problem: "Important engineering and operational context was fragmented across tools and documents, making reliable lookup slower than the work required."
 role: "Platform-minded engineer shaping practical AI retrieval workflows"
-scope: "Knowledge ingestion, retrieval quality, system integration, and operational trust controls"
+scope: "Knowledge ingestion, retrieval quality, source grounding, workflow integration, and operational trust controls"
 year: "Emerging focus"
 status: "Exploration"
 featured: false
@@ -18,8 +18,8 @@ toolsTitle: "Built with modern AI platform patterns"
 tools:
   - "Retrieval-backed AI workflows"
   - "Knowledge indexing and access patterns"
-  - "Practical system integration"
-  - "Operationally useful AI enablement"
+  - "Source-aware response paths"
+  - "Maintainable workflow integration"
 special:
   - "Focused on knowledge retrieval instead of chatbot novelty."
   - "Aligned AI work with real internal workflows and decision support."
@@ -55,23 +55,23 @@ decisions:
   - title: "Keep the system operable by normal engineering teams"
     detail: "Observability, maintainability, and explicit data sources mattered as much as model output quality. The design avoided patterns that would be difficult for a platform team to own over time."
   - title: "Anchor value in concrete workflows"
-    detail: "The project emphasized internal knowledge access that could shorten lookup time and improve decision quality, not generic AI novelty disconnected from the team’s actual work."
+    detail: "The project emphasized internal knowledge access that could shorten lookup time and improve decision quality in the team’s actual workflows."
 ---
 ## What I built
 
 I architected retrieval-backed workflows for internal knowledge access across engineering and operational contexts. The goal was to make fragmented information easier to retrieve, use, and reason over in practical day-to-day work without turning the system into an untrustworthy assistant demo.
 
-This project represents the AI side of the portfolio at its best: not novelty demos, but systems that treat retrieval quality and workflow usefulness as the product.
+The point was retrieval quality, not chatbot novelty.
 
 ## How I approached it
 
-The approach centered on grounding AI in retrieval instead of generic generation:
+The approach centered on grounding answers in retrieval before generation:
 
 - identify the knowledge sources that mattered operationally
 - structure retrieval so responses were anchored in actual internal context
 - design for maintainability, observability, and workflow fit rather than conversational flair
 
-That framing keeps the work aligned with backend and platform engineering instead of drifting into AI novelty work.
+That framing keeps the work aligned with backend and platform engineering.
 
 ## Tradeoffs and key decisions
 
@@ -87,4 +87,4 @@ That made the work more useful for internal enablement and practical adoption.
 
 ## Results and impact
 
-While there are no public-safe numeric metrics attached to this project, it still shows the kind of AI judgment I care about in practice. The value here is not flashy output quality. It is choosing trustworthy retrieval patterns, integrating them into real workflows, and keeping the system understandable enough that a team can operate it over time.
+The work kept AI adoption grounded in source selection, retrieval quality, maintainability, and workflow fit. That made the system easier for a platform team to reason about and operate over time.

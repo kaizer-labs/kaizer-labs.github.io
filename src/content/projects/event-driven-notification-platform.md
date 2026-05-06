@@ -1,10 +1,10 @@
 ---
 title: "Event-driven notification platform"
-subtitle: "Redesigning synchronous email delivery into a multi-channel MSK pipeline"
-summary: "Redesigned a synchronous email flow into an event-driven notification platform that scaled across email, SMS, and in-app delivery."
-problem: "The original synchronous notifications flow stopped scaling once traffic, fanout, and channel complexity increased."
-role: "Technical lead and hands-on implementer for the architecture redesign and delivery plan"
-scope: "Architecture review, MSK tradeoff analysis, rollout planning, notification-state model, consumer implementation, and cross-functional execution across a five-engineer team"
+subtitle: "Kafka-backed communication platform for fanout-heavy workflows"
+summary: "Rebuilt notifications from inline email handoff into an event-driven platform for email, SMS, and in-app delivery."
+problem: "Provider latency, traffic spikes, and multi-channel fanout were coupling core product flows to notification delivery."
+role: "Technical lead and hands-on implementer for the architecture redesign, rollout plan, and delivery model"
+scope: "MSK tradeoff analysis, event contracts, notification-state model, consumer implementation, rollout sequencing, and cross-functional execution"
 year: "Prior work"
 status: "Featured"
 featured: true
@@ -24,13 +24,13 @@ tools:
   - "Tracked notification records with status transitions for duplicate protection"
   - "Redis caching, GraphQL subscriptions, and query/index optimization for in-app reads"
 special:
-  - "Scaled from roughly 100 notifications/sec to around 1,200/sec, with spikes near 2,500/sec."
-  - "Reduced multi-second delays and timeout-prone fanout cases down to roughly p99 300 ms on the new flow."
-  - "Improved reliability, lowered on-call burden, and helped lift CSAT in some workflows from 2 to 4."
+  - "Scaled from roughly 100 notifications/sec to around 1,200/sec."
+  - "Brought the new delivery path to roughly p99 300 ms."
+  - "Separated provider handoff from request-time execution so core workflows were no longer blocked by channel fanout."
 metrics:
-  - "~1,200 notif/sec"
+  - "~100 -> ~1,200/sec"
   - "p99 ~300 ms"
-  - "Peaks ~2,500/sec"
+  - "Email, SMS, in-app"
 audience:
   - "Distributed systems"
   - "Backend architecture"
@@ -66,7 +66,7 @@ decisions:
 ---
 ## What I built
 
-I led the redesign of the notifications platform when the original synchronous email flow stopped holding up under growth. After a major customer onboarding, traffic jumped from roughly 100 notifications per second to around 1,200, with spikes near 2,500. Product also needed SMS and in-app delivery, not just email.
+I led the redesign of the notifications platform when the original synchronous email flow stopped holding up under growth. Traffic had moved from roughly 100 notifications per second toward 1,200, and product needed SMS and in-app delivery in addition to email.
 
 That changed the problem from “send an email” to “run a multi-channel communication platform without slowing the rest of the product down.”
 
@@ -114,6 +114,6 @@ The rollout had to be treated as a controlled migration:
 
 ## Results and impact
 
-Before the redesign, fanout-heavy scenarios could reach roughly 10 seconds and some endpoints timed out. After the redesign, the new flow handled around 1,200 notifications per second, tolerated spikes near 2,500 per second, and brought the new path down to roughly p99 300 milliseconds.
+Before the redesign, fanout-heavy scenarios could push user-facing paths into multi-second waits and timeout-prone behavior. After the redesign, notification work moved behind a replayable event boundary, handled around 1,200 notifications per second, and brought the new delivery path to roughly p99 300 milliseconds.
 
-Reliability and observability improved as well. Users were no longer blocked on synchronous provider calls, on-call burden dropped, and some workflows saw CSAT improve from 2 to 4. This is one of the strongest stories in the portfolio because it combines architecture judgment, rollout planning, and direct implementation in one high-volume system.
+The architectural win was not just higher throughput. The platform gained channel isolation, explicit delivery state, safer retries, and a cleaner boundary between product workflows and provider behavior.

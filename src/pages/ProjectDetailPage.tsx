@@ -69,10 +69,9 @@ export function ProjectDetailPage() {
           </aside>
         </header>
 
-        <section className="detail-panel detail-panel--metrics">
+        <section className="detail-section detail-section--metrics">
           <div className="detail-panel__header">
-            <p className="section-kicker">Impact</p>
-            <h2>Key production outcomes</h2>
+            <h2 className="section-kicker section-kicker--standalone">Impact</h2>
           </div>
           <div className="project-metric-strip">
             {project.metrics.map((metric) => (
@@ -89,10 +88,9 @@ export function ProjectDetailPage() {
           layers={project.architectureLayers}
         />
 
-        <section className="detail-panel">
+        <section className="detail-section">
           <div className="detail-panel__header">
-            <p className="section-kicker">Key decisions</p>
-            <h2>Tradeoffs that shaped the final system</h2>
+            <h2 className="section-kicker section-kicker--standalone">Key decisions</h2>
           </div>
           <div className="decision-grid">
             {project.decisions.map((item) => (
@@ -104,10 +102,9 @@ export function ProjectDetailPage() {
           </div>
         </section>
 
-        <section className="detail-panel prose-block">
+        <section className="detail-section prose-block">
           <div className="detail-panel__header">
-            <p className="section-kicker">Deep dive</p>
-            <h2>Technical narrative</h2>
+            <h2 className="section-kicker section-kicker--standalone">Deep dive</h2>
           </div>
           <MarkdownProse content={project.body} />
         </section>

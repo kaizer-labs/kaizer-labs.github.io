@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 
-const consentKey = "kaizer-portfolio-consent";
+import {
+  ensureConsentMode,
+  type ConsentMode,
+  updateConsentMode,
+} from "../lib/consent";
 
 export function ConsentBanner() {
   const [isVisible, setIsVisible] = useState(false);
+  const [consentMode, setConsentMode] = useState<ConsentMode>("all");
 
   useEffect(() => {
-    const storedConsent = window.localStorage.getItem(consentKey);
-    setIsVisible(!storedConsent);
+    setConsentMode(ensureConsentMode());
+    setIsVisible(false);
 
     const openBanner = () => setIsVisible(true);
     document.addEventListener("kaizer:open-consent", openBanner);
@@ -25,11 +30,9 @@ export function ConsentBanner() {
     };
   }, []);
 
-  const setConsent = (value: "essential" | "all") => {
-    window.localStorage.setItem(consentKey, value);
-    window.dispatchEvent(
-      new CustomEvent("kaizer:consent-updated", { detail: value }),
-    );
+  const setConsent = (value: ConsentMode) => {
+    updateConsentMode(value);
+    setConsentMode(value);
     setIsVisible(false);
   };
 
@@ -41,8 +44,10 @@ export function ConsentBanner() {
         <div>
           <p className="section-kicker">Preferences</p>
           <p className="consent-banner__copy">
-            This portfolio stores a small local preference so the cookie controls
-            feel integrated instead of outsourced.
+            Analytics is enabled by default so visits, traffic sources, page
+            usage, scroll depth, and outbound clicks can be measured in GA4.
+            You can switch this site to essential-only tracking here at any
+            time. Current mode: <strong>{consentMode}</strong>.
           </p>
         </div>
 
@@ -62,4 +67,3 @@ export function ConsentBanner() {
     </div>
   );
 }
-

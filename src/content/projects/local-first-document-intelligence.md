@@ -1,10 +1,10 @@
 ---
 title: "Local-first document intelligence"
-subtitle: "Private document retrieval built around evidence, typed facts, and local model boundaries"
-summary: "Built a local-first document intelligence system for ingesting records, retrieving citation-backed answers, and keeping trust-sensitive data under explicit local control."
-problem: "Document-heavy personal and operational workflows are hard to query well, and cloud-first AI patterns create unnecessary privacy risk when the material is sensitive."
-role: "Independent builder exploring trustworthy local-first AI workflows"
-scope: "Document ingestion, retrieval quality, local model integration, typed fact extraction, and citation-backed answer design"
+subtitle: "Private retrieval built around evidence, typed facts, and local model boundaries"
+summary: "Built a local-first document intelligence system for ingesting records, retrieving source-backed answers, and keeping sensitive data under local control."
+problem: "Sensitive document workflows need useful retrieval without forcing every record through a cloud-first AI path."
+role: "Independent builder for a local-first AI retrieval workflow"
+scope: "Document ingestion, chunking, embeddings, retrieval quality, local model integration, typed fact extraction, and citation-backed answer design"
 year: "Recent work"
 status: "Exploration"
 featured: false
@@ -35,7 +35,7 @@ audience:
   - "Document intelligence"
   - "Retrieval systems"
 architectureTitle: "Local-first document intelligence pipeline"
-architectureSummary: "The system keeps document acquisition, local persistence, retrieval, fact extraction, and answer generation separate so the product can stay private, inspectable, and easier to trust than a generic cloud chatbot."
+architectureSummary: "The system keeps document acquisition, local persistence, retrieval, fact extraction, and answer generation separate so sensitive records stay private, inspectable, and evidence-backed."
 architectureLayers:
   - name: "Acquisition and persistence layer"
     description: "Documents are selected in the browser, uploaded in bounded batches, and persisted locally through a FastAPI backend backed by DuckDB."
@@ -66,7 +66,7 @@ decisions:
 
 ## What I built
 
-I built a local-first document intelligence system for ingesting records, retrieving grounded answers, and keeping sensitive material under explicit local control. The point was not to build another generic chat interface. The point was to design a workflow where retrieval quality, evidence, and privacy all mattered from the start.
+I built a local-first document intelligence system for ingesting records, retrieving grounded answers, and keeping sensitive material under explicit local control. The workflow was designed around retrieval quality, evidence, and privacy from the start.
 
 ## How I approached it
 
@@ -92,4 +92,4 @@ So the design biased toward:
 
 ## Results and impact
 
-This project shows how I think about applied AI when privacy and trust matter. The value is not in making a model sound smart. It is in building a system where ingestion, retrieval, evidence, and answer generation are clear enough that a user can understand why the system said what it said.
+The system makes the answer path inspectable: ingestion is explicit, retrieval is source-backed, structured facts can support deterministic calculations, and unsupported answers have to surface evidence gaps instead of pretending confidence.

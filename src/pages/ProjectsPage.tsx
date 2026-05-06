@@ -19,11 +19,10 @@ export function ProjectsPage() {
 
       <section className="project-collection">
         <div className="project-collection__header">
-          <p className="section-kicker">Featured studies</p>
-          <h2>Flagship technical stories</h2>
+          <h2 className="section-kicker section-kicker--standalone">Production systems</h2>
         </div>
 
-        <div className="project-grid project-grid--editorial">
+        <div className="project-list">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
@@ -32,11 +31,10 @@ export function ProjectsPage() {
 
       <section className="project-collection">
         <div className="project-collection__header">
-          <p className="section-kicker">Additional work</p>
-          <h2>Adjacent technical exploration</h2>
+          <h2 className="section-kicker section-kicker--standalone">Applied AI and platform enablement</h2>
         </div>
 
-        <div className="project-grid project-grid--secondary">
+        <div className="project-list">
           {secondaryProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}

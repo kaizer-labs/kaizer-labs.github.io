@@ -1,13 +1,13 @@
 ---
 title: "AI-assisted SDLC operating model"
-subtitle: "Turning AI coding tools into governed engineering workflows"
-summary: "Developed a practical operating model for using AI agents in software delivery, focused on repo context, service boundaries, IAM guardrails, GitHub workflows, testing discipline, and cost-aware context management."
-problem: "AI coding tools can accelerate development, but without clear architecture context, repo boundaries, access control, and review discipline, they create hallucinated logic, security risk, and hidden operational cost."
-role: "Engineering leader shaping practical AI-assisted development practices for real software teams"
-scope: "Agent context design, repo documentation patterns, IAM guardrails, GitHub workflow design, SDLC controls, and AI usage governance"
+subtitle: "Bounded agent workflows for real codebases"
+summary: "Designed a practical AI-assisted delivery model around durable repo context, service boundaries, permissions, testing, review, and cost-aware execution."
+problem: "AI coding tools get risky when they work without architecture context, repository boundaries, permission limits, and normal production review."
+role: "Engineering leader shaping practical AI-assisted development practices"
+scope: "Agent context design, repo documentation, IAM guardrails, GitHub workflows, testing discipline, and SDLC controls"
 year: "Recent work"
 status: "Exploration"
-featured: true
+featured: false
 order: 5
 tech:
   - "GitHub Copilot"
@@ -33,9 +33,9 @@ metrics:
   - "Agent guardrails"
   - "Repo context"
 audience:
-  - "Staff Engineer"
-  - "Platform roles"
-  - "Engineering Manager"
+  - "Technical leadership"
+  - "Platform teams"
+  - "Engineering leadership"
 architectureTitle: "AI-assisted SDLC control model"
 architectureSummary: "The model separates AI productivity from production authority. Agents can assist with implementation, documentation, and test generation, but architecture, permissions, reviews, and deployment boundaries remain explicit and human-owned."
 architectureLayers:
@@ -68,7 +68,7 @@ decisions:
 
 ## What I built
 
-I developed a practical operating model for using AI-assisted development inside real engineering workflows. The focus was not on using AI to generate more code blindly. The focus was on giving AI tools enough context to be useful while keeping architecture, security, testing, and production safety under control.
+I developed a practical operating model for using AI-assisted development inside real engineering workflows. The focus was not more code generation. The focus was giving AI tools enough durable context to be useful while keeping architecture, security, testing, and production safety under engineering control.
 
 The core idea is simple: AI agents need boundaries. They need to know what service they are working in, what the system does, which integrations matter, what they are allowed to touch, and how changes move through review and deployment.
 
@@ -100,4 +100,4 @@ That distinction makes AI adoption safer for engineering leaders because it give
 
 ## Results and impact
 
-This work shows how I think about AI in software engineering: not as hype, but as a practical engineering system. The value is in combining AI-assisted development with architecture context, security boundaries, testing discipline, and delivery workflows that normal teams can operate.
+The operating model keeps AI close to implementation, documentation, test generation, and refactoring while leaving architecture, permissions, reviews, and deployment under explicit human ownership.
