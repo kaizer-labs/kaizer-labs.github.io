@@ -14,11 +14,11 @@ export const site = {
   newsletterSnippet:
     "The notes stay close to implementation reality: fanout-heavy workflows, local-first AI retrieval, platform transitions, and guardrails that keep AI useful inside normal delivery.",
   heroHeadline:
-    "I lead backend and platform work for high-throughput scheduling, routing, notifications, and AI retrieval systems.",
+    "I lead backend and platform work for reliable, high-throughput systems that support complex product and operational workflows.",
   heroIntro:
-    "I stay close to architecture and implementation while building the operating habits that keep teams shipping reliable systems under scale.",
+    "I stay close to architecture and implementation while building the engineering habits that keep teams shipping safely under scale.",
   workIntro:
-    "Recent work spans sub-second scheduling paths, fanout-heavy event platforms, platform modernization, and AI systems that teams can actually operate.",
+    "Recent work spans performance-critical APIs, event-driven platforms, service boundaries, data-access architecture, platform modernization, and applied AI systems that teams can operate.",
   contactHeadline: "Discuss backend/platform roles",
   contactBody:
     "I am most useful in roles that need backend depth, platform judgment, and technical leadership across reliability, performance, and delivery quality."

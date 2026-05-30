@@ -14,9 +14,9 @@ export function ContactPage() {
           <p className="section-kicker">Direct channels</p>
           <h1>Talk with me about backend/platform leadership.</h1>
           <p>
-            Best fit: roles and teams working through performance bottlenecks,
-            service boundaries, reliability, event-driven workflows, or applied AI
-            systems that need production discipline.
+            Best fit: teams working through performance bottlenecks, reliability gaps,
+            service boundaries, platform adoption, event-driven systems, or applied AI
+            workflows that need production discipline.
           </p>
         </div>
 

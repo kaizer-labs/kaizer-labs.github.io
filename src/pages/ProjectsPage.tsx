@@ -15,9 +15,9 @@ export function ProjectsPage() {
           <p className="section-kicker">Engineering case studies</p>
           <h1>Production backend, platform, and applied AI systems.</h1>
           <p>
-            A focused set of projects showing the problems I solve best: latency,
-            throughput, correctness under concurrency, platform transitions, and
-            practical AI retrieval.
+            A focused set of case studies showing how I approach latency, throughput,
+            correctness under concurrency, service boundaries, platform adoption,
+            event-driven workflows, and production-grade AI retrieval.
           </p>
         </div>
       </section>
