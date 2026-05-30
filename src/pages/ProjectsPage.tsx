@@ -13,6 +13,12 @@ export function ProjectsPage() {
       <section className="project-hub">
         <div className="project-hub__intro">
           <p className="section-kicker">Engineering case studies</p>
+          <h1>Production backend, platform, and applied AI systems.</h1>
+          <p>
+            A focused set of projects showing the problems I solve best: latency,
+            throughput, correctness under concurrency, platform transitions, and
+            practical AI retrieval.
+          </p>
         </div>
       </section>
 
@@ -50,7 +56,7 @@ export function ProjectsPage() {
             data-analytics-event="contact_click"
             data-analytics-label="projects_final_cta_connect"
           >
-            Connect
+            Discuss backend/platform work
           </Link>
           <Link className="button button--ghost" to="/about">
             About me

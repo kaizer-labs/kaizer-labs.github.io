@@ -36,7 +36,7 @@ export function HomePage() {
                   data-analytics-event="projects_cta_click"
                   data-analytics-label="home_see_case_studies"
                 >
-                  See case studies
+                  View backend case studies
                 </Link>
                 <Link className="button button--ghost" to="/about">
                   About me
@@ -141,7 +141,7 @@ export function HomePage() {
         <p>{site.contactBody}</p>
         <div className="hero__actions">
           <Link className="button" to="/contact" data-analytics-event="contact_click" data-analytics-label="home_final_cta_connect">
-            Connect
+            Start a conversation
           </Link>
           <Link className="button button--ghost" to="/projects">
             Explore projects

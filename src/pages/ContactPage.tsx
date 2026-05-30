@@ -12,7 +12,12 @@ export function ContactPage() {
       <section className="contact-page">
         <div className="contact-page__intro">
           <p className="section-kicker">Direct channels</p>
-          <h1>Connect</h1>
+          <h1>Talk with me about backend/platform leadership.</h1>
+          <p>
+            Best fit: roles and teams working through performance bottlenecks,
+            service boundaries, reliability, event-driven workflows, or applied AI
+            systems that need production discipline.
+          </p>
         </div>
 
         <div className="contact-sheet">
@@ -46,7 +51,7 @@ export function ContactPage() {
               data-analytics-label="github"
             >
               <span className="contact-row__label">GitHub</span>
-              <span>code</span>
+              <span>Profile and code samples</span>
             </a>
           </div>
 

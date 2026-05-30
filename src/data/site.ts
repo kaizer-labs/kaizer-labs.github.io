@@ -1,6 +1,6 @@
 export const site = {
   name: "Kaizer Charania",
-  role: "Distributed systems, platform, and AI retrieval",
+  role: "Backend/platform engineering lead",
   location: "San Jose, CA",
   email: "kaizercharania11@gmail.com",
   website: "https://kaizer-labs.github.io/",
@@ -14,14 +14,14 @@ export const site = {
   newsletterSnippet:
     "The notes stay close to implementation reality: fanout-heavy workflows, local-first AI retrieval, platform transitions, and guardrails that keep AI useful inside normal delivery.",
   heroHeadline:
-    "I build distributed backend systems and the operating discipline that keeps delivery moving under scale.",
+    "I lead backend and platform work for high-throughput scheduling, routing, notifications, and AI retrieval systems.",
   heroIntro:
-    "My work spans event-driven platforms, scheduling and routing systems, performance-critical APIs, practical AI retrieval, and technical leadership. The common thread is turning unstable growth into systems the team can operate.",
+    "I stay close to architecture and implementation while building the operating habits that keep teams shipping reliable systems under scale.",
   workIntro:
-    "",
-  contactHeadline: "Interested in the work?",
+    "Recent work spans sub-second scheduling paths, fanout-heavy event platforms, platform modernization, and AI systems that teams can actually operate.",
+  contactHeadline: "Discuss backend/platform roles",
   contactBody:
-    "This site collects backend, platform, and applied AI systems work with an emphasis on reliability, speed, and architecture a team can keep using."
+    "I am most useful in roles that need backend depth, platform judgment, and technical leadership across reliability, performance, and delivery quality."
 };
 
 export const newsletterTopics = [

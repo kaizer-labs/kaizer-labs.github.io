@@ -820,7 +820,7 @@ textarea {
   inset: 0;
   background:
     linear-gradient(135deg, var(--about-overlay-strong), var(--about-overlay-soft)),
-    url("https://loading.io/assets/mod/background/network/thumbnail.jpg") center/cover no-repeat;
+    url("/hero-network.jpg") center/cover no-repeat;
   opacity: 0.56;
   transform: scale(1.08);
   transform-origin: center;
@@ -2624,6 +2624,13 @@ textarea {
   line-height: 1.04;
   letter-spacing: -0.05em;
   color: var(--color-text-strong-ui);
+}
+
+.contact-page__intro p:last-child {
+  max-width: 48rem;
+  margin: 0;
+  color: var(--color-muted-ui);
+  line-height: 1.62;
 }
 
 .contact-page .contact-sheet {
