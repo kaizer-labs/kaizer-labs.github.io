@@ -1,6 +1,6 @@
 export const site = {
   name: "Kaizer Charania",
-  role: "Backend/platform engineering lead",
+  role: "Staff-level backend/platform engineer",
   location: "San Jose, CA",
   email: "kaizercharania11@gmail.com",
   website: "https://kaizer-labs.github.io/",
@@ -10,62 +10,62 @@ export const site = {
     "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7452248620147433472",
   newsletterTitle: "LinkedIn newsletter",
   newsletterIntro:
-    "I write about the engineering work behind scalable platforms: event streams, retrieval systems, production guardrails, and the habits that make teams safer under pressure.",
+    "I write about practical AI-assisted engineering: repo context, implementation planning, test generation, documentation, review feedback, and the guardrails that keep AI useful inside real delivery.",
   newsletterSnippet:
-    "The notes stay close to implementation reality: fanout-heavy workflows, local-first AI retrieval, platform transitions, and guardrails that keep AI useful inside normal delivery.",
+    "The newsletter supports the platform story rather than replacing it. It shows how I think about AI SDLC, human review, bounded automation, and engineering systems that remain understandable.",
   heroHeadline:
-    "I lead backend and platform work for reliable, high-throughput systems that support complex product and operational workflows.",
+    "Backend architecture, platform systems, and delivery discipline.",
   heroIntro:
-    "I stay close to architecture and implementation while building the engineering habits that keep teams shipping safely under scale.",
+    "I help turn complex product and operational workflows into backend systems with clearer boundaries, safer delivery paths, and patterns other engineers can build on.",
   workIntro:
-    "Recent work spans performance-critical APIs, event-driven platforms, service boundaries, data-access architecture, platform modernization, and applied AI systems that teams can operate.",
+    "Hands-on backend leadership across API design, data models, async workflows, observability, rollout planning, and reusable engineering patterns.",
   contactHeadline: "Discuss backend/platform roles",
   contactBody:
-    "I am most useful in roles that need backend depth, platform judgment, and technical leadership across reliability, performance, and delivery quality."
+    "I am most useful in roles that need hands-on backend depth, platform judgment, and technical leadership across reliability, system boundaries, and production delivery."
 };
 
 export const newsletterTopics = [
   "AI-assisted SDLC",
-  "Event-driven systems",
-  "Local-first AI",
-  "Platform transitions"
+  "Repo context",
+  "Review guardrails",
+  "Human-owned delivery"
 ];
 
 export const values = [
   {
-    title: "Systems over heroics",
-    body: "I prefer architectures and team habits that keep working under pressure instead of relying on heroic cleanup."
+    title: "Backend depth first",
+    body: "I stay close to the API contracts, data models, transaction boundaries, queues, workers, and production behavior that decide whether a platform actually holds up."
   },
   {
-    title: "Business-aware engineering",
-    body: "The strongest work changed latency, throughput, reliability, or delivery quality, not just code shape."
+    title: "Platform work with adoption paths",
+    body: "Shared patterns only matter when other engineers can understand them, use them safely, and extend them without repeated one-off coaching."
   },
   {
-    title: "Practical platform thinking",
-    body: "Platform work only matters if it makes the next engineer faster, clearer, and less likely to repeat avoidable mistakes."
+    title: "Tradeoffs made explicit",
+    body: "I prefer designs that name the reliability, latency, correctness, rollout, and ownership tradeoffs before implementation starts."
   },
   {
-    title: "Clear technical leadership",
-    body: "Architecture has to travel through reviews, onboarding, rollout plans, and expectations the team can actually follow."
+    title: "Delivery systems, not heroics",
+    body: "Architecture, review habits, testing, observability, rollout plans, and mentorship are part of the system when teams are shipping under pressure."
   }
 ];
 
 export const timeline = [
   {
-    title: "Backend and data platform depth",
-    body: "Early work centered on APIs, high-volume data workflows, identity resolution, and reusable service foundations."
+    title: "Python backend and data platforms",
+    body: "Early work centered on Flask services, OpenAPI contracts, partner integrations, ETL workflows, validation, and reusable microservice foundations."
   },
   {
-    title: "Platform ownership and modernization",
-    body: "The scope expanded into service boundaries, GraphQL and Hasura patterns, async processing, search-backed workflows, and platform adoption."
+    title: "Operational marketplace systems",
+    body: "The scope expanded into scheduling, availability, routing, notifications, service bundling, payments, fulfillment, analytics, and search-backed workflows."
   },
   {
-    title: "Leadership and operating systems",
-    body: "The work became part architecture, part delivery system: mentoring, review quality, onboarding, execution cadence, and production readiness."
+    title: "Platform modernization and team leverage",
+    body: "The work became service boundaries, GraphQL and Hasura enablement, architecture reviews, rollout planning, onboarding, and clearer ownership across backend teams."
   },
   {
-    title: "Applied AI and AI-assisted SDLC",
-    body: "Recent work extends the platform story into RAG systems, local-first document intelligence, and practical AI-assisted development guardrails."
+    title: "AI-assisted engineering practice",
+    body: "Recent work applies AI to implementation planning, code review, documentation, test generation, RAG workflows, and bounded engineering automation."
   }
 ];
 
@@ -73,41 +73,41 @@ export const workTimeline = [
   {
     id: "adara",
     company: "Adara",
-    role: "Software Engineer I -> Software Engineer II -> Lead Engineer",
+    role: "Software Engineer I -> Software Engineer II -> Lead Onboarding Engineer",
     period: "March 2019 - March 2022",
     startDate: "2019-03",
     endDate: "2022-03",
     milestones: [
       {
         date: "2019-03",
-        roleTitle: "Software Engineer I",
-        label: "Joined Adara as Software Engineer I",
-        detail: "Started building backend and data-platform foundations."
+        roleTitle: "Software Engineer II",
+        label: "Built travel MarTech backend services",
+        detail: "Built Flask and Connexion microservices, OpenAPI contracts, ETL workflows, partner APIs, validation flows, and deployment conventions."
       },
       {
         date: "2020-08",
         roleTitle: "Software Engineer II",
-        label: "Promoted to Software Engineer II",
-        detail: "Expanded ownership across identity resolution, event-driven data pipelines, and reusable microservice patterns."
+        label: "Expanded into reusable platform patterns",
+        detail: "Standardized service templates, shared packages, CI/CD patterns, and API integration practices for travel MarTech data platforms."
       },
       {
         date: "2021-04",
-        roleTitle: "Lead Engineer",
-        label: "Promoted to Lead Engineer",
-        detail: "Took on broader ownership across system design and platform leverage."
+        roleTitle: "Lead Onboarding Engineer",
+        label: "Led partner onboarding architecture",
+        detail: "Led backend onboarding architecture for audience activation, including validation, taxonomy generation, delivery tracking, and partner distribution."
       },
       {
         date: "2021-09",
-        roleTitle: "Lead Engineer",
-        label: "Scaled high-throughput platform work",
-        detail: "Scaled identity-resolution throughput from 5K to 20K+ writes/sec, reduced infrastructure cost by 30%, and worked on data workflows supporting 5TB+ daily volume across 200+ integrations."
+        roleTitle: "Lead Onboarding Engineer",
+        label: "Designed the Integration Adapter Service",
+        detail: "Designed an async, configuration-driven adapter service for partners such as LiveRamp, Google Ads, Meta, The Trade Desk, and Adobe."
       }
     ]
   },
   {
     id: "goodyear",
     company: "Goodyear",
-    role: "Software Engineer Lead",
+    role: "Senior Software Engineer -> Software Engineer Lead",
     period: "March 2022 - Present",
     startDate: "2022-03",
     endDate: "Present",
@@ -115,83 +115,83 @@ export const workTimeline = [
       {
         date: "2022-03",
         roleTitle: "Senior Software Engineer",
-        label: "Joined Goodyear as Senior Software Engineer",
-        detail: "Started working across backend and platform systems."
+        label: "Joined AndGo backend platform work",
+        detail: "Built scheduling, availability, routing, notification, and data-access workflows for a commerce-enabled vehicle-servicing marketplace."
       },
       {
         date: "2022-08",
         roleTitle: "Senior Software Engineer",
-        label: "Started leading a team of 4 engineers",
-        detail: "Took on team leadership alongside architecture and delivery ownership."
+        label: "Redesigned high-volume scheduling paths",
+        detail: "Optimized appointment scheduling and availability with Redis-backed slots, PostgreSQL tuning, idempotent APIs, conflict detection, and observability."
       },
       {
         date: "2023-03",
         roleTitle: "Senior Software Engineer",
-        label: "Team expanded to 6 engineers",
-        detail: "Scope grew across scheduling, routing, pricing, and engineering systems."
+        label: "Moved into platform modernization",
+        detail: "Helped extract user, vehicle, service catalog, scheduling, routing, notification, and data-access workflows into clearer backend service boundaries."
       },
       {
         date: "2023-10",
         roleTitle: "Software Engineer Lead",
         label: "Promoted to Software Engineer Lead",
-        detail: "Moved into official lead ownership with an 8-engineer team, a role I continue to hold today."
+        detail: "Set technical direction for an 8-engineer backend/data-platform team while staying hands-on in architecture, implementation, and production reliability."
       },
       {
         date: "2024-01",
         roleTitle: "Software Engineer Lead",
-        label: "Continuing as Software Engineer Lead",
-        detail: "As Software Engineer Lead, improved scheduler latency from roughly 30 seconds to under one second, supported around 1,000 requests per second, and contributed to 5x platform growth while reducing rework from 15% to under 5%."
+        label: "Expanded into AI-assisted delivery and VTD systems",
+        detail: "Built AI-assisted development workflows and contributed to cloud applications for Virtual Tire Development, HPC workflows, shared Python packages, and RAG-based retrieval."
       }
     ]
   }
 ];
 
 export const story = [
-  "I build backend and platform systems for places where latency, throughput, reliability, and delivery pressure all matter at once.",
-  "My work has covered scheduling, routing, event-driven communication, platform modernization, data pipelines, internal retrieval systems, and reusable backend patterns. I like finding the real bottleneck and fixing it in a way the team can keep building on.",
-  "I stay close to architecture and implementation, but I also care about reviews, onboarding, mentoring, rollout plans, and the operating habits that keep a team effective."
+  "I build backend and platform systems for operational workflows where latency, correctness, integration complexity, and delivery pressure all matter.",
+  "My strongest work sits at the boundary between hands-on backend implementation and platform leverage: scheduling orchestration, event-driven notifications, adapter-based integrations, service-boundary modernization, GraphQL data access, and AI-assisted delivery systems.",
+  "I like concrete architecture: API contracts, data models, idempotency, retries, queues, observability, rollout plans, and team practices that make the next change safer."
 ];
 
 export const skills = {
-  frontend: ["React", "Apollo integration", "Full-stack delivery"],
+  frontend: ["React", "GraphQL clients", "Full-stack delivery"],
   backend: [
     "Python",
     "FastAPI / Flask",
-    "REST API design",
-    "GraphQL / Hasura",
-    "Postgres / DynamoDB / Redis",
-    "Performance optimization"
+    "REST / GraphQL / gRPC APIs",
+    "PostgreSQL / DynamoDB / Redis",
+    "Kafka / AWS MSK",
+    "Idempotency / rate limiting / concurrency controls"
   ],
   methodology: [
     "Microservices",
     "Event-driven architecture",
     "AWS / GCP",
     "Docker / Kubernetes",
-    "Roadmap ownership",
-    "Architecture review",
-    "Mentorship / onboarding",
-    "RAG pipelines / AWS Bedrock"
+    "Service decomposition",
+    "Architecture reviews / ADRs",
+    "Observability / incident response",
+    "RAG / AI-assisted SDLC"
   ]
 };
 
 export const proofPoints = [
-  { label: "Scheduler latency", value: "~30s -> <1s" },
-  { label: "Notification platform", value: "~1,200/sec, p99 ~300ms" },
-  { label: "Platform growth", value: "5x business growth" },
-  { label: "Team scope", value: "8-engineer team" },
-  { label: "Delivery quality", value: "15% -> <5% rework" }
+  { label: "Backend depth", value: "Python backend systems" },
+  { label: "Distributed systems", value: "Event-driven reliability" },
+  { label: "Platform modernization", value: "Service boundaries" },
+  { label: "Data access", value: "GraphQL / Hasura" },
+  { label: "AI engineering", value: "AI-assisted SDLC" }
 ];
 
 export const leadershipSignals = [
-  "Led backend and data platform work across an 8-engineer team while staying directly involved in architecture and delivery.",
-  "Standardized GraphQL, Hasura, event workflow, async processing, and search-backed patterns so teams had clearer paths for new work.",
-  "Reduced rework from 15% to under 5% by tightening design review, testing discipline, rollout planning, and production readiness.",
-  "Mentored engineers through technical design, working sessions, feedback, and clearer ownership expectations."
+  "Set technical direction for an 8-engineer backend/data-platform team while staying hands-on in architecture, implementation, and production support.",
+  "Turned operational workflows into clearer platform boundaries across scheduling, notifications, service catalog, routing, data access, and customer communication.",
+  "Used reviews, TRDs, API contracts, rollout plans, testing, and observability to make backend decisions easier for product, operations, and engineering teams to execute.",
+  "Applied AI-assisted development as a bounded engineering workflow with repo context, human review, test generation, documentation, and implementation planning."
 ];
 
 export const references = [
-  "Led backend and platform work across scheduling, fleet, pricing, notifications, and shared engineering systems while supporting 5x platform growth.",
-  "Improved scheduler latency from roughly 30 seconds to under one second in a workflow handling around 1,000 requests per second.",
-  "Scaled identity-resolution throughput from 5K to 20K+ writes per second while reducing infrastructure cost by 30%.",
-  "Standardized GraphQL and Hasura patterns, migration discipline, mentoring, and architecture review rigor across recurring backend work."
+  "Built Python backend and platform systems across scheduling, availability, notifications, service catalog, routing, data access, and integration workflows.",
+  "Redesigned scheduling availability around Redis-backed slots, PostgreSQL tuning, idempotent APIs, conflict detection, and correctness-preserving booking flows.",
+  "Rebuilt notifications into a Kafka/MSK-backed multi-channel platform for email, SMS, and in-app delivery.",
+  "Led platform modernization through service boundaries, GraphQL/Hasura patterns, architecture review rigor, rollout planning, and AI-assisted delivery practices."
 ];

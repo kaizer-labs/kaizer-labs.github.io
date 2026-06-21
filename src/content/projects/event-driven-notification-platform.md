@@ -1,119 +1,92 @@
 ---
 title: "Event-driven notification platform"
-subtitle: "Kafka-backed communication platform for fanout-heavy workflows"
-summary: "Rebuilt notifications from inline email handoff into an event-driven platform for email, SMS, and in-app delivery."
-problem: "Provider latency, traffic spikes, and multi-channel fanout were coupling core product flows to notification delivery."
-role: "Technical lead and hands-on implementer for the architecture redesign, rollout plan, and delivery model"
-scope: "MSK tradeoff analysis, event contracts, notification-state model, consumer implementation, rollout sequencing, and cross-functional execution"
-year: "Prior work"
+subtitle: "Kafka/MSK-backed communication platform for email, SMS, and in-app delivery"
+summary: "Redesigned notifications from synchronous email handoff into an event-driven, multi-channel platform with tracked delivery state, retries, duplicate protection, and channel isolation."
+problem: "Notification delivery was coupled to core product flows, so provider latency, traffic spikes, retries, and new channel requirements created reliability and user-experience risk."
+role: "Technical lead and hands-on implementer for the notification architecture redesign"
+scope: "MSK tradeoff analysis, event contracts, channel workers, delivery-state modeling, retries, DLQs, Redis-backed in-app reads, rollout sequencing, and production support"
+year: "Goodyear"
 status: "Featured"
 featured: true
-order: 1
+order: 2
 tech:
   - "AWS MSK"
   - "Kafka"
-  - "SendGrid"
-  - "Twilio"
+  - "Python"
   - "Redis"
   - "GraphQL / Hasura"
-  - "Python"
-toolsTitle: "Built with event-driven platform patterns"
+  - "SendGrid / Twilio"
+toolsTitle: "Built with event-driven reliability patterns"
 tools:
-  - "MSK-backed event ingestion and replayable channel fanout"
-  - "Autoscaling consumer daemons by channel and traffic profile"
-  - "Tracked notification records with status transitions for duplicate protection"
-  - "Redis caching, GraphQL subscriptions, and query/index optimization for in-app reads"
+  - "Kafka/MSK-backed event ingestion and channel fanout"
+  - "Channel-specific workers for email, SMS, and in-app delivery"
+  - "Tracked notification records for status, retries, and duplicate protection"
+  - "Redis, query tuning, and GraphQL subscriptions for in-app reads"
 special:
-  - "Scaled from roughly 100 notifications/sec to around 1,200/sec."
-  - "Brought the new delivery path to roughly p99 300 ms."
-  - "Separated provider handoff from request-time execution so core workflows were no longer blocked by channel fanout."
+  - "Separated provider handoff from request-time product flows."
+  - "Used explicit notification state as the idempotency control point."
+  - "Kept channels isolated so scaling and failure handling were easier to reason about."
 metrics:
-  - "~100 -> ~1,200/sec"
-  - "p99 ~300 ms"
-  - "Email, SMS, in-app"
+  - "Kafka/MSK backbone"
+  - "Multi-channel delivery"
+  - "p99 300 ms"
 audience:
   - "Distributed systems"
-  - "Backend architecture"
-  - "Platform design"
+  - "Event-driven architecture"
+  - "Backend reliability"
 architectureTitle: "Notification delivery pipeline"
-architectureSummary: "The redesign separated business-event production from outbound delivery, giving the platform replayability, channel isolation, stronger duplicate protection, and far better behavior under fanout-heavy traffic."
+architectureSummary: "The redesign separated business-event production from outbound delivery, giving the platform replayability, channel isolation, stronger duplicate protection, and better behavior under fanout-heavy traffic."
 architectureLayers:
-  - name: "Upstream business services"
-    description: "Scheduling, service, fleet, and customer workflows emitted notification intent instead of waiting on provider calls during request-time execution."
+  - name: "Business-event producers"
+    description: "Scheduling, fleet, service, and customer workflows emitted notification intent instead of waiting on provider calls."
     bullets:
-      - "Synchronous request paths stopped doing direct notification handoff"
-      - "Business events stayed independent of email, SMS, and in-app provider latency"
-      - "Fanout-heavy flows no longer blocked user-facing workflows"
-  - name: "MSK topics and orchestration"
-    description: "AWS MSK became the streaming backbone, with separate processing paths by channel so traffic profiles did not interfere with each other."
+      - "Core product flows stopped depending on direct email or SMS handoff"
+      - "Business events stayed separate from channel-specific provider latency"
+      - "Fanout-heavy communication no longer blocked request-time execution"
+  - name: "MSK and worker orchestration"
+    description: "AWS MSK provided the streaming backbone for channel-specific processing and replayable delivery."
     bullets:
-      - "Replayability and multi-consumer expansion were first-class requirements"
-      - "Channel isolation made scaling and troubleshooting much more controlled"
-      - "Managed Kafka removed the need to operate the cluster during a rapid-growth phase"
-  - name: "State, delivery, and user-facing reads"
-    description: "Notification records, worker daemons, provider adapters, GraphQL subscriptions, and Redis caching handled delivery state, duplicate protection, and in-app read pressure."
+      - "Topics and consumers supported multi-channel fanout"
+      - "Workers scaled by channel and traffic profile"
+      - "Retries and DLQs made failures visible instead of hidden inside request paths"
+  - name: "Delivery state and reads"
+    description: "Persisted notification records, Redis, GraphQL subscriptions, and query tuning handled idempotency and user-facing in-app reads."
     bullets:
-      - "Workers checked notification status before provider handoff and during retries"
-      - "Redis and query/index tuning reduced read amplification for logged-in users"
-      - "Auditability improved because state transitions became explicit and traceable"
+      - "Workers checked notification status before provider handoff"
+      - "Status transitions improved auditability and duplicate protection"
+      - "In-app reads were optimized separately from outbound delivery"
 decisions:
-  - title: "Choose MSK over SQS or self-managed Kafka"
-    detail: "The decision was about system characteristics, not just raw throughput. We needed replayability, multiple downstream consumers, and a design aligned with a broader event-driven platform direction. MSK gave us that without taking on Kafka operations during a period of rapid scale growth."
-  - title: "Partition by channel instead of forcing one shared stream"
-    detail: "Email, SMS, in-app, and operational communication had different delivery and scaling profiles. Separate processing paths gave us cleaner isolation, better scaling control, and less cross-channel interference."
-  - title: "Use tracked notification records as the control point for idempotency"
-    detail: "Each notification lived as a persisted record with status transitions. Workers checked that record before provider handoff and during retries, which let us aim for at-least-once internal processing without blindly duplicating external sends."
+  - title: "Choose event streams for replay and fanout"
+    detail: "The platform needed more than a queue that moved one message once. MSK gave the system replayability, multiple consumers, and a backbone for future event-driven workflows."
+  - title: "Partition delivery behavior by channel"
+    detail: "Email, SMS, and in-app notifications have different latency, provider, retry, and read patterns. Keeping channel paths separate made scaling and troubleshooting more controlled."
+  - title: "Use notification records as the delivery control point"
+    detail: "At-least-once processing is safer when workers can inspect persisted status before handoff and during retries. The status model became the place to enforce duplicate protection."
 ---
 ## What I built
 
-I led the redesign of the notifications platform when the original synchronous email flow stopped holding up under growth. Traffic had moved from roughly 100 notifications per second toward 1,200, and product needed SMS and in-app delivery in addition to email.
+I led the redesign of notifications from a synchronous email-oriented flow into a Kafka/MSK-backed multi-channel platform for email, SMS, and in-app delivery.
 
-That changed the problem from “send an email” to “run a multi-channel communication platform without slowing the rest of the product down.”
+The old shape was simple, but that simplicity became coupling. Core product workflows had to care too much about provider latency, retry behavior, fanout pressure, and notification state.
 
 ## How I approached it
 
-I treated it as both an architecture problem and a delivery problem. I wrote the technical review, worked through the MSK tradeoff, shaped the rollout plan, and helped split the work across a five-engineer team.
+I treated notification delivery as a platform workflow:
 
-The technical design centered on:
+- business services publish notification intent
+- MSK carries events into channel-specific processing paths
+- workers handle provider handoff, retries, and status transitions
+- Redis and GraphQL support in-app read behavior separately
+- DLQs, dashboards, and status records make failures observable
 
-- moving delivery off synchronous request paths
-- using AWS MSK as a replayable multi-consumer backbone
-- splitting processing by channel instead of forcing one shared stream
-- adding autoscaling consumers, retries, and tracked notification state
-- reducing in-app read pressure with Redis caching and query/index tuning
-- using GraphQL subscriptions for live in-app updates
+That split let the platform grow without forcing scheduling, fleet, or customer flows to block on communication delivery.
 
 ## Tradeoffs and key decisions
 
-The biggest tradeoff was complexity versus resilience. Inline notification calls are simpler, but once the system became multi-channel and fanout-heavy, that simplicity turned into coupling between core workflows and provider latency.
+The tradeoff was complexity versus resilience. Direct provider calls are easier to understand at small scale, but they become fragile when traffic spikes, channels multiply, and downstream providers behave differently.
 
-The event-driven design earned its complexity because it let the platform:
-
-- absorb spikes in notification volume
-- keep the rest of the application out of provider latency
-- support replayability and multiple downstream consumers
-- make duplicate prevention and delivery auditing explicit
-
-MSK versus SQS was another key choice. We needed replayability, multiple consumers, and a design that matched a broader event-driven platform direction. We chose MSK over self-managed Kafka because time to market mattered and we did not want to take on Kafka operations during rapid growth.
-
-We also made the notification record the control point for delivery state. Workers checked the record before provider handoff and during retries, which gave us:
-
-- at-least-once internal processing
-- application-level controls to avoid duplicate external sends
-- auditable state transitions for debugging and replay decisions
-
-## Migration and rollout strategy
-
-The rollout had to be treated as a controlled migration:
-
-1. finalize the new schema and service path while preserving upstream compatibility
-2. deploy the new notification service and consumers behind controlled rollout
-3. validate provider handoff, status tracking, and dashboards
-4. switch active traffic to the new event-driven flow
-5. keep rollback available if provider errors, backlog growth, or status inconsistencies crossed acceptable thresholds
+The event-driven design earned its complexity because it separated concerns: product workflows produced intent, workers handled delivery, status records controlled idempotency, and channel isolation kept one delivery path from destabilizing another.
 
 ## Results and impact
 
-Before the redesign, fanout-heavy scenarios could push user-facing paths into multi-second waits and timeout-prone behavior. After the redesign, notification work moved behind a replayable event boundary, handled around 1,200 notifications per second, and brought the new delivery path to roughly p99 300 milliseconds.
-
-The architectural win was not just higher throughput. The platform gained channel isolation, explicit delivery state, safer retries, and a cleaner boundary between product workflows and provider behavior.
+The current resume-backed result is a notification platform that scaled from roughly 100 to 1,200 notifications per second with p99 delivery-path latency around 300 ms. More importantly, the architecture made communication delivery operable: retries, DLQs, status transitions, and channel-specific workers gave the team a system they could monitor, debug, and extend.

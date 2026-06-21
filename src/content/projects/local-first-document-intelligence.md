@@ -1,95 +1,93 @@
 ---
-title: "Local-first document intelligence"
-subtitle: "Private retrieval built around evidence, typed facts, and local model boundaries"
-summary: "Built a local-first document intelligence system for ingesting records, retrieving source-backed answers, and keeping sensitive data under local control."
-problem: "Sensitive document workflows need useful retrieval without forcing every record through a cloud-first AI path."
-role: "Independent builder for a local-first AI retrieval workflow"
-scope: "Document ingestion, chunking, embeddings, retrieval quality, local model integration, typed fact extraction, and citation-backed answer design"
-year: "Recent work"
-status: "Exploration"
+title: "Personal Records Intelligence"
+subtitle: "Local-first RAG built around source-backed answers and deterministic facts"
+summary: "Built a personal local-first document intelligence system for ingesting records, retrieving source-backed answers, and keeping sensitive data under local control."
+problem: "Personal records need useful retrieval and question answering without pushing sensitive documents through a cloud-first AI workflow or hiding where answers came from."
+role: "Independent builder for an applied RAG and local-first backend project"
+scope: "Document ingestion, chunking, embeddings, vector retrieval, fact normalization, LangGraph orchestration, evidence checks, incomplete-information handling, and local model boundaries"
+year: "Personal project"
+status: "Applied RAG"
 featured: false
 order: 7
 tech:
+  - "Python"
   - "FastAPI"
   - "DuckDB"
+  - "LangGraph"
+  - "LangChain"
   - "Ollama"
-  - "Vector retrieval"
-  - "Docker"
-  - "Local embeddings"
 toolsTitle: "Built around local-first retrieval boundaries"
 tools:
-  - "Browser-driven folder and document ingestion"
-  - "DuckDB-backed local persistence and indexing"
-  - "Retrieval, fact extraction, and answer validation services"
-  - "Source-backed evidence inspection for answer trust"
+  - "FastAPI backend for document ingestion and retrieval workflows"
+  - "DuckDB-backed local persistence"
+  - "LangGraph and LangChain orchestration"
+  - "Evidence checks, citations, and fallback behavior"
 special:
-  - "Kept indexed files and structured data local instead of pushing trust-sensitive records to a hosted AI workflow."
-  - "Separated retrieval, fact extraction, and answer composition so each layer could stay inspectable."
-  - "Treated citations and deterministic calculations as trust features, not UI polish."
+  - "Kept sensitive records local instead of defaulting to hosted AI."
+  - "Separated ingestion, retrieval, fact normalization, and answer orchestration."
+  - "Used citations, evidence gaps, and deterministic calculations as trust features."
 metrics:
-  - "Local-first AI"
-  - "Citation-backed answers"
-  - "DuckDB + Ollama"
+  - "Local-first RAG"
+  - "Source-backed answers"
+  - "Deterministic facts"
 audience:
-  - "Private AI workflows"
+  - "Applied AI"
   - "Document intelligence"
-  - "Retrieval systems"
-architectureTitle: "Local-first document intelligence pipeline"
-architectureSummary: "The system keeps document acquisition, local persistence, retrieval, fact extraction, and answer generation separate so sensitive records stay private, inspectable, and evidence-backed."
+  - "Backend systems"
+architectureTitle: "Local-first RAG pipeline"
+architectureSummary: "The system keeps document acquisition, local persistence, retrieval, fact extraction, and answer orchestration separate so sensitive records stay inspectable and answers stay tied to evidence."
 architectureLayers:
-  - name: "Acquisition and persistence layer"
-    description: "Documents are selected in the browser, uploaded in bounded batches, and persisted locally through a FastAPI backend backed by DuckDB."
+  - name: "Ingestion and persistence"
+    description: "Documents are selected, ingested, parsed, and persisted under local control."
     bullets:
-      - "Browser-side folder and file selection stays explicit"
-      - "Indexed files and local data remain under local storage boundaries"
-      - "DuckDB keeps the first version lightweight without adding a separate database service"
+      - "FastAPI handles backend ingestion and workflow APIs"
+      - "DuckDB keeps local structured state lightweight"
+      - "Document handling stays explicit instead of ambient or cloud-first"
   - name: "Retrieval and fact layer"
-    description: "Text extraction, chunking, embeddings, retrieval, and typed fact extraction are separated into services so evidence quality can be improved without rewriting the entire stack."
+    description: "Text extraction, chunking, embeddings, retrieval, and fact normalization are separate pipeline steps."
     bullets:
-      - "Relevant chunks and typed facts are retrieved before answer composition"
-      - "Fact extraction is treated as a distinct capability from answer generation"
-      - "Ranking and evidence building narrow the answer path to trusted source material"
-  - name: "Answer and trust layer"
-    description: "Final responses are generated from local evidence with validation steps that protect against citation mismatch and unsupported numeric claims."
+      - "Relevant chunks are retrieved before answer generation"
+      - "Fact normalization supports deterministic calculations where possible"
+      - "Evidence quality can be improved without rewriting the whole system"
+  - name: "Answer orchestration and trust"
+    description: "LangGraph/LangChain workflows compose answers with traceability and fallback behavior."
     bullets:
-      - "Answer generation stays grounded in retrieved evidence"
-      - "Validation checks make unsupported responses easier to catch"
-      - "Deterministic calculation can be used when facts are structured enough to support it"
+      - "Answers include source-backed evidence"
+      - "Incomplete-information warnings avoid fake confidence"
+      - "Fallback behavior handles insufficient retrieval context"
 decisions:
-  - title: "Keep the first version local-first and single-user"
-    detail: "The product was intentionally scoped around local trust and inspectability instead of rushing into a multi-user cloud architecture before the retrieval model was solid."
-  - title: "Treat evidence quality as the core product"
-    detail: "The goal was not chat polish. It was whether the system could show where an answer came from and make the answer path understandable enough to trust."
-  - title: "Separate retrieval from deterministic reasoning"
-    detail: "When a question can be answered through typed facts and calculation, the system should prefer explicit logic over a purely generative response."
+  - title: "Keep the first version local-first"
+    detail: "The point of the project was trust and inspectability, so local storage and local model boundaries mattered more than a faster cloud demo."
+  - title: "Separate retrieval from answer composition"
+    detail: "A RAG system is easier to debug when ingestion, chunking, retrieval, fact normalization, and answer orchestration can be inspected independently."
+  - title: "Prefer deterministic logic where the facts support it"
+    detail: "When structured facts can answer a question, deterministic calculation is more trustworthy than asking a model to infer a number from text."
 ---
-
 ## What I built
 
-I built a local-first document intelligence system for ingesting records, retrieving grounded answers, and keeping sensitive material under explicit local control. The workflow was designed around retrieval quality, evidence, and privacy from the start.
+I built Personal Records Intelligence as a local-first document intelligence system for ingesting personal records and answering questions with retrieval-backed responses, source citations, deterministic calculations, and explicit fallback behavior.
+
+This is a personal project, but it is still backend/platform work: ingestion APIs, local persistence, retrieval, orchestration, evidence validation, and trust boundaries.
 
 ## How I approached it
 
-The design treated document intelligence as a pipeline:
+I designed the system as a pipeline:
 
-- acquire files explicitly through browser-driven uploads
-- store structured state locally through FastAPI and DuckDB
-- extract text, chunk it, embed it, and retrieve relevant evidence
-- separate fact extraction from final answer generation
-- validate the final response so unsupported claims are easier to catch
+- ingest records through a FastAPI backend
+- persist local state in DuckDB
+- extract text, chunk documents, and build retrieval context
+- normalize typed facts where deterministic answers are possible
+- orchestrate retrieval and answer generation through LangGraph and LangChain
+- surface citations, evidence checks, incomplete-information warnings, and fallback behavior
 
-That structure keeps the system inspectable. Each layer can be improved without turning the whole product into an opaque prompt wrapper.
+The emphasis is not chat polish. The emphasis is whether the system can explain why an answer should be trusted.
 
 ## Tradeoffs and key decisions
 
-The main tradeoff was convenience versus trust. A cloud-first path would have been faster to demo, but it would have weakened the privacy and inspectability goals that made the project worthwhile.
+The main tradeoff was convenience versus trust. A cloud-first workflow would have been faster to demo, but it would weaken the privacy and inspectability goals.
 
-So the design biased toward:
-
-- local data storage instead of hosted record pipelines
-- explicit evidence and citations instead of ungrounded answers
-- typed facts and deterministic reasoning where the source material supports it
+I kept the first version local-first and single-user so the hardest product question stayed visible: can the system retrieve the right evidence and avoid pretending confidence when context is insufficient?
 
 ## Results and impact
 
-The system makes the answer path inspectable: ingestion is explicit, retrieval is source-backed, structured facts can support deterministic calculations, and unsupported answers have to surface evidence gaps instead of pretending confidence.
+The project shows applied RAG as an engineering system rather than a prompt wrapper. It has ingestion, persistence, retrieval, orchestration, citations, evidence checks, and deterministic fact handling that can be inspected and improved layer by layer.

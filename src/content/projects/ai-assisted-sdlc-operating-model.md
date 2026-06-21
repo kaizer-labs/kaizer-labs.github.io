@@ -1,103 +1,92 @@
 ---
 title: "AI-assisted SDLC operating model"
-subtitle: "Bounded agent workflows for real codebases"
-summary: "Designed a practical AI-assisted delivery model around durable repo context, service boundaries, permissions, testing, review, and cost-aware execution."
-problem: "AI coding tools get risky when they work without architecture context, repository boundaries, permission limits, and normal production review."
-role: "Engineering leader shaping practical AI-assisted development practices"
-scope: "Agent context design, repo documentation, IAM guardrails, GitHub workflows, testing discipline, and SDLC controls"
-year: "Recent work"
-status: "Exploration"
+subtitle: "Bounded AI workflows for implementation planning, testing, docs, and review"
+summary: "Built practical AI-assisted development workflows using Claude, Codex, and parallel agents for code analysis, implementation planning, test generation, documentation, and review feedback."
+problem: "AI coding tools become risky when they operate without repository context, service boundaries, test expectations, human review, and normal delivery controls."
+role: "Engineering leader applying AI to backend delivery without giving up engineering control"
+scope: "Repo context, implementation planning, sub-agent workflows, test generation, documentation, review feedback, newsletter writing, human review, and delivery guardrails"
+year: "Current practice"
+status: "AI SDLC"
 featured: false
-order: 5
+order: 4
 tech:
-  - "GitHub Copilot"
-  - "Codex"
   - "Claude"
-  - "AWS IAM"
-  - "Terraform"
+  - "Codex"
+  - "Cursor"
   - "GitHub Actions"
   - "MCP"
-  - "agent.md"
-toolsTitle: "Built around practical AI engineering guardrails"
+  - "AI evaluation"
+toolsTitle: "Built around bounded AI engineering workflows"
 tools:
-  - "Repo-level agent context and service-boundary documentation"
-  - "IAM-scoped access and least-privilege execution"
-  - "GitHub branch protection, CI checks, and review gates"
-  - "Living architecture and decision documents to control context drift"
+  - "Repo-level context for safer code analysis"
+  - "Parallel sub-agents for planning, implementation, review, and documentation"
+  - "Test generation and review feedback loops"
+  - "Newsletter-backed thinking on AI SDLC and engineering guardrails"
 special:
-  - "Framed AI agents as bounded engineering assistants, not autonomous production owners."
-  - "Connected AI-assisted development to SDLC, security, cost, and maintainability."
-  - "Created a practical model for using AI in legacy and modern codebases without losing engineering control."
+  - "Uses AI as an engineering accelerator, not a production authority."
+  - "Connects AI workflows to tests, review, documentation, and delivery controls."
+  - "Uses public writing to sharpen practical AI SDLC patterns."
 metrics:
-  - "AI SDLC"
-  - "Agent guardrails"
-  - "Repo context"
+  - "AI-assisted SDLC"
+  - "Human review"
+  - "Newsletter-backed practice"
 audience:
-  - "Technical leadership"
   - "Platform teams"
-  - "Engineering leadership"
-architectureTitle: "AI-assisted SDLC control model"
-architectureSummary: "The model separates AI productivity from production authority. Agents can assist with implementation, documentation, and test generation, but architecture, permissions, reviews, and deployment boundaries remain explicit and human-owned."
+  - "Technical leadership"
+  - "AI engineering"
+architectureTitle: "Bounded AI SDLC model"
+architectureSummary: "The model keeps AI close to analysis, planning, implementation support, tests, docs, and review feedback while preserving human ownership of architecture, code review, deployment, and production risk."
 architectureLayers:
-  - name: "Context and service boundary layer"
-    description: "Each repo gives the agent enough context to work safely without guessing the entire enterprise architecture."
+  - name: "Context and planning layer"
+    description: "AI workflows start with repository context and service-boundary understanding before implementation."
     bullets:
-      - "README, agent.md, and YAML configuration define service purpose, startup steps, integrations, and boundaries"
-      - "Architecture and decision documents reduce repeated context rebuilding"
-      - "Legacy business logic is documented before agents modify critical paths"
-  - name: "Security and execution boundary"
-    description: "Agents operate inside least-privilege access patterns instead of broad production credentials."
+      - "Repo documentation and task framing reduce repeated context rebuilding"
+      - "Implementation plans make assumptions, risks, and test scope explicit"
+      - "Sub-agents can inspect different parts of a codebase without owning final judgment"
+  - name: "Implementation support layer"
+    description: "AI assists with code analysis, candidate implementation, test generation, and documentation."
     bullets:
-      - "IAM roles restrict what agents can read, write, or deploy"
-      - "Secrets stay in managed environment variables and GitHub secrets"
-      - "Infrastructure changes remain separated from application changes"
-  - name: "Review, testing, and deployment layer"
-    description: "GitHub workflows, branch protection, tests, and human review prevent AI output from bypassing normal engineering judgment."
+      - "Tests and review feedback are part of the workflow, not afterthoughts"
+      - "Generated output stays tied to local build and verification steps"
+      - "Human review remains the authority before merge or deployment"
+  - name: "Practice and writing layer"
+    description: "Newsletter writing supports the same operating model by turning lessons into reusable engineering guidance."
     bullets:
-      - "Pull requests remain the control point for review"
-      - "CI and test gates catch regressions before merge"
-      - "Deployment stays governed by branch rules and environment controls"
+      - "Public writing focuses on practical AI SDLC, not tool novelty"
+      - "Guardrails, context, and review stay central themes"
+      - "Writing reinforces patterns that can be reused across teams"
 decisions:
-  - title: "Treat AI as an accelerator, not an authority"
-    detail: "The model keeps AI close to coding, refactoring, test generation, and documentation while keeping architecture and production decisions under explicit engineering control."
-  - title: "Make context durable instead of conversational"
-    detail: "Repo-level documentation, agent.md files, and living architecture notes reduce hallucination risk and prevent every AI session from rediscovering the same system."
-  - title: "Control blast radius before increasing autonomy"
-    detail: "The operating model separates experimentation from production by using IAM boundaries, branch protection, CI checks, and human review before any critical path changes land."
+  - title: "Treat AI as an accelerator, not an owner"
+    detail: "AI can help with analysis, planning, implementation, tests, docs, and review feedback, but production authority remains with engineers and existing delivery controls."
+  - title: "Make context durable"
+    detail: "AI output improves when repositories contain enough service purpose, startup, integration, boundary, and testing context for the tool to reason from real constraints."
+  - title: "Use writing as part of the operating system"
+    detail: "The newsletter is not a separate brand lane. It supports the AI SDLC story by documenting practical lessons about bounded automation, human review, and engineering judgment."
 ---
-
 ## What I built
 
-I developed a practical operating model for using AI-assisted development inside real engineering workflows. The focus was not more code generation. The focus was giving AI tools enough durable context to be useful while keeping architecture, security, testing, and production safety under engineering control.
+I built practical AI-assisted development workflows using Claude, Codex, Cursor, and parallel sub-agents for code analysis, implementation planning, test generation, documentation, and review feedback.
 
-The core idea is simple: AI agents need boundaries. They need to know what service they are working in, what the system does, which integrations matter, what they are allowed to touch, and how changes move through review and deployment.
+The goal was not to make AI the engineer. The goal was to use AI to improve the engineering workflow while keeping architecture, review, testing, and production authority explicit.
 
 ## How I approached it
 
-I framed AI-assisted development as an SDLC problem, not a tool-adoption problem.
+I framed AI-assisted development as an SDLC problem:
 
-The model focused on:
+- give tools durable repo and service-boundary context
+- separate planning, implementation, testing, documentation, and review tasks
+- keep generated work behind normal build, test, and review gates
+- use human judgment for architecture, risk, and production decisions
+- write about practical patterns through the LinkedIn newsletter
 
-- repo-level context through README, agent.md, and configuration files
-- service-boundary clarity for legacy and modern systems
-- IAM-scoped access instead of broad cloud credentials
-- GitHub branch protection, required reviews, CI checks, and rollback points
-- living architecture documents to reduce context drift and token waste
-- testing discipline so AI-generated code does not only cover happy paths
-
-This matters more as systems grow. A small AI coding task can work with little context. A production system with legacy workflows, cloud dependencies, and hidden business logic cannot.
+That keeps AI useful without letting it bypass the controls that make backend/platform work safe.
 
 ## Tradeoffs and key decisions
 
-The major tradeoff is autonomy versus control. Giving agents more freedom can increase speed, but it also increases blast radius. The safer pattern is to increase autonomy only after the system has clear guardrails.
+The tradeoff is speed versus control. AI can accelerate analysis and implementation, but a faster bad change is still a bad change.
 
-The model separates:
-
-- exploration work, where autonomy can be higher and blast radius is low
-- production work, where permissions, review, tests, and cost controls need to be strict
-
-That distinction makes AI adoption safer for engineering leaders because it gives the team speed without pretending the risk disappears.
+I keep the model bounded: AI can propose, inspect, draft, test, and explain; engineers still decide, review, merge, deploy, and own production outcomes.
 
 ## Results and impact
 
-The operating model keeps AI close to implementation, documentation, test generation, and refactoring while leaving architecture, permissions, reviews, and deployment under explicit human ownership.
+The latest resume backs this as a real delivery practice, not a side experiment: AI-assisted workflows contributed to faster delivery cycles and lower rework. The newsletter supports the same story by documenting how to use AI in engineering systems without losing context, review discipline, or ownership.

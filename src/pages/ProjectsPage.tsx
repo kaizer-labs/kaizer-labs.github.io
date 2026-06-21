@@ -7,17 +7,17 @@ export function ProjectsPage() {
   return (
     <Layout
       title="Projects | Kaizer Charania"
-      description="Case studies for Kaizer Charania covering backend, platform, and distributed-systems work."
+      description="Case studies for Kaizer Charania covering backend platforms, event-driven systems, integrations, data access, and applied AI engineering."
       frameClass="site-frame--home"
     >
       <section className="project-hub">
         <div className="project-hub__intro">
           <p className="section-kicker">Engineering case studies</p>
-          <h1>Production backend, platform, and applied AI systems.</h1>
+          <h1>Backend and platform systems with concrete implementation stories.</h1>
           <p>
-            A focused set of case studies showing how I approach latency, throughput,
-            correctness under concurrency, service boundaries, platform adoption,
-            event-driven workflows, and production-grade AI retrieval.
+            A focused set of case studies covering scheduling orchestration,
+            event-driven notifications, integration adapters, service boundaries,
+            GraphQL and Hasura data access, AI-assisted delivery, and applied RAG.
           </p>
         </div>
       </section>
@@ -36,7 +36,7 @@ export function ProjectsPage() {
 
       <section className="project-collection">
         <div className="project-collection__header">
-          <h2 className="section-kicker section-kicker--standalone">Applied AI and platform enablement</h2>
+          <h2 className="section-kicker section-kicker--standalone">Platform, data access, and applied AI</h2>
         </div>
 
         <div className="project-list">

@@ -1,91 +1,92 @@
 ---
-title: "Fleet platform modernization"
-subtitle: "Service boundaries, shared APIs, and delivery discipline under growth"
-summary: "Led backend modernization across fleet, scheduling, pricing, notifications, and shared platform systems while supporting 5x business growth."
-problem: "A growing platform needed clearer service ownership, reusable backend patterns, and stronger engineering execution without pausing delivery."
-role: "Technical lead across architecture, enablement, and delivery systems"
-scope: "Service boundaries, GraphQL/Hasura platform adoption, design review rigor, onboarding, and team execution systems"
-year: "Current chapter"
-status: "Featured"
-featured: true
-order: 3
+title: "Platform modernization and service boundaries"
+subtitle: "Incremental modernization across AndGo backend platform workflows"
+summary: "Defined service boundaries and rollout strategy as AndGo workflows moved out of a growing monolith into clearer backend services with stronger ownership, deployment velocity, and production operability."
+problem: "A commerce-enabled vehicle-servicing marketplace needed to keep shipping while scheduling, routing, service catalog, notifications, customer communication, data access, and payment-adjacent workflows were becoming too coupled."
+role: "Software Engineer Lead setting technical direction for backend/data-platform modernization"
+scope: "Service decomposition, Strangler Fig migration, API contracts, TRDs, rollout strategy, ownership boundaries, architecture reviews, production risks, and team execution"
+year: "Goodyear"
+status: "Platform"
+featured: false
+order: 5
 tech:
   - "Python"
-  - "Flask"
-  - "FastAPI"
-  - "GraphQL"
-  - "Hasura"
+  - "Flask / FastAPI"
   - "Kafka"
+  - "GraphQL / Hasura"
   - "AWS"
-toolsTitle: "Built with modern platform patterns"
+  - "Docker / Kubernetes"
+toolsTitle: "Built around incremental modernization"
 tools:
-  - "Monolith-to-microservices transition work"
-  - "GraphQL and Hasura enablement"
-  - "Architecture review and design rigor"
-  - "Roadmap, onboarding, and delivery systems"
+  - "Strangler Fig migration from monolith behavior into clearer services"
+  - "API contracts, data schemas, state transitions, and rollout plans"
+  - "Architecture reviews, ADRs, TRDs, and production-risk reviews"
+  - "Service ownership boundaries across backend and data-platform teams"
 special:
-  - "Supported 5x platform growth while the architecture continued to evolve."
-  - "Improved delivery speed while reducing rework from 15% to under 5%."
-  - "Connected service-boundary work with design reviews, onboarding, and rollout discipline."
+  - "Modernized without pausing roadmap delivery."
+  - "Connected architecture decisions to ownership and operability."
+  - "Kept technical direction tied to implementation, rollout, and production support."
 metrics:
-  - "5x platform growth"
-  - "~20% faster delivery"
-  - "15% -> <5% rework"
+  - "Service boundaries"
+  - "Rollout strategy"
+  - "Production operability"
 audience:
   - "Platform modernization"
-  - "Architecture systems"
-  - "Team enablement"
+  - "Backend architecture"
+  - "Technical leadership"
 architectureTitle: "Modernization operating model"
-architectureSummary: "This was less a single system diagram and more a platform migration pattern: move toward modular boundaries, introduce shared platform capabilities, and pair technical changes with operating mechanisms that let the team absorb them."
+architectureSummary: "The modernization strategy used incremental service extraction, clearer API contracts, and stronger delivery mechanisms so the platform could evolve while product work continued."
 architectureLayers:
-  - name: "Product domain services"
-    description: "Fleet, scheduling, and pricing workflows were pushed toward clearer service ownership instead of compounding monolithic coupling."
+  - name: "Domain workflow boundaries"
+    description: "Operational workflows were separated by responsibility before aggressive migration."
     bullets:
-      - "Domain boundaries clarified before large migrations were attempted"
-      - "New work steered toward modular service seams"
-  - name: "Shared platform capabilities"
-    description: "GraphQL, Hasura, and integration patterns were treated as reusable platform leverage rather than project-by-project experiments."
+      - "Scheduling, routing, notifications, service catalog, and data access gained clearer ownership"
+      - "New work was steered toward explicit API contracts and state transitions"
+      - "Monolith dependencies were reduced through targeted extraction rather than broad rewrites"
+  - name: "Platform capability layer"
+    description: "Shared capabilities gave teams repeatable paths for common backend needs."
     bullets:
-      - "Platform capabilities documented and socialized for repeated use"
-      - "Adoption designed to reduce delivery friction, not add framework ceremony"
-  - name: "Engineering operating system"
-    description: "Design review, onboarding, and roadmap cadence created the human system needed for the architecture to hold."
+      - "GraphQL and Hasura patterns supported read-heavy operational screens"
+      - "Event handoffs and async processing reduced request-path coupling"
+      - "Search, analytics, and customer communication workflows were treated as platform concerns"
+  - name: "Execution and reliability layer"
+    description: "Architecture decisions were paired with rollout, testing, observability, and ownership mechanisms."
     bullets:
-      - "Architecture review rigor reduced inconsistent implementation choices"
-      - "Team processes lowered rework and accelerated onboarding"
+      - "PRDs became TRDs, API contracts, schemas, edge cases, and test scenarios"
+      - "Rollout plans and monitoring needs were captured before production change"
+      - "Design reviews and mentoring improved consistency across the backend team"
 decisions:
-  - title: "Modernize incrementally instead of pausing for a rewrite"
-    detail: "A cleaner future-state architecture mattered, but the business still needed delivery. The program favored high-leverage boundary improvements and reusable platform capabilities over a long rewrite with delayed payoff."
-  - title: "Treat enablement as architecture"
-    detail: "GraphQL adoption, review templates, and onboarding systems were not side projects. They were part of the platform design because they determined whether the new patterns could actually scale through the team."
-  - title: "Measure architectural success through execution quality"
-    detail: "The effort was judged by faster delivery, lower rework, and business supportability, not only by whether service diagrams looked more elegant."
+  - title: "Modernize incrementally"
+    detail: "The business still needed delivery, so the modernization path favored high-leverage extractions, clearer contracts, and safer rollout plans over a long rewrite."
+  - title: "Make ownership part of the architecture"
+    detail: "A service boundary is not only a code boundary. The team needed to know who owned the API, data model, deployment behavior, observability, and incident response."
+  - title: "Translate product intent into implementation contracts"
+    detail: "PRDs became TRDs, API contracts, database schemas, state transitions, edge cases, monitoring needs, and production risks so execution stayed concrete."
 ---
 ## What I built
 
-I led backend and platform modernization across systems that supported fleet workflows, scheduling, pricing, notifications, and shared engineering capabilities. The work covered both architecture and execution: better service boundaries, stronger platform patterns, and tighter review and delivery habits across the team.
+At Goodyear, I set technical direction for an 8-engineer backend/data-platform team supporting AndGo, a commerce-enabled vehicle-servicing marketplace. The platform covered service catalog, service bundling, scheduling, fulfillment, invoicing, payment-adjacent flows, analytics, search, notifications, and customer communication.
+
+The modernization work was not a single rewrite. It was a sequence of boundary, contract, rollout, and operating-system decisions that let the platform keep moving while reducing coupling.
 
 ## How I approached it
 
-The problem was not just legacy code. It was legacy architecture plus delivery drag. The solution had to improve both the software and the way the team shipped it.
+I treated modernization as both software architecture and delivery architecture:
 
-The work focused on a few leverage points:
+- identify workflows that were becoming too coupled inside the monolith
+- define service boundaries around ownership and production behavior
+- convert product requirements into TRDs, API contracts, schemas, state transitions, and test scenarios
+- move request-time work into async workers where appropriate
+- use reviews, rollout plans, monitoring, and production-risk checks before change landed
 
-- pushing systems toward more modular service boundaries instead of compounding monolithic complexity
-- introducing GraphQL and Hasura as a platform capability, not just a one-off implementation
-- tightening design review and architecture standards so new work was more consistent
-- improving roadmap cadence, onboarding, and execution visibility so the team could scale with the platform
+That kept the work grounded in implementation instead of turning modernization into a diagram exercise.
 
 ## Tradeoffs and key decisions
 
-The main tradeoff was modernization purity versus delivery reality. A cleaner architecture is not useful if it stalls the roadmap.
+The main tradeoff was modernization purity versus delivery reality. A cleaner architecture matters, but not if it blocks the roadmap for months.
 
-So the decisions here were deliberately pragmatic:
-
-- prioritize changes that improved delivery and platform leverage
-- build enablement assets and review systems so adoption did not depend on repeated manual coaching
-- modernize in ways that improved business outcomes and engineering predictability at the same time
+I favored Strangler Fig style movement: extract high-value workflows, keep API contracts clear, avoid breaking production users, and improve ownership with each step.
 
 ## Results and impact
 
-This effort supported 5x platform growth, improved delivery speed by roughly 20%, and reduced rework from 15% to under 5%. The durable outcome was a platform the team could keep changing without every new requirement becoming another one-off path through the backend.
+The platform gained clearer service ownership, better deployment velocity, and stronger production operability across backend teams. The work also gave product, operations, data, DevOps, and engineering stakeholders a more concrete path from requirement to implementation to rollout.
