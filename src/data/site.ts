@@ -1,14 +1,14 @@
 export const site = {
   name: "Kaizer Charania",
-  role: "Staff-level backend/platform engineer",
-  location: "San Jose, CA",
+  role: "Engineer",
+  location: "San Francisco Bay Area",
   email: "kaizercharania11@gmail.com",
   website: "https://kaizer-labs.github.io/",
   linkedin: "https://www.linkedin.com/in/kaizercharania11/",
   github: "https://github.com/kaizer-labs",
   newsletterUrl:
-    "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7452248620147433472",
-  newsletterTitle: "LinkedIn newsletter",
+    "https://www.linkedin.com/newsletters/built-with-judgment-7452248620147433472",
+  newsletterTitle: "Built With Judgment",
   newsletterIntro:
     "I write about practical AI-assisted engineering: repo context, implementation planning, test generation, documentation, review feedback, and the guardrails that keep AI useful inside real delivery.",
   newsletterSnippet:
@@ -52,20 +52,16 @@ export const values = [
 
 export const timeline = [
   {
-    title: "Python backend and data platforms",
-    body: "Early work centered on Flask services, OpenAPI contracts, partner integrations, ETL workflows, validation, and reusable microservice foundations."
+    title: "ADARA: APIs and data platforms",
+    body: "Built Python services, OpenAPI contracts, partner integrations, ETL workflows, and reusable microservice foundations."
   },
   {
-    title: "Operational marketplace systems",
-    body: "The scope expanded into scheduling, availability, routing, notifications, service bundling, payments, fulfillment, analytics, and search-backed workflows."
+    title: "Goodyear: platforms, leadership, and AI-assisted delivery",
+    body: "Combined production platform engineering and technical leadership for an eight-engineer team with AI-assisted delivery workflows, test generation, review feedback, and RAG-based retrieval."
   },
   {
-    title: "Platform modernization and team leverage",
-    body: "The work became service boundaries, GraphQL and Hasura enablement, architecture reviews, rollout planning, onboarding, and clearer ownership across backend teams."
-  },
-  {
-    title: "AI-assisted engineering practice",
-    body: "Recent work applies AI to implementation planning, code review, documentation, test generation, RAG workflows, and bounded engineering automation."
+    title: "Airbyte: continuing the engineering",
+    body: "Senior Software Engineer since September 2026, carrying forward backend and platform experience and an approach to AI-assisted engineering grounded in context, verification, and human judgment."
   }
 ];
 
@@ -73,25 +69,25 @@ export const workTimeline = [
   {
     id: "adara",
     company: "Adara",
-    role: "Software Engineer I -> Software Engineer II -> Lead Onboarding Engineer",
+    role: "Backend Software Engineer -> Software Engineer 2 -> Lead Onboarding Engineer",
     period: "March 2019 - March 2022",
     startDate: "2019-03",
     endDate: "2022-03",
     milestones: [
       {
         date: "2019-03",
-        roleTitle: "Software Engineer II",
+        roleTitle: "Backend Software Engineer",
         label: "Built travel MarTech backend services",
         detail: "Built Flask and Connexion microservices, OpenAPI contracts, ETL workflows, partner APIs, validation flows, and deployment conventions."
       },
       {
         date: "2020-08",
-        roleTitle: "Software Engineer II",
+        roleTitle: "Software Engineer 2",
         label: "Expanded into reusable platform patterns",
         detail: "Standardized service templates, shared packages, CI/CD patterns, and API integration practices for travel MarTech data platforms."
       },
       {
-        date: "2021-04",
+        date: "2021-03",
         roleTitle: "Lead Onboarding Engineer",
         label: "Led partner onboarding architecture",
         detail: "Led backend onboarding architecture for audience activation, including validation, taxonomy generation, delivery tracking, and partner distribution."
@@ -107,10 +103,10 @@ export const workTimeline = [
   {
     id: "goodyear",
     company: "Goodyear",
-    role: "Senior Software Engineer -> Software Engineer Lead",
-    period: "March 2022 - Present",
+    role: "Senior Software Engineer -> Lead Software Engineer",
+    period: "March 2022 - September 2026",
     startDate: "2022-03",
-    endDate: "Present",
+    endDate: "2026-09",
     milestones: [
       {
         date: "2022-03",
@@ -132,24 +128,42 @@ export const workTimeline = [
       },
       {
         date: "2023-10",
-        roleTitle: "Software Engineer Lead",
-        label: "Promoted to Software Engineer Lead",
+        roleTitle: "Lead Software Engineer",
+        label: "Promoted to Lead Software Engineer",
         detail: "Set technical direction for an 8-engineer backend/data-platform team while staying hands-on in architecture, implementation, and production reliability."
       },
       {
         date: "2024-01",
-        roleTitle: "Software Engineer Lead",
+        roleTitle: "Lead Software Engineer",
         label: "Expanded into AI-assisted delivery and VTD systems",
         detail: "Built AI-assisted development workflows and contributed to cloud applications for Virtual Tire Development, HPC workflows, shared Python packages, and RAG-based retrieval."
+      }
+    ]
+  },
+  {
+    id: "airbyte",
+    company: "Airbyte",
+    role: "Senior Software Engineer",
+    period: "September 2026 - Present",
+    startDate: "2026-09",
+    endDate: "Present",
+    milestones: [
+      {
+        date: "2026-09",
+        roleTitle: "Senior Software Engineer",
+        label: "Joined Airbyte",
+        detail: "Joined Airbyte as a Senior Software Engineer in September 2026, carrying forward backend and platform experience and an AI-assisted engineering approach grounded in context, verification, and human judgment."
       }
     ]
   }
 ];
 
+// Profile facts refreshed from the live LinkedIn profile and the user's screenshot, November 2026.
 export const story = [
-  "I build backend and platform systems for operational workflows where latency, correctness, integration complexity, and delivery pressure all matter.",
-  "My strongest work sits at the boundary between hands-on backend implementation and platform leverage: scheduling orchestration, event-driven notifications, adapter-based integrations, service-boundary modernization, GraphQL data access, and AI-assisted delivery systems.",
-  "I like concrete architecture: API contracts, data models, idempotency, retries, queues, observability, rollout plans, and team practices that make the next change safer."
+  "I’m Kaizer. I build the systems behind the product, and help shape how the engineering gets done.",
+  "In eight years of engineering, I’ve worked across travel MarTech, AdTech, automotive technology, and data integration. At ADARA, I built partner APIs and data pipelines. At Goodyear, I helped lead an eight-engineer team, evolved production platforms, and brought AI-assisted workflows into delivery.",
+  "Today I’m a Senior Software Engineer at Airbyte, continuing that progression in data integration. AI is part of how I approach the engineering: research and architecture planning, implementation, testing, and review. I focus on the systems around it: context, orchestration, evaluations, regression tests, and feedback, with engineers accountable for the result.",
+  "The thread through all of it is judgment. Understand the problem. Make the tradeoffs visible. Build something people can use, maintain, and trust."
 ];
 
 export const skills = {
@@ -171,6 +185,13 @@ export const skills = {
     "Architecture reviews / ADRs",
     "Observability / incident response",
     "RAG / AI-assisted SDLC"
+  ],
+  ai: [
+    "AI agents / MCP",
+    "Temporal / orchestration",
+    "Regression testing / evaluations",
+    "Claude / Codex / Cursor",
+    "LangGraph / local-first RAG"
   ]
 };
 

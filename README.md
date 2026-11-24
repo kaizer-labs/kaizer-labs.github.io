@@ -1,57 +1,51 @@
-# Kaizer Charania Portfolio
+# Kaizer Charania · Engineering portfolio
 
-Multi-page React + Vite portfolio rebuilt from the design direction in [criticaldeveloper_codex_rebuild_brief.md](/Users/kaizer/Desktop/kaizer-portfolio/criticaldeveloper_codex_rebuild_brief.md).
+A React and Vite portfolio about AI agents, backend platforms, and the engineering decisions behind them. The visual system uses neutral grey, ivory, and lime, with matching dark and light themes.
 
-## Install
+Version **2.0** (`2.0.0`), saved as the Git tag `v2.0`. See [CHECKPOINTS.md](CHECKPOINTS.md) for restoration instructions and [CHANGELOG.md](CHANGELOG.md) for the release notes.
 
-```bash
-npm install
-```
+## Development
 
-## Run locally
+Node 22.12 or later is required.
 
-```bash
+```sh
+npm ci
 npm run dev
 ```
 
-## Build
-
-```bash
+```sh
+npm run typecheck
 npm run build
+npm run preview
 ```
 
-## Edit content
+## Experience
 
-Shared site copy and section content:
+- Interactive agent-workflow diagram with stage selection, playback, and pause. This is a local illustrative demo; it does not call a model or execute agents.
+- AI-first project showcase with custom SVG architecture illustrations.
+- Filterable project library and existing Markdown case studies.
+- About, writing, and contact pages; responsive navigation; persistent theme selection.
+- Profile-backed About story with interactive career chapters, expandable principles, and gentle scroll reveals.
+- Newsletter-backed writing with verified article previews, topic filters, and direct LinkedIn links.
+- Keyboard focus, skip navigation, and reduced-motion support.
 
-- [src/data/site.ts](/Users/kaizer/Desktop/kaizer-portfolio/src/data/site.ts)
+## Editing
 
-Project entries:
+- Shared facts and profile links: `src/data/site.ts`
+- Case studies: `src/content/projects/*.md`
+- Writing previews and verified source links: `src/data/newsletter.ts`
+- Homepage selection and presentation: `src/pages/HomePage.tsx`
+- Agent-workflow interaction: `src/components/AgentWorkflow.tsx`
+- About chapters and interaction: `src/pages/AboutPage.tsx`, `src/components/AboutJourney.tsx`
+- Newsletter cards and writing index: `src/components/NewsletterCard.tsx`, `src/pages/BlogPage.tsx`
+- Project artwork and cards: `src/components/ProjectArtwork.tsx`, `src/components/WorkCard.tsx`
+- Visual system: `src/styles/studio.scss`, `src/styles/work.scss`, `src/styles/support.scss`, `src/styles/newsletter.scss`, `src/styles/writing.scss`
+- Existing case-study and legal layout foundation: `src/styles/globals.scss`
 
-- [src/content/projects/dynamic-scheduling-engine.md](/Users/kaizer/Desktop/kaizer-portfolio/src/content/projects/dynamic-scheduling-engine.md)
-- [src/content/projects/platform-modernization.md](/Users/kaizer/Desktop/kaizer-portfolio/src/content/projects/platform-modernization.md)
-- [src/content/projects/routing-optimization.md](/Users/kaizer/Desktop/kaizer-portfolio/src/content/projects/routing-optimization.md)
-- [src/content/projects/rag-knowledge-retrieval.md](/Users/kaizer/Desktop/kaizer-portfolio/src/content/projects/rag-knowledge-retrieval.md)
+See [DESIGN_REVIEW.md](DESIGN_REVIEW.md) for the review, future frontend ideas, and the Airbyte case-study plan. About facts were refreshed from the current LinkedIn profile and the user's supplied profile screenshot in November 2026.
 
-## Architecture
+Newsletter previews were checked against the live Built With Judgment newsletter on November 24, 2026. They are paraphrased introductions; each card links to the complete original article. The removed portfolio-build essay redirects to `/blog`.
 
-- App shell: [src/App.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/App.tsx), [src/components/Layout.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/Layout.tsx)
-- Components: [src/components/Header.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/Header.tsx), [src/components/Footer.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/Footer.tsx), [src/components/ProjectCard.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/ProjectCard.tsx), [src/components/SectionBlock.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/SectionBlock.tsx), [src/components/ConsentBanner.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/components/ConsentBanner.tsx)
-- Pages: [src/pages/HomePage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/HomePage.tsx), [src/pages/AboutPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/AboutPage.tsx), [src/pages/ProjectsPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/ProjectsPage.tsx), [src/pages/ProjectDetailPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/ProjectDetailPage.tsx), [src/pages/BlogPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/BlogPage.tsx), [src/pages/ContactPage.tsx](/Users/kaizer/Desktop/kaizer-portfolio/src/pages/ContactPage.tsx)
-- Content loader: [src/content/index.ts](/Users/kaizer/Desktop/kaizer-portfolio/src/content/index.ts)
+## Deployment
 
-## Styling and motion
-
-- [src/styles/tokens.scss](/Users/kaizer/Desktop/kaizer-portfolio/src/styles/tokens.scss)
-- [src/styles/globals.scss](/Users/kaizer/Desktop/kaizer-portfolio/src/styles/globals.scss)
-- [src/styles/motion.scss](/Users/kaizer/Desktop/kaizer-portfolio/src/styles/motion.scss)
-- [src/styles/utilities.scss](/Users/kaizer/Desktop/kaizer-portfolio/src/styles/utilities.scss)
-
-## Deploy
-
-This is a static Vite build. Deploy the generated `dist/` directory to Vercel, Netlify, Cloudflare Pages, GitHub Pages, or any static host.
-
-## Assumptions
-
-- The brief asked for a playlist-style section, but the factual source material did not include actual listening data. The implemented module keeps the playlist visual language while grounding it in real focus areas.
-- Public profile links now point to the provided GitHub Pages site, LinkedIn, and GitHub profile.
+GitHub Actions builds and deploys `dist/` to GitHub Pages when `main` is updated. The existing `public/404.html` redirect and `index.html` path restoration preserve project and blog deep links. Checkpoint branches and tags save source on GitHub; publishing requires updating `main` or explicitly running the deployment workflow.

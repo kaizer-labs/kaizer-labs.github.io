@@ -5,31 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Portfolio for Kaizer Charania, a technical leader spanning staff engineer and engineering manager scope across backend, platform, and distributed systems."
+      content="Kaizer Charania — engineer and builder. Selected work in AI agents, backend platforms, distributed systems, and practical AI-assisted engineering."
     />
-    <meta name="theme-color" content="#08111f" />
+    <meta name="theme-color" content="#292a2e" />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="Kaizer Charania | Staff Engineer and Engineering Manager Profile"
+      content="Kaizer Charania — Systems, Agents & Engineering"
     />
     <meta
       property="og:description"
-      content="Portfolio for Kaizer Charania, a technical leader spanning staff engineer and engineering manager scope across backend, platform, and distributed systems."
+      content="Engineer and builder. AI agents, backend platforms, and systems built with intent."
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Kaizer Charania | Staff Engineer and Engineering Manager Profile"
+      content="Kaizer Charania — Systems, Agents & Engineering"
     />
     <meta
       name="twitter:description"
-      content="Portfolio for Kaizer Charania, a technical leader spanning staff engineer and engineering manager scope across backend, platform, and distributed systems."
+      content="Engineer and builder. AI agents, backend platforms, and systems built with intent."
     />
     <link rel="canonical" href="https://kaizer-labs.github.io/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
-    <title>Kaizer Charania | Staff Engineer and Engineering Manager Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Kaizer Charania — Systems, Agents & Engineering</title>
     <script>
       (function restoreSpaPath(location) {
         if (location.search[1] !== "/") return;
@@ -50,17 +52,18 @@
       })(window.location);
 
       (function applyStoredTheme() {
-        const storedTheme = localStorage.getItem("theme-preference");
+        let storedTheme;
+        try { storedTheme = localStorage.getItem("theme-preference"); } catch {}
         const theme = storedTheme || "dark";
         document.documentElement.dataset.theme = theme;
-        const themeColor = theme === "dark" ? "#08111f" : "#f6f3ec";
+        const themeColor = theme === "dark" ? "#292a2e" : "#e7e8eb";
         document
           .querySelector('meta[name="theme-color"]')
           ?.setAttribute("content", themeColor);
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-NqxCv-d2.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CKr4mT5p.css">
+    <script type="module" crossorigin src="/assets/index-B73eByds.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BcxmsCgH.css">
   </head>
   <body>
     <div id="root"></div>

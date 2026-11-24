@@ -1,0 +1,104 @@
+.about-journey {
+  min-width: 0;
+  color: var(--studio-text);
+
+  &__navigation {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--studio-line) transparent;
+    border-bottom: 1px solid var(--studio-line);
+    padding: 4px 3px 0;
+    gap: 26px;
+  }
+
+  &__navigation > button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1 0 120px;
+    gap: 12px;
+    min-height: 62px;
+    padding: 8px 2px 20px;
+    background: transparent;
+    border: 0;
+    color: var(--studio-muted);
+    text-align: left;
+    font: 400 13px/1.5 var(--studio-sans);
+    transition: color 200ms ease;
+  }
+
+  &__navigation > button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--studio-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  &__navigation > button:hover { color: var(--studio-text); }
+  &__navigation > button[aria-selected="true"] { color: var(--studio-text); }
+  &__navigation > button[aria-selected="true"]::after { transform: scaleX(1); }
+  &__navigation > button:focus-visible { outline: 2px solid var(--studio-accent); outline-offset: -4px; border-radius: 4px; }
+
+  &__step { color: var(--studio-muted); font: 9px/1.5 var(--studio-mono); }
+  &__navigation > button[aria-selected="true"] &__step { color: var(--studio-accent); }
+  &__indicator { margin-left: auto; width: 5px; height: 5px; border: 1px solid var(--studio-muted); border-radius: 50%; flex-shrink: 0; transition: background 200ms ease, border-color 200ms ease; }
+  &__navigation > button[aria-selected="true"] &__indicator { background: var(--studio-accent); border-color: var(--studio-accent); }
+
+  &__panel:not([hidden]) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 55px;
+    padding: 38px 0 25px;
+    animation: journey-enter 350ms cubic-bezier(.16, 1, .3, 1) both;
+  }
+
+  &__panel:focus-visible { outline: 1px solid var(--studio-accent); outline-offset: 9px; }
+  &__eyebrow { color: var(--studio-accent); font: 9px/1.8 var(--studio-mono); letter-spacing: 1px; margin: 0 0 18px; }
+  &__heading h3 { margin: 0 0 20px; font: 400 clamp(25px, 2.6vw, 36px)/1.2 var(--studio-sans); letter-spacing: -1.1px; max-width: 18ch; }
+  &__summary { margin: 0; font: 400 14px/1.9 var(--studio-sans); color: var(--studio-muted); max-width: 44ch; }
+  &__body { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; }
+  &__details p { margin: 0 0 17px; font: 400 13px/1.9 var(--studio-sans); color: var(--studio-muted); }
+  &__details p:last-child { margin-bottom: 0; }
+  &__tools { display: flex; flex-wrap: wrap; gap: 8px 16px; list-style: none; margin: 24px 0 0; padding: 0; }
+  &__tools li { font: 9px/1.8 var(--studio-mono); color: var(--studio-text); }
+  &__link { margin-top: 26px; font-size: 12px; }
+  &__hint { display: flex; align-items: center; gap: 9px; margin: 12px 0 0; font: 9px/1.8 var(--studio-mono); color: var(--studio-muted); }
+  &__hint > span { color: var(--studio-accent); font-size: 15px; }
+}
+
+@keyframes journey-enter {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 800px) {
+  .about-journey__navigation { gap: 20px; }
+  .about-journey__panel:not([hidden]) { gap: 30px; }
+}
+
+@media (max-width: 600px) {
+  .about-journey__navigation { gap: 20px; }
+  .about-journey__navigation > button { flex-basis: 128px; min-height: 56px; font-size: 12px; gap: 10px; padding-bottom: 17px; }
+  .about-journey__panel:not([hidden]) { grid-template-columns: minmax(0, 1fr); gap: 23px; padding-top: 28px; }
+  .about-journey__heading h3 { font-size: 29px; max-width: 22ch; margin-bottom: 15px; }
+  .about-journey__summary { font-size: 13px; }
+  .about-journey__details p { font-size: 12px; }
+  .about-journey__tools { gap: 8px 14px; margin-top: 20px; }
+  .about-journey__tools li { font-size: 8px; }
+  .about-journey__hint { font-size: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-journey__panel:not([hidden]) { animation: none; }
+  .about-journey__navigation > button, .about-journey__navigation > button::after, .about-journey__indicator { transition: none; }
+}

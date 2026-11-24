@@ -35,7 +35,6 @@ export function ProfessionalTimeline({ items }: ProfessionalTimelineProps) {
     left.startDate.localeCompare(right.startDate),
   );
   const currentPrimaryItem =
-    sortedItems.find((item) => item.company === "Goodyear") ??
     sortedItems.find((item) => item.period.includes("Present")) ??
     sortedItems[0];
   const currentPrimaryMilestone =
@@ -400,8 +399,8 @@ export function ProfessionalTimeline({ items }: ProfessionalTimelineProps) {
             {currentPrimaryItem?.role} · {currentPrimaryItem?.company}
           </p>
           <p className="professional-timeline-d3__current-note">
-            Leading this role today while continuing independent AI and
-            market-analysis exploration outside work.
+            Continuing hands-on engineering alongside independent AI projects
+            and public writing.
           </p>
         </div>
         <h3 ref={roleRef}>{currentPrimaryItem?.role}</h3>

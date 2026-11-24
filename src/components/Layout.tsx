@@ -27,11 +27,9 @@ export function Layout({
     <>
       <Analytics />
       <div className={["site-frame", frameClass].filter(Boolean).join(" ")}>
-        <div className="site-glow site-glow--left"></div>
-        <div className="site-glow site-glow--right"></div>
-        <div className="site-grid"></div>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <Header />
-        <main className="page-shell">{children}</main>
+        <main className="page-shell" id="main-content" tabIndex={-1}>{children}</main>
         <Footer />
         <ConsentBanner />
       </div>

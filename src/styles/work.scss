@@ -1,0 +1,110 @@
+.work-card, .work-card *, .work-hub, .work-hub * { box-sizing: border-box; }
+
+.work-card {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+  color: var(--studio-text);
+  background: var(--studio-surface);
+  border: 1px solid var(--studio-line);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 240ms ease, transform 240ms ease;
+
+  &:hover { border-color: color-mix(in srgb, var(--studio-accent) 55%, var(--studio-line)); transform: translateY(-4px); }
+  &:focus-visible { outline: 2px solid var(--studio-accent); outline-offset: 5px; }
+  &:active { transform: translateY(-1px); }
+  &__visual { position: relative; overflow: hidden; border-bottom: 1px solid var(--studio-line); }
+  &__number, &__visual-label { position: absolute; z-index: 1; font: 10px/1.4 var(--studio-mono); color: var(--studio-muted); letter-spacing: .06em; }
+  &__number { top: 21px; left: 24px; }
+  &__visual-label { bottom: 18px; left: 24px; }
+  &__open { position: absolute; right: 20px; bottom: 18px; width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--studio-line); border-radius: 50%; color: var(--studio-muted); transition: color 240ms ease, background-color 240ms ease; }
+  &__open svg { width: 14px; height: 14px; }
+  &:hover &__open { color: var(--studio-bg); background: var(--studio-accent); border-color: var(--studio-accent); }
+  &__body { padding: 28px; display: flex; flex-direction: column; flex: 1; }
+  &__category { font: 10px/1.5 var(--studio-mono); letter-spacing: .09em; color: var(--studio-accent); }
+  h3 { margin: 12px 0; font-family: var(--studio-sans); font-size: clamp(21px, 2.1vw, 28px); font-weight: 500; line-height: 1.22; letter-spacing: -.04em; color: var(--studio-text); }
+  &__summary { margin: 0; max-width: 54ch; font: 13px/1.85 var(--studio-sans); color: var(--studio-muted); }
+  &__tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 7px; }
+  &__tags span { padding: 4px 8px; border: 1px solid var(--studio-line); border-radius: 4px; font: 10px/1.5 var(--studio-mono); color: var(--studio-muted); }
+  &__footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 27px; font: 11px/1.5 var(--studio-sans); color: var(--studio-text); }
+  &__footer svg { width: 19px; height: 19px; color: var(--studio-accent); transition: transform 240ms ease; }
+  &:hover &__footer svg { transform: translateX(4px); }
+}
+
+.project-art {
+  position: relative;
+  aspect-ratio: 640 / 340;
+  overflow: hidden;
+  background: var(--studio-raised);
+  isolation: isolate;
+  &__grid { position: absolute; inset: 0; opacity: .35; background-image: radial-gradient(var(--studio-muted) .5px, transparent .5px); background-size: 17px 17px; mask-image: radial-gradient(ellipse at center, #111 15%, transparent 75%); }
+  svg { position: relative; display: block; width: 100%; height: 100%; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; transition: transform 500ms cubic-bezier(.2,.8,.2,1); }
+  &__connection { stroke: color-mix(in srgb, var(--studio-muted) 42%, transparent); }
+  &__node, &__paper { fill: var(--studio-surface); stroke: color-mix(in srgb, var(--studio-muted) 45%, var(--studio-line)); }
+  &__node > path, &__paper > path { stroke: var(--studio-muted); }
+  &__paper--back { fill: var(--studio-raised); opacity: .8; }
+  &__central { stroke: var(--studio-accent); fill: var(--studio-surface); }
+  &__central > path, &__central > ellipse { fill: none; }
+  &__central > circle + circle { stroke: color-mix(in srgb, var(--studio-accent) 35%, transparent); }
+  &__pin { stroke: color-mix(in srgb, var(--studio-accent) 70%, transparent); }
+  &__code { stroke: var(--studio-muted); opacity: .65; }
+  &__signal { fill: var(--studio-accent); stroke: var(--studio-raised); stroke-width: 3; }
+  &__caption { fill: var(--studio-muted); font: 8px var(--studio-mono); letter-spacing: 1.5px; }
+  &__small-label { fill: var(--studio-muted); font: 8px var(--studio-mono); letter-spacing: .7px; }
+  &__calendar { fill: var(--studio-surface); stroke: color-mix(in srgb, var(--studio-muted) 45%, var(--studio-line)); }
+  &__calendar-grid { fill: var(--studio-raised); stroke: var(--studio-line); }
+  &__selected-slot { fill: var(--studio-accent); stroke: var(--studio-bg); }
+  &__selected-slot > rect { stroke: var(--studio-accent); }
+  &__event-block { fill: color-mix(in srgb, var(--studio-accent) 12%, var(--studio-surface)); stroke: color-mix(in srgb, var(--studio-accent) 55%, var(--studio-line)); }
+  &__event-block rect:nth-child(even) { fill: var(--studio-accent); stroke: var(--studio-accent); opacity: .8; }
+  &__node-icon { stroke: var(--studio-muted); }
+}
+.work-card:hover .project-art svg { transform: scale(1.025); }
+
+.work-hub {
+  width: min(100% - 96px, 1280px);
+  margin-inline: auto;
+  padding: 90px 0 60px;
+  font-family: var(--studio-sans);
+  color: var(--studio-text);
+  &__intro { max-width: 730px; }
+  &__eyebrow { display: flex; align-items: center; gap: 10px; margin: 0; font: 10px/1.6 var(--studio-mono); color: var(--studio-muted); letter-spacing: .1em; }
+  &__eyebrow > span { height: 5px; width: 5px; background: var(--studio-accent); border-radius: 50%; }
+  h1 { margin: 29px 0 26px; font: 500 clamp(44px, 5.3vw, 72px)/1.04 var(--studio-sans); letter-spacing: -.065em; color: var(--studio-text); }
+  h1 > span { color: var(--studio-muted); }
+  &__description { margin: 0; max-width: 52ch; font-size: 15px; line-height: 1.9; color: var(--studio-muted); }
+  &__toolbar { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 27px 0; margin-top: 54px; border-top: 1px solid var(--studio-line); }
+  &__filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  &__filters button { min-height: 44px; padding: 8px 13px; border: 1px solid transparent; border-radius: 5px; font: 11px/1.5 var(--studio-sans); background: transparent; color: var(--studio-muted); cursor: pointer; transition: color 180ms ease, background-color 180ms ease; }
+  &__filters button:hover { color: var(--studio-text); background: var(--studio-surface); }
+  &__filters button[aria-pressed="true"] { color: var(--studio-text); background: var(--studio-raised); border-color: var(--studio-line); }
+  &__filters button:focus-visible { outline: 2px solid var(--studio-accent); outline-offset: 3px; }
+  &__count { margin: 0; white-space: nowrap; color: var(--studio-muted); font: 10px/1.5 var(--studio-mono); letter-spacing: .06em; }
+  &__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  &__contact { display: flex; justify-content: space-between; align-items: center; gap: 30px; border-top: 1px solid var(--studio-line); margin-top: 88px; padding-top: 42px; }
+  &__contact h2 { margin: 14px 0 0; font: 500 clamp(23px, 2.5vw, 34px)/1.3 var(--studio-sans); letter-spacing: -.04em; }
+  &__contact > a { flex-shrink: 0; display: flex; gap: 32px; align-items: center; border-bottom: 1px solid var(--studio-accent); padding-bottom: 7px; font-size: 14px; }
+  &__contact > a span { color: var(--studio-accent); }
+  &__contact > a:focus-visible { outline: 2px solid var(--studio-accent); outline-offset: 5px; }
+}
+
+@media (max-width: 719px) {
+  .work-hub { width: calc(100% - 40px); padding-top: 60px; }
+  .work-hub__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .work-hub__toolbar { margin-top: 38px; align-items: flex-start; }
+  .work-hub__count { padding-top: 10px; font-size: 9px; }
+  .work-hub__filters { gap: 4px; }
+  .work-hub__filters button { padding-inline: 8px; font-size: 10px; }
+  .work-hub__contact { flex-direction: column; align-items: flex-start; margin-top: 54px; padding-top: 32px; }
+  .work-card__body { padding: 23px; }
+  .work-card__number { top: 15px; left: 18px; }
+  .work-card__visual-label { left: 18px; bottom: 14px; font-size: 9px; }
+  .work-card__open { right: 16px; bottom: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-card, .work-card__open, .work-card__footer svg, .project-art svg { transition: none; }
+  .work-card:hover, .work-card:hover .project-art svg, .work-card:hover .work-card__footer svg { transform: none; }
+}

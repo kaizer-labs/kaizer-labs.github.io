@@ -1,72 +1,21 @@
 import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import { site } from "../data/site";
+import "../styles/support.scss";
+
+const channels = [
+  { label: "Email", value: site.email, detail: "Start a conversation", href: `mailto:${site.email}`, external: false },
+  { label: "LinkedIn", value: "Connect & compare notes", detail: "Professional profile", href: site.linkedin, external: true },
+  { label: "GitHub", value: "A closer look at the code", detail: "Projects & experiments", href: site.github, external: true },
+];
 
 export function ContactPage() {
   return (
-    <Layout
-      title="Connect | Kaizer Charania"
-      description="Connect page for Kaizer Charania with profile links and current work context."
-      frameClass="site-frame--home"
-    >
-      <section className="contact-page">
-        <div className="contact-page__intro">
-          <p className="section-kicker">Direct channels</p>
-          <h1>Talk with me about backend/platform leadership.</h1>
-          <p>
-            Best fit: teams working through performance bottlenecks, reliability gaps,
-            service boundaries, platform adoption, event-driven systems, or applied AI
-            workflows that need production discipline.
-          </p>
-        </div>
-
-        <div className="contact-sheet">
-          <div className="contact-list">
-            <a
-              className="contact-row"
-              href={`mailto:${site.email}`}
-              data-analytics-event="contact_link_click"
-              data-analytics-label="email"
-            >
-              <span className="contact-row__label">Email</span>
-              <span>{site.email}</span>
-            </a>
-            <a
-              className="contact-row"
-              href={site.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              data-analytics-event="contact_link_click"
-              data-analytics-label="linkedin"
-            >
-              <span className="contact-row__label">LinkedIn</span>
-              <span>Professional profile</span>
-            </a>
-            <a
-              className="contact-row"
-              href={site.github}
-              target="_blank"
-              rel="noreferrer"
-              data-analytics-event="contact_link_click"
-              data-analytics-label="github"
-            >
-              <span className="contact-row__label">GitHub</span>
-              <span>Profile and code samples</span>
-            </a>
-          </div>
-
-          <div className="contact-sheet__meta">
-            <span>{site.location}</span>
-            <Link
-              to="/projects"
-              data-analytics-event="internal_cta_click"
-              data-analytics-label="contact_case_studies"
-            >
-              Start with case studies
-            </Link>
-          </div>
-        </div>
-      </section>
+    <Layout title="Let’s talk — Kaizer Charania" description="Get in touch with Kaizer Charania about backend systems, platform engineering, and applied AI workflows." frameClass="site-frame--support">
+      <div className="support-page support-contact">
+        <header className="support-hero"><p className="studio-eyebrow"><span className="status-dot"/> LET’S START A CONVERSATION</p><h1>Let’s build something<br/><span>that holds up.</span></h1><p className="support-lede">Backend platforms, AI workflows, or a complex engineering problem. I’m always interested in the thinking behind what you’re building.</p></header>
+        <div className="support-contact__body"><div className="support-contact__aside"><span className="studio-eyebrow">DIRECT CHANNELS</span><p>{site.name}<br/><span>{site.location}</span></p><Link className="studio-text-link" to="/projects">Start with the work <span aria-hidden="true">↗</span></Link></div><div className="support-channels">{channels.map((channel, index) => <a className="support-channel" key={channel.label} href={channel.href} target={channel.external ? "_blank" : undefined} rel={channel.external ? "noreferrer" : undefined} data-analytics-event="contact_link_click" data-analytics-label={channel.label.toLowerCase()}><div className="support-channel__label"><span className="support-index">0{index + 1}</span><span>{channel.label}</span></div><div className="support-channel__copy"><h2>{channel.value}</h2><p>{channel.detail}</p></div><span className="support-channel__arrow" aria-hidden="true">↗</span></a>)}</div></div>
+      </div>
     </Layout>
   );
 }

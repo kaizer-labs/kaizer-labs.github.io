@@ -1,66 +1,47 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
-import { ProjectCard } from "../components/ProjectCard";
-import { featuredProjects, secondaryProjects } from "../content";
+import { WorkCard } from "../components/WorkCard";
+import { projects } from "../content";
+
+type WorkFilter = "all" | "ai" | "backend";
+
+const filters: { id: WorkFilter; label: string }[] = [
+  { id: "all", label: "All work" },
+  { id: "ai", label: "AI & agents" },
+  { id: "backend", label: "Backend systems" },
+];
+const isAIProject = (slug: string) => slug.includes("ai-assisted") || slug.includes("document-intelligence");
+const orderedProjects = [...projects].sort((left, right) => Number(isAIProject(right.slug)) - Number(isAIProject(left.slug)) || left.order - right.order);
 
 export function ProjectsPage() {
+  const [filter, setFilter] = useState<WorkFilter>("all");
+  const visibleProjects = orderedProjects.filter((project) => filter === "all" || (filter === "ai" ? isAIProject(project.slug) : !isAIProject(project.slug)));
+
   return (
     <Layout
-      title="Projects | Kaizer Charania"
-      description="Case studies for Kaizer Charania covering backend platforms, event-driven systems, integrations, data access, and applied AI engineering."
-      frameClass="site-frame--home"
+      title="Selected work | Kaizer Charania"
+      description="AI agents, local-first RAG, and production backend systems. Explore engineering case studies by Kaizer Charania."
+      frameClass="site-frame--work"
     >
-      <section className="project-hub">
-        <div className="project-hub__intro">
-          <p className="section-kicker">Engineering case studies</p>
-          <h1>Backend and platform systems with concrete implementation stories.</h1>
-          <p>
-            A focused set of case studies covering scheduling orchestration,
-            event-driven notifications, integration adapters, service boundaries,
-            GraphQL and Hasura data access, AI-assisted delivery, and applied RAG.
-          </p>
+      <section className="work-hub" aria-labelledby="work-title">
+        <div className="work-hub__intro">
+          <p className="work-hub__eyebrow"><span /> THE ENGINEERING BEHIND THE INTERFACE</p>
+          <h1 id="work-title">Systems built.<br /><span>Decisions made.</span></h1>
+          <p className="work-hub__description">A collection of AI workflows and production platforms. The problems, the architecture, and the decisions that made them work.</p>
         </div>
-      </section>
-
-      <section className="project-collection">
-        <div className="project-collection__header">
-          <h2 className="section-kicker section-kicker--standalone">Production systems</h2>
+        <div className="work-hub__toolbar">
+          <div className="work-hub__filters" role="group" aria-label="Filter engineering work">
+            {filters.map((item) => <button key={item.id} type="button" aria-pressed={filter === item.id} onClick={() => setFilter(item.id)}>{item.label}</button>)}
+          </div>
+          <p className="work-hub__count" role="status" aria-live="polite" aria-atomic="true">{String(visibleProjects.length).padStart(2, "0")} PROJECTS</p>
         </div>
-
-        <div className="project-list">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
+        <div className="work-hub__grid">
+          {visibleProjects.map((project, index) => <WorkCard key={project.slug} project={project} index={index} />)}
         </div>
-      </section>
-
-      <section className="project-collection">
-        <div className="project-collection__header">
-          <h2 className="section-kicker section-kicker--standalone">Platform, data access, and applied AI</h2>
-        </div>
-
-        <div className="project-list">
-          {secondaryProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
-      </section>
-
-      <section className="final-cta">
-        <p className="section-kicker">Connect</p>
-        <h2>If you want to talk through the work, let’s connect.</h2>
-        <div className="hero__actions">
-          <Link
-            className="button"
-            to="/contact"
-            data-analytics-event="contact_click"
-            data-analytics-label="projects_final_cta_connect"
-          >
-            Discuss backend/platform work
-          </Link>
-          <Link className="button button--ghost" to="/about">
-            About me
-          </Link>
+        <div className="work-hub__contact">
+          <div><p className="work-hub__eyebrow">LET’S COMPARE NOTES</p><h2>Have a complex problem in mind?</h2></div>
+          <Link to="/contact" data-analytics-event="contact_click" data-analytics-label="work_hub_contact">Let’s talk <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
     </Layout>

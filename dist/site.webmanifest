@@ -3,8 +3,8 @@
   "short_name": "Kaizer Portfolio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f6f3ec",
-  "theme_color": "#f6f3ec",
+  "background_color": "#292a2e",
+  "theme_color": "#292a2e",
   "icons": [
     {
       "src": "/favicon.svg",
