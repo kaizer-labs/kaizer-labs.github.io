@@ -1,5 +1,13 @@
 # Version checkpoints
 
+## Version 2.0.1
+
+- Git tag: `v2.0.1` (launch polish).
+- Package version: `2.0.1`.
+- Branch: `kaizer-labs/feat/launch-readability-preview`.
+- Adds larger supporting text, mobile layout refinements, a branded social preview, static route metadata, and a sitemap.
+- Builds on `v2.0`; the original checkpoint tag remains fixed.
+
 ## Version 2.0
 
 - Git tag: `v2.0` (annotated checkpoint).

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.1 — 2026-11-24
+
+- Increase supporting text across the portfolio while retaining the established headlines, palette, and uniform card layout.
+- Improve narrow-screen navigation, filters, metadata wrapping, and workflow controls for the larger reading scale.
+- Add a 1200×630 branded social-preview PNG with an editable source and optional offline renderer.
+- Add Open Graph and Twitter image metadata, canonical sharing URLs, static metadata for 14 routes, robots.txt, and a generated sitemap.
+- Preserve the original `v2.0` checkpoint for rollback.
+
 ## 2.0.0 — 2026-11-24
 
 - Rebuild the portfolio around AI agents, engineering judgment, and a neutral grey, ivory, and lime visual system.

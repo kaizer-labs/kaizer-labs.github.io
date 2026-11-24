@@ -21,11 +21,18 @@ export function useDocumentMeta({ title, description }: DocumentMetaOptions) {
       }
     };
 
-    const canonicalHref = new URL(location.pathname, site.website).toString();
+    const canonicalUrl = new URL(site.website);
+    canonicalUrl.pathname = location.pathname === "/"
+      ? "/"
+      : `${location.pathname.replace(/\/+$/, "")}/`;
+    canonicalUrl.search = "";
+    canonicalUrl.hash = "";
+    const canonicalHref = canonicalUrl.toString();
 
     setMeta('meta[name="description"]', "content", description);
     setMeta('meta[property="og:title"]', "content", title);
     setMeta('meta[property="og:description"]', "content", description);
+    setMeta('meta[property="og:url"]', "content", canonicalHref);
     setMeta('meta[name="twitter:title"]', "content", title);
     setMeta('meta[name="twitter:description"]', "content", description);
     setMeta('link[rel="canonical"]', "href", canonicalHref);

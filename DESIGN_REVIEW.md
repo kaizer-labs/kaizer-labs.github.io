@@ -17,6 +17,8 @@ An engineer’s workspace, presented as a personal portfolio: neutral grey, ivor
 - **A continuous career:** ADARA → Goodyear → Airbyte. AI-assisted delivery is woven into the employer chapters and story rather than presented as a separate career interval. Goodyear's AI delivery and RAG work are backed by existing experience; Airbyte's chapter describes the engineering approach without inventing employer-specific projects or results.
 - **Personal signature:** the `Kz.` mark and a “Build with Judgment” footer linking directly to the LinkedIn newsletter.
 - **Newsletter-led writing:** six verified Built With Judgment editions, short paraphrased previews, article dates and reading times, topic filters, and direct links to each original LinkedIn article. The homepage previews one build-in-public essay and one AI-engineering essay. The old portfolio-build article is removed, and its previous URL redirects to the writing index.
+- **Launch readability:** 15–16px supporting copy, 14–15px actions, and 12px useful labels. Headlines and the uniform project/newsletter card frames retain their established scale.
+- **Share previews:** a branded 1200×630 PNG and metadata in static entry documents for the core pages and case studies, backed by a sitemap and canonical URLs. The `v2.0` checkpoint remains the rollback baseline before these refinements.
 
 ## Valuable next frontend additions
 
