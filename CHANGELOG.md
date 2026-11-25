@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.2 — 2026-11-24
+
+- Use GA4's automatic pageviews and enabled browser-history measurement as the single source for pageviews, eliminating duplicate counts on client navigation.
+- Read the saved analytics preference before initializing the Google tag so essential-only preferences survive page loads and navigation.
+
 ## 2.0.1 — 2026-11-24
 
 - Increase supporting text across the portfolio while retaining the established headlines, palette, and uniform card layout.

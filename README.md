@@ -2,7 +2,7 @@
 
 A React and Vite portfolio about AI agents, backend platforms, and the engineering decisions behind them. The visual system uses neutral grey, ivory, and lime, with matching dark and light themes.
 
-Current package version: **2.0.1**. The original **2.0** checkpoint remains saved as the Git tag `v2.0`. See [CHECKPOINTS.md](CHECKPOINTS.md) for restoration instructions and [CHANGELOG.md](CHANGELOG.md) for the release notes.
+Current package version: **2.0.2**. The original **2.0** checkpoint remains saved as the Git tag `v2.0`. See [CHECKPOINTS.md](CHECKPOINTS.md) for restoration instructions and [CHANGELOG.md](CHANGELOG.md) for the release notes.
 
 ## Development
 
@@ -55,3 +55,5 @@ Newsletter previews were checked against the live Built With Judgment newsletter
 GitHub Actions builds and deploys `dist/` to GitHub Pages when `main` is updated. The existing `public/404.html` redirect and `index.html` path restoration preserve project and blog deep links. Checkpoint branches and tags save source on GitHub; publishing requires updating `main` or explicitly running the deployment workflow.
 
 `npm run build` also runs the metadata generator. It creates static entry pages for the main routes and each Markdown case study, plus a sitemap. Social previews can be read before JavaScript runs. Update the core-route metadata registry alongside changes to page titles or descriptions. The preview PNG is already included in `public/`; rendering it again is optional and uses an existing Playwright/Chromium installation. See `scripts/licenses/README.md` for renderer overrides and font notices.
+
+GA4 uses the deployment's `PUBLIC_GA_MEASUREMENT_ID` secret, passed to Vite as `VITE_GA_MEASUREMENT_ID`. Keep **Page changes based on browser history events** enabled in the web stream's enhanced measurement settings. GA4 owns initial and client-navigation pageviews; `Analytics.tsx` sends the portfolio's custom interaction events. Adding manual `page_view` events alongside automatic history tracking would count navigation twice. Saved essential-only preferences prevent tag initialization.

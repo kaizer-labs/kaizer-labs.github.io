@@ -52,7 +52,9 @@ function configureGoogleTag(measurementId: string) {
   window.gtag?.("js", new Date());
   window.gtag?.("config", measurementId, {
     anonymize_ip: true,
-    send_page_view: false,
+    // GA4 handles the initial view and its enabled browser-history measurement
+    // handles SPA navigation. Sending another page_view here would count twice.
+    send_page_view: true,
   });
   window.__kaizerGaConfigured = true;
 }
@@ -153,7 +155,7 @@ export function Analytics() {
     () => `${location.pathname}${location.search}${location.hash}`,
     [location.hash, location.pathname, location.search],
   );
-  const [consentMode, setConsentMode] = useState<ConsentMode>("all");
+  const [consentMode, setConsentMode] = useState<ConsentMode>(ensureConsentMode);
   const pageStartRef = useRef<number>(0);
   const pageVisibleSinceRef = useRef<number>(performance.now());
   const navTimingSentRef = useRef(false);
@@ -192,16 +194,6 @@ export function Analytics() {
     if (!measurementId || consentMode !== "all") return;
 
     pageStartRef.current = performance.now();
-
-    trackEvent("page_view", {
-      page_location: window.location.href,
-      page_path: currentPath,
-      page_referrer: document.referrer || undefined,
-      page_title: document.title,
-      screen_resolution: `${window.screen.width}x${window.screen.height}`,
-      viewport_size: `${window.innerWidth}x${window.innerHeight}`,
-      language: navigator.language,
-    });
 
     if (!navTimingSentRef.current) {
       const navEntry = performance.getEntriesByType("navigation")[0] as
