@@ -1,4 +1,6 @@
 import yaml from "js-yaml";
+import reviewArticleModules from "virtual:review-articles";
+import type { NewsletterPost } from "../data/newsletter";
 
 const projectModules = import.meta.glob("./projects/*.md", {
   eager: true,
@@ -52,8 +54,13 @@ export interface BlogPostEntry {
   slug: string;
   title: string;
   summary: string;
-  publishedAt: string;
+  publishedAt?: string;
   readingTime: string;
+  readingMinutes: number;
+  draft: boolean;
+  visual: NewsletterPost["visual"];
+  topic: NewsletterPost["topic"];
+  order?: number;
   featured: boolean;
   tags: string[];
   body: string;
@@ -121,15 +128,25 @@ const parseProject = (path: string, raw: string): ProjectEntry => {
   };
 };
 
-const parseBlogPost = (path: string, raw: string): BlogPostEntry => {
+const articleVisuals: NewsletterPost["visual"][] = ["steps", "compass", "context", "boundaries", "review", "process"];
+
+const parseBlogPost = (path: string, raw: string, draft = false): BlogPostEntry => {
   const { data, content } = splitFrontmatter(raw);
+  const readingMinutes = Number(data.readingMinutes) || Number(String(data.readingTime ?? "").match(/\d+/)?.[0]) || Math.max(1, Math.ceil(content.split(/\s+/).length / 220));
+  const visual = articleVisuals.includes(data.visual as NewsletterPost["visual"]) ? data.visual as NewsletterPost["visual"] : "process";
+  const publishedAt = data.publishedAt instanceof Date ? data.publishedAt.toISOString().slice(0, 10) : typeof data.publishedAt === "string" ? data.publishedAt : undefined;
 
   return {
     slug: getSlugFromPath(path),
     title: String(data.title),
     summary: String(data.summary),
-    publishedAt: String(data.publishedAt),
-    readingTime: String(data.readingTime),
+    publishedAt: draft ? undefined : publishedAt,
+    readingTime: typeof data.readingTime === "string" ? data.readingTime : `${readingMinutes} min read`,
+    readingMinutes,
+    draft,
+    visual,
+    topic: !draft && data.topic === "Build in public" ? "Build in public" : "AI & engineering",
+    order: typeof data.order === "number" && Number.isFinite(data.order) ? data.order : undefined,
     featured: Boolean(data.featured),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     body: content.trim(),
@@ -140,12 +157,20 @@ export const projects = Object.entries(projectModules)
   .map(([path, raw]) => parseProject(path, raw))
   .sort((left, right) => left.order - right.order);
 
-export const blogPosts = Object.entries(blogModules)
+// The Vite review module is populated only by the local development server.
+// Production receives an empty object; approved articles remain in ./blog/*.md.
+export const approvedBlogPosts = Object.entries(blogModules)
   .map(([path, raw]) => parseBlogPost(path, raw))
-  .sort(
-    (left, right) =>
-      new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime(),
-  );
+  .sort((left, right) => (right.publishedAt ? Date.parse(right.publishedAt) : 0) - (left.publishedAt ? Date.parse(left.publishedAt) : 0)
+    || (left.order ?? Number.MAX_SAFE_INTEGER) - (right.order ?? Number.MAX_SAFE_INTEGER));
+
+const approvedBlogSlugs = new Set(approvedBlogPosts.map((post) => post.slug));
+export const draftBlogPosts = Object.entries(reviewArticleModules)
+  .filter(([path]) => !approvedBlogSlugs.has(getSlugFromPath(path)))
+  .map(([path, raw]) => parseBlogPost(path, raw, true))
+  .sort((left, right) => (left.order ?? Number.MAX_SAFE_INTEGER) - (right.order ?? Number.MAX_SAFE_INTEGER));
+
+export const blogPosts = [...draftBlogPosts, ...approvedBlogPosts];
 
 export const featuredProjects = projects.filter((project) => project.featured);
 export const secondaryProjects = projects.filter((project) => !project.featured);
@@ -174,7 +199,7 @@ export const getBlogPostSiblings = (slug?: string) => {
   const index = blogPosts.findIndex((post) => post.slug === slug);
 
   return {
-    previous: index >= 0 && index < blogPosts.length - 1 ? blogPosts[index + 1] : null,
-    next: index > 0 ? blogPosts[index - 1] : null,
+    previous: index > 0 ? blogPosts[index - 1] : null,
+    next: index >= 0 && index < blogPosts.length - 1 ? blogPosts[index + 1] : null,
   };
 };

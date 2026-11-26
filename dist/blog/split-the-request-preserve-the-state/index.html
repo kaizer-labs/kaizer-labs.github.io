@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A synthetic request for partition A becomes smaller child requests. The design study follows coverage, pagination, failure recovery, and the checkpoint decision that keeps unfinished work visible."
+    />
+    <meta name="theme-color" content="#292a2e" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kaizer Charania" />
+    <meta property="og:url" content="https://kaizer-labs.github.io/blog/split-the-request-preserve-the-state/" />
+    <meta
+      property="og:title"
+      content="Split the Request. Preserve the State. | Kaizer Charania"
+    />
+    <meta
+      property="og:description"
+      content="A synthetic request for partition A becomes smaller child requests. The design study follows coverage, pagination, failure recovery, and the checkpoint decision that keeps unfinished work visible."
+    />
+    <meta property="og:image" content="https://kaizer-labs.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Kz monogram and Kaizer Charania — Systems, Agents &amp; Engineering." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Split the Request. Preserve the State. | Kaizer Charania"
+    />
+    <meta
+      name="twitter:description"
+      content="A synthetic request for partition A becomes smaller child requests. The design study follows coverage, pagination, failure recovery, and the checkpoint decision that keeps unfinished work visible."
+    />
+    <meta name="twitter:image" content="https://kaizer-labs.github.io/og-image.png" />
+    <meta name="twitter:image:alt" content="Kz monogram and Kaizer Charania — Systems, Agents &amp; Engineering." />
+    <link rel="canonical" href="https://kaizer-labs.github.io/blog/split-the-request-preserve-the-state/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Split the Request. Preserve the State. | Kaizer Charania</title>
+    <script>
+      (function restoreSpaPath(location) {
+        if (location.search[1] !== "/") return;
+
+        const decoded = location.search
+          .slice(1)
+          .split("&")
+          .map(function replaceAnd(value) {
+            return value.replace(/~and~/g, "&");
+          })
+          .join("?");
+
+        window.history.replaceState(
+          null,
+          "",
+          location.pathname.slice(0, -1) + decoded + location.hash,
+        );
+      })(window.location);
+
+      (function applyStoredTheme() {
+        let storedTheme;
+        try { storedTheme = localStorage.getItem("theme-preference"); } catch {}
+        const theme = storedTheme || "dark";
+        document.documentElement.dataset.theme = theme;
+        const themeColor = theme === "dark" ? "#292a2e" : "#e7e8eb";
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute("content", themeColor);
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-DXhvTgES.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DrLMA25-.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -25,6 +25,7 @@
   &__meta > div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 16px; }
   &__meta time, &__meta > div > span { white-space: nowrap; }
   &__topic { color: var(--studio-accent); text-transform: uppercase; letter-spacing: .7px; }
+  &__draft { color: var(--studio-accent); }
   h3 { margin: 0 0 17px; font: 400 clamp(24px, 2.3vw, 32px)/1.25 var(--studio-sans); letter-spacing: -1.1px; overflow-wrap: anywhere; }
   &__summary { margin: 0; max-width: 65ch; font: 400 16px/1.8 var(--studio-sans); color: var(--studio-muted); }
   &__cta { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: auto; padding-top: 28px; font: 500 14px/1.6 var(--studio-sans); }

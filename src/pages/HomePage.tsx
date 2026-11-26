@@ -4,7 +4,7 @@ import { Layout } from "../components/Layout";
 import { NewsletterCard } from "../components/NewsletterCard";
 import { WorkCard } from "../components/WorkCard";
 import { projects } from "../content";
-import { homepageNewsletterPosts } from "../data/newsletter";
+import { homepageWritingEntries } from "../data/writing";
 import { site } from "../data/site";
 import "../styles/writing.scss";
 
@@ -44,8 +44,8 @@ export function HomePage() {
 
       <section className="studio-writing studio-container" aria-labelledby="writing-title">
         <div className="studio-section-head"><div><p className="studio-eyebrow">03 / BUILT WITH JUDGMENT</p><h2 id="writing-title">Thinking out loud.</h2></div><Link className="studio-text-link" to="/blog">All writing <span aria-hidden="true">↗</span></Link></div>
-        <div className="studio-writing__grid">{homepageNewsletterPosts.map((post) => <NewsletterCard post={post} key={post.id}/>)}</div>
-        <div className="studio-writing__follow"><p>Short previews from the newsletter. The full thinking lives on LinkedIn.</p><a className="studio-text-link" href={site.newsletterUrl} target="_blank" rel="noopener noreferrer" data-analytics-event="newsletter_subscribe_click" data-analytics-label="home_writing_newsletter">Follow Built With Judgment <span aria-hidden="true">↗</span></a></div>
+        <div className="studio-writing__grid">{homepageWritingEntries.map((post) => <NewsletterCard post={post} key={`${post.source}-${post.id}`}/>)}</div>
+        <div className="studio-writing__follow"><p>Articles and newsletter essays on the systems behind the work.</p><a className="studio-text-link" href={site.newsletterUrl} target="_blank" rel="noopener noreferrer" data-analytics-event="newsletter_subscribe_click" data-analytics-label="home_writing_newsletter">Follow Built With Judgment <span aria-hidden="true">↗</span></a></div>
       </section>
 
       <section className="studio-connect studio-container" aria-labelledby="connect-title"><p className="studio-eyebrow"><span className="status-dot"/> GOOD WORK STARTS WITH A CONVERSATION</p><div><h2 id="connect-title">What are you<br/><span>building next?</span></h2><Link className="studio-connect__link" to="/contact" aria-label="Let’s talk about what you’re building" data-analytics-event="contact_click" data-analytics-label="home_final_cta_connect"><span aria-hidden="true">↗</span></Link></div><p>Systems, agents, or an interesting problem.<br/>I’d like to hear about it.</p></section>

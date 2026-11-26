@@ -30,7 +30,7 @@ const pages = [
   {
     route: "/blog/",
     title: "Writing — Built With Judgment | Kaizer Charania",
-    description: "Selected essays from Built With Judgment: practical AI-assisted engineering, product decisions, and building in public. Read previews and explore the full newsletter on LinkedIn.",
+    description: "Engineering notes and Built With Judgment essays on practical AI, product decisions, and the systems around software. Read articles here and newsletter editions on LinkedIn.",
   },
   {
     route: "/contact/",
@@ -49,20 +49,29 @@ const pages = [
   },
 ];
 
-const projectDir = path.join(root, "src/content/projects");
-for (const filename of (await readdir(projectDir)).filter((name) => name.endsWith(".md")).sort()) {
-  const source = await readFile(path.join(projectDir, filename), "utf8");
+for (const section of ["projects", "blog"]) {
+ const directory = path.join(root, "src/content", section);
+ const filenames = await readdir(directory).catch((error) => {
+   if (error.code === "ENOENT") return [];
+   throw error;
+ });
+ for (const filename of filenames.filter((name) => name.endsWith(".md")).sort()) {
+  const source = await readFile(path.join(directory, filename), "utf8");
   const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
-  if (!frontmatter) throw new Error(`Project frontmatter is missing: ${filename}`);
+  if (!frontmatter) throw new Error(`Content frontmatter is missing: ${section}/${filename}`);
   const data = yaml.load(frontmatter[1]);
   if (!data || typeof data.title !== "string" || typeof data.summary !== "string") {
-    throw new Error(`Project title and summary must be strings: ${filename}`);
+    throw new Error(`Content title and summary must be strings: ${section}/${filename}`);
+  }
+  if (section === "blog" && (data.draft === true || data.status === "draft" || typeof data.publishedAt !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(data.publishedAt))) {
+    throw new Error(`Only approved articles with a publishedAt date belong in src/content/blog: ${filename}. Keep review drafts in private-review.`);
   }
   pages.push({
-    route: `/projects/${path.basename(filename, ".md")}/`,
+    route: `/${section}/${path.basename(filename, ".md")}/`,
     title: `${data.title} | Kaizer Charania`,
     description: data.summary,
   });
+ }
 }
 
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({

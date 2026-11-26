@@ -11,6 +11,7 @@ interface LayoutProps {
   title: string;
   description: string;
   frameClass?: string;
+  noindex?: boolean;
   children: ReactNode;
 }
 
@@ -18,9 +19,10 @@ export function Layout({
   title,
   description,
   frameClass,
+  noindex,
   children,
 }: LayoutProps) {
-  useDocumentMeta({ title, description });
+  useDocumentMeta({ title, description, noindex });
   useScrollToTop();
 
   return (

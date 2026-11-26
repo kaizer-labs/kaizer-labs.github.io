@@ -142,6 +142,8 @@ function trackEvent(
 }
 
 function getMeasurementId() {
+  // Local article and career reviews must never send analytics to a third party.
+  if (import.meta.env.DEV || ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname)) return;
   const raw =
     import.meta.env.VITE_GA_MEASUREMENT_ID ||
     import.meta.env.PUBLIC_GA_MEASUREMENT_ID;

@@ -1,13 +1,14 @@
-import type { NewsletterPost } from "../data/newsletter";
+import { Link } from "react-router-dom";
+import { formatWritingDate, type WritingEntry } from "../data/writing";
 import "../styles/newsletter.scss";
 
 type NewsletterCardProps = {
-  post: NewsletterPost;
+  post: WritingEntry;
   featured?: boolean;
   compact?: boolean;
 };
 
-function LetterGlyph({ visual }: { visual: NewsletterPost["visual"] }) {
+function LetterGlyph({ visual }: { visual: WritingEntry["visual"] }) {
   return (
     <svg className={`letter-glyph letter-glyph--${visual}`} viewBox="0 0 480 320" fill="none" focusable="false">
       {visual === "steps" && <>
@@ -58,16 +59,9 @@ function LetterGlyph({ visual }: { visual: NewsletterPost["visual"] }) {
   );
 }
 
-function formatPublishedAt(value: string) {
-  const date = new Date(`${value}T12:00:00`);
-  return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(date);
-}
-
 export function NewsletterCard({ post, featured = false, compact = false }: NewsletterCardProps) {
   const classes = ["letter-card", featured && "letter-card--featured", compact && "letter-card--compact"].filter(Boolean).join(" ");
-
-  return (
-    <a className={classes} href={post.url} target="_blank" rel="noopener noreferrer" data-analytics-event="newsletter_article_open" data-analytics-label={post.id}>
+  const content = <>
       <div className={`letter-card__cover letter-card__cover--${post.visual}`} aria-hidden="true">
         <div className="letter-card__cover-grid"/>
         <span className="letter-card__publication">BUILT WITH JUDGMENT</span>
@@ -75,11 +69,14 @@ export function NewsletterCard({ post, featured = false, compact = false }: News
         <span className="letter-card__cover-label">FIELD NOTES <span>/</span> {post.topic.toUpperCase()}</span>
       </div>
       <div className="letter-card__body">
-        <div className="letter-card__meta"><span className="letter-card__topic">{post.topic}</span><div>{post.publishedAt && <time dateTime={post.publishedAt}>{formatPublishedAt(post.publishedAt)}</time>}<span>{post.readingMinutes} min read</span></div></div>
+        <div className="letter-card__meta"><span className="letter-card__topic">{post.topic}</span><div>{post.draft && <span className="letter-card__draft">Draft</span>}{!post.draft && post.publishedAt && <time dateTime={post.publishedAt}>{formatWritingDate(post.publishedAt)}</time>}<span>{post.readingMinutes} min read</span></div></div>
         <h3>{post.title}</h3>
         <p className="letter-card__summary">{post.summary}</p>
-        <span className="letter-card__cta">Read on LinkedIn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
+        <span className="letter-card__cta">{post.source === "website" ? "Read article" : "Read on LinkedIn"} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d={post.source === "website" ? "M4 12h16m-6-6 6 6-6 6" : "M6 18 18 6M6 6h12v12"}/></svg></span>
       </div>
-    </a>
-  );
+    </>;
+
+  return post.source === "website"
+    ? <Link className={classes} to={post.url} data-analytics-event="blog_article_open" data-analytics-label={post.id}>{content}</Link>
+    : <a className={classes} href={post.url} target="_blank" rel="noopener noreferrer" data-analytics-event="newsletter_article_open" data-analytics-label={post.id}>{content}</a>;
 }
